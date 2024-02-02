@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material'
 import React from 'react'
-import Explore from '../features/display/Explore'
+import { Explore } from '../features/display'
 
 const ExplorePage = () => {
   return (

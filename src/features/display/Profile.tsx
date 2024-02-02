@@ -1,6 +1,6 @@
 import { AppBar, Avatar, Container, Grid, IconButton, Paper, Typography } from '@mui/material'
 import React from 'react'
-import Navbar from '../Dashboard/Navbar'
+import { Navbar } from '../dashboard';
 import ShriRam from '../../assets/images/ShriRam.png'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';

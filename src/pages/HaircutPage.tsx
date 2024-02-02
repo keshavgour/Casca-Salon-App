@@ -1,8 +1,8 @@
 import { Grid } from '@mui/material'
 import React from 'react'
-import Haircuts from '../features/display/Haircuts'
+import { Haircuts } from '../features/display'
 
-const HaircutPage = () => {
+ const HaircutPage = () => {
   return (
     <Grid>
       <Haircuts />

@@ -6,7 +6,7 @@ import SpaIcon from '@mui/icons-material/Spa';
 import FaceRetouchingNaturalIcon from '@mui/icons-material/FaceRetouchingNatural';
 import { useNavigate } from 'react-router-dom';
 
-const Services = () => {
+export const Services = () => {
 
 const navigate = useNavigate();
 
@@ -63,4 +63,4 @@ const navigate = useNavigate();
   )
 }
 
-export default Services
+

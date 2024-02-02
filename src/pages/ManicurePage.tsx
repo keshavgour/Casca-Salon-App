@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material'
 import React from 'react'
-import Manicure from '../features/display/Manicure'
+import { Manicure } from '../features/display'
 
 const ManicurePage = () => {
   return (

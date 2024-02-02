@@ -5,7 +5,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SalonDataDisplay from './SalonDataDisplay';
 import { useNavigate } from 'react-router-dom';
 
-const Massage = () => {
+export const Massage = () => {
 
     const navigate = useNavigate();
 
@@ -51,4 +51,3 @@ const Massage = () => {
   )
 }
 
-export default Massage

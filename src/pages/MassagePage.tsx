@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material'
 import React from 'react'
-import Massage from '../features/display/Massage'
+import { Massage } from '../features/display'
 
 const MassagePage = () => {
   return (

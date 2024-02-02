@@ -5,7 +5,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SalonDataDisplay from './SalonDataDisplay';
 import { useNavigate } from 'react-router-dom';
 
-const Manicure = () => {
+export const Manicure = () => {
 
     const navigate = useNavigate();
 
@@ -53,4 +53,3 @@ const Manicure = () => {
   )
 }
 
-export default Manicure

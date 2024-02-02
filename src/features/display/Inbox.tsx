@@ -1,6 +1,6 @@
 import { AppBar, Container, Grid } from '@mui/material'
 import React, { useState } from 'react'
-import Navbar from '../Dashboard/Navbar'
+import { Navbar } from '../dashboard'
 import ButtonComponent from '../../components/ButtonComponent'
 import CallData from './CallData'
 import ChatData from './ChatData'

@@ -13,7 +13,7 @@ interface IPROPS {
   seeAll:string
 }
 
-const Nearby: React.FC<IPROPS> = ({typographyData, seeAll}) => {
+export const Nearby: React.FC<IPROPS> = ({typographyData, seeAll}) => {
   
   const [selectedTab, setSelectedTab] = useState('all');
 
@@ -88,4 +88,4 @@ const Nearby: React.FC<IPROPS> = ({typographyData, seeAll}) => {
   );
 };
 
-export default Nearby;
+

@@ -1,8 +1,8 @@
 import { AppBar, Container, Grid } from '@mui/material'
 import React from 'react'
-import Navbar from '../Dashboard/Navbar'
+import { Navbar } from '../dashboard'
 
-const Explore = () => {
+export const Explore = () => {
   return (
     <Container>
     <Grid container>
@@ -16,4 +16,3 @@ const Explore = () => {
   )
 }
 
-export default Explore

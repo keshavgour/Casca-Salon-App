@@ -1,1 +1,6 @@
-export * from '../Dashboard/Dashboard'
+export * from './AllData'
+export * from './Explore'
+export * from './Haircuts'
+export * from './Makeup'
+export * from './Manicure'
+export * from './Massage'

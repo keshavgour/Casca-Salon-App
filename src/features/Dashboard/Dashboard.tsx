@@ -1,14 +1,14 @@
 import { AppBar, Container, Grid } from '@mui/material'
 import React from 'react'
-import Navbar from './Navbar'
+import { Navbar } from './Navbar'
 import Search from '../Search'
-import Services from './Services'
+import { Services } from './Services'
 import CarouselData from './CarouselData'
-import Nearby from './Nearby'
-import WelcomeMessage from './WelcomeMessage'
+import { Nearby } from './Nearby'
+import { WelcomeMessage } from './WelcomeMessage'
 
 
-const Dashboard = () => {
+export const Dashboard = () => {
     
   return (
     <Container>
@@ -44,4 +44,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+

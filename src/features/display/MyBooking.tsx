@@ -1,10 +1,10 @@
 import { AppBar, Container, Grid } from '@mui/material'
 import React from 'react'
-import Navbar from '../Dashboard/Navbar'
+import { Navbar } from '../dashboard'
 
 const MyBooking = () => {
   return (
-    <Container>
+    <Container>s
     <Grid container>
         <Grid item>
             <AppBar position='fixed' sx={{backgroundColor:'white'}}>

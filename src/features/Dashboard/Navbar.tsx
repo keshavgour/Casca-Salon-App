@@ -16,7 +16,7 @@ interface IPROPS {
   pageHeading:string
 }
 
-const Navbar: React.FC<IPROPS> = ( { pageHeading }) => {
+export const Navbar: React.FC<IPROPS> = ( { pageHeading }) => {
 
 
     const navigate = useNavigate();
@@ -105,5 +105,5 @@ const Navbar: React.FC<IPROPS> = ( { pageHeading }) => {
   )
 }
 
-export default Navbar
+// export default Navbar
 

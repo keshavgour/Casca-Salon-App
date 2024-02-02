@@ -2,7 +2,7 @@ import { Grid, Typography } from '@mui/material'
 import React from 'react'
 import WavingHandIcon from '@mui/icons-material/WavingHand';
 
-const WelcomeMessage = () => {
+export const WelcomeMessage = () => {
   return (
       <Grid container>
       <Grid item>
@@ -15,4 +15,4 @@ const WelcomeMessage = () => {
   )
 }
 
-export default WelcomeMessage
+

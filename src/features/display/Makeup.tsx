@@ -5,7 +5,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SalonDataDisplay from './SalonDataDisplay';
 import { useNavigate } from 'react-router-dom';
 
-const Makeup = () => {
+export const Makeup = () => {
 
     const navigate = useNavigate();
 
@@ -52,4 +52,3 @@ const Makeup = () => {
   )
 }
 
-export default Makeup

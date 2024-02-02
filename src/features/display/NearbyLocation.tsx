@@ -1,6 +1,6 @@
 import { Container, Grid, IconButton } from '@mui/material'
 import React from 'react'
-import Nearby from '../Dashboard/Nearby'
+import { Nearby } from '../dashboard';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 
