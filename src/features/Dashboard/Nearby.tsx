@@ -32,7 +32,7 @@ export const Nearby: React.FC<IPROPS> = ({typographyData, seeAll}) => {
             </Typography>
           </Grid>
           <Grid item pl={40} sx={{ color: "#ff9800", fontSize: "20px" }}>
-            <Link to='/nearbylocation' style={{ color: "#ff9800", textDecoration: "none" }}>
+            <Link to='/nearbyLocation' style={{ color: "#ff9800", textDecoration: "none" }}>
               {seeAll}
             </Link>
           </Grid>

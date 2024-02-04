@@ -1,7 +1,7 @@
-import { Avatar, Container, Grid, IconButton, Paper, Typography } from '@mui/material'
+import { Avatar, Container, Grid, Paper, Typography } from '@mui/material'
 import React from 'react'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
+import BackButtonComponent from '../../components/BackButtonComponent';
 
 const Notifications = () => {
 
@@ -51,9 +51,7 @@ const Notifications = () => {
             <Grid item>
                 <Grid container>
                 <Grid item>
-                   <IconButton onClick={clickBack} sx={{":hover":{backgroundColor:'#fff3e0'}}}>
-                    <ArrowBackIcon sx={{":hover":{color:'#ff9800'}}} />
-                   </IconButton>
+                   <BackButtonComponent onClick={clickBack}/>
                 </Grid>
                 <Grid item pt={0.4} pl={1}>
                     <Typography variant='h5' sx={{fontWeight:'bold'}}>Notification</Typography>

@@ -2,7 +2,7 @@ import { Grid } from '@mui/material'
 import React from 'react'
 import { Manicure } from '../features/display'
 
-const ManicurePage = () => {
+export const ManicurePage = () => {
   return (
     <Grid>
       <Manicure />
@@ -10,4 +10,4 @@ const ManicurePage = () => {
   )
 }
 
-export default ManicurePage
+

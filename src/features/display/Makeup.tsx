@@ -1,9 +1,9 @@
-import { Container, Grid, IconButton, Typography } from '@mui/material'
+import { Container, Grid, Typography } from '@mui/material'
 import React from 'react'
 import Search from '../Search'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SalonDataDisplay from './SalonDataDisplay';
 import { useNavigate } from 'react-router-dom';
+import BackButtonComponent from '../../components/BackButtonComponent';
 
 export const Makeup = () => {
 
@@ -31,9 +31,7 @@ export const Makeup = () => {
         <Grid item>
             <Grid container>
                 <Grid item>
-                   <IconButton onClick={clickBack} sx={{":hover":{backgroundColor:'#fff3e0'}}}>
-                    <ArrowBackIcon sx={{":hover":{color:'#ff9800'}}}/>
-                   </IconButton>
+                   <BackButtonComponent onClick={clickBack}/>
                 </Grid>
                 <Grid item pt={0.4} pl={1}>
                     <Typography variant='h5' sx={{fontWeight:'bold'}}>Makeup</Typography>

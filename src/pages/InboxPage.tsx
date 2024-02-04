@@ -2,7 +2,7 @@ import { Grid } from '@mui/material'
 import React from 'react'
 import Inbox from '../features/display/Inbox'
 
-const InboxPage = () => {
+export const InboxPage = () => {
   return (
     <Grid>
       <Inbox />
@@ -10,4 +10,4 @@ const InboxPage = () => {
   )
 }
 
-export default InboxPage
+

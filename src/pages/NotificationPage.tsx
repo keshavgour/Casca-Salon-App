@@ -1,7 +1,7 @@
 import React from 'react'
 import Notifications from '../features/display/Notifications'
 
-const NotificationPage = () => {
+export const NotificationPage = () => {
   return (
     <div>
       <Notifications />
@@ -9,4 +9,3 @@ const NotificationPage = () => {
   )
 }
 
-export default NotificationPage

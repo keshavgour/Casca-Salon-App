@@ -1,16 +1,17 @@
 import { Box } from "@mui/material"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import DashboardPage from "./pages/DashboardPage"
-import HaircutPage from "./pages/HaircutPage"
-import MakeupPage from "./pages/MakeupPage"
-import ManicurePage from "./pages/ManicurePage"
-import MassagePage from "./pages/MassagePage"
-import NotificationPage from "./pages/NotificationPage"
-import NearbyLocationPage from "./pages/NearbyLocationPage"
-import ProfilePage from "./pages/ProfilePage"
-import InboxPage from "./pages/InboxPage"
-import MyBookingPage from "./pages/MyBookingPage"
-import ExplorePage from "./pages/ExplorePage"
+import { DashboardPage } from "./pages"
+import { HaircutPage } from "./pages"
+import { MakeupPage } from "./pages"
+import { ManicurePage } from "./pages"
+import { MassagePage } from "./pages"
+import { NotificationPage } from "./pages"
+import { NearbyLocationPage } from "./pages"
+import { ProfilePage } from "./pages"
+import { InboxPage } from "./pages"
+import { MyBookingPage } from "./pages"
+import { ExplorePage } from "./pages"
+import { SignupPage } from "./pages"
 
 export const Routers = () => {
     return (
@@ -23,11 +24,12 @@ export const Routers = () => {
                     <Route path="/manicure" element={<ManicurePage />} />
                     <Route path="/massage" element={<MassagePage />} />
                     <Route path="/notifications" element={<NotificationPage />}/>
-                    <Route path="/nearbylocation" element={<NearbyLocationPage />}/>
+                    <Route path="/nearbyLocation" element={<NearbyLocationPage />}/>
                     <Route path="/profile" element={<ProfilePage />} />
                     <Route path="/inbox" element={<InboxPage />} />
                     <Route path="/myBooking" element={<MyBookingPage />}/>
                     <Route path="/explore" element={<ExplorePage />}/>
+                    <Route path="/signup" element={<SignupPage />}/>
                 </Routes>
             </BrowserRouter>
         </Box>

@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material'
+import { Button, Grid } from '@mui/material'
 import React from 'react'
 
 interface IPROPS {
@@ -11,17 +11,18 @@ interface IPROPS {
 
 const ButtonComponent: React.FC<IPROPS> = ({label, selected, onClick}) => {
   return (
-    <Box>
+    <Grid>
         <Button 
+        fullWidth
          variant='outlined' 
-         onClick={onClick} 
-         sx={{ 
+         onClick={onClick}
+         sx={{
           "&:hover":{backgroundColor : '#ff9800' ,color:"white",border:'1px solid #ff9800'},
-        color: selected ? 'white' : '#ff9800', backgroundColor: selected ? '#ff9800' :'white', border:'1px solid #ff9800', borderRadius:'100px'
+         color: selected ? 'white' : '#ff9800', backgroundColor: selected ? '#ff9800' :'white', border:'1px solid #ff9800', borderRadius:'100px'
         }}>
           {label}
           </Button>
-    </Box>
+    </Grid>
   )
 }
 

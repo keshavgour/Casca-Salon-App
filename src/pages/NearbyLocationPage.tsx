@@ -1,7 +1,7 @@
 import React from 'react'
 import NearbyLocation from '../features/display/NearbyLocation'
 
-const NearbyLocationPage = () => {
+export const NearbyLocationPage = () => {
   return (
     <div>
       <NearbyLocation />
@@ -9,4 +9,4 @@ const NearbyLocationPage = () => {
   )
 }
 
-export default NearbyLocationPage
+

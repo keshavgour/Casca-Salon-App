@@ -34,7 +34,7 @@ export const Dashboard = () => {
         <Nearby typographyData='Nearby Your Location' seeAll='See All' />
         </Grid>
         <Grid item>
-        <Nearby typographyData='Most Popular' seeAll=''/>
+        <Nearby typographyData='Most Popular' seeAll='See All'/>
         </Grid>
         {/* <Grid item> 
         <MostPopularData />

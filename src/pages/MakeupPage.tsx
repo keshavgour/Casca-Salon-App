@@ -2,7 +2,7 @@ import { Grid } from '@mui/material'
 import React from 'react'
 import { Makeup } from '../features/display'
 
-const MakeupPage = () => {
+export const MakeupPage = () => {
   return (
     <Grid>
       <Makeup />
@@ -10,4 +10,4 @@ const MakeupPage = () => {
   )
 }
 
-export default MakeupPage
+

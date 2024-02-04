@@ -2,7 +2,7 @@ import { Grid } from '@mui/material'
 import React from 'react'
 import { Explore } from '../features/display'
 
-const ExplorePage = () => {
+export const ExplorePage = () => {
   return (
     <Grid>
       <Explore />
@@ -10,4 +10,3 @@ const ExplorePage = () => {
   )
 }
 
-export default ExplorePage

@@ -2,7 +2,7 @@ import { Grid } from '@mui/material'
 import React from 'react'
 import Profile from '../features/display/Profile'
 
-const ProfilePage = () => {
+export const ProfilePage = () => {
   return (
     <Grid>
       <Profile />
@@ -10,4 +10,4 @@ const ProfilePage = () => {
   )
 }
 
-export default ProfilePage
+

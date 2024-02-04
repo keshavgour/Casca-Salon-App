@@ -1,10 +1,9 @@
 import React from 'react'
 import { Dashboard } from '../features/dashboard'
 
-const DashboardPage = () => {
+export const DashboardPage = () => {
   return (
     <Dashboard />
   )
 }
 
-export default DashboardPage

@@ -2,7 +2,7 @@ import { Grid } from '@mui/material'
 import React from 'react'
 import { Massage } from '../features/display'
 
-const MassagePage = () => {
+export const MassagePage = () => {
   return (
     <Grid>
       <Massage />
@@ -10,4 +10,3 @@ const MassagePage = () => {
   )
 }
 
-export default MassagePage
