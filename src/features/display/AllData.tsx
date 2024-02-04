@@ -18,7 +18,7 @@ const AllData = () => {
   return (
     <Grid>
         <SalonDataDisplay dataTODisplay={allSalon}/>
-    </Grid>
+       </Grid>
 
   )
 }

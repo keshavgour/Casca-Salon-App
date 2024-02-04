@@ -1,11 +1,10 @@
-import { Grid, IconButton, InputAdornment, TextField } from '@mui/material'
+import { BaseTextFieldProps, Grid, IconButton, InputAdornment, TextField } from '@mui/material'
 import React from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import SortIcon from '@mui/icons-material/Sort';
 
-interface IPROPS {
-    type:string,
-    placeholder:string
+interface IPROPS extends BaseTextFieldProps {
+   
 }
 
 const InputComponent : React.FC<IPROPS> = ({ type, placeholder }) => {

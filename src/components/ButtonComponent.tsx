@@ -5,6 +5,7 @@ interface IPROPS {
     label:string
     selected:boolean
     onClick:() => void
+
     }
 
 

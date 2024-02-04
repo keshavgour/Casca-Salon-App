@@ -63,6 +63,7 @@ export function Signup() {
                 type='email'
                 value={formData.email}
                 onChange={handleChange}
+                fullWidth
                 />
               </Grid>
               <Grid item xs={12}>
@@ -72,7 +73,7 @@ export function Signup() {
                   type="password"
                   value={formData.password}
                   onChange={handleChange}
-                  
+                  fullWidth
                 />
               </Grid>
               <Grid item xs={12} textAlign='center'>
@@ -96,6 +97,7 @@ export function Signup() {
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
+                  fullWidth
                 />
               </Grid>
               <Grid item xs={12} sm={12}>
@@ -105,6 +107,7 @@ export function Signup() {
                   name="nickname"
                   value={formData.nickname}
                   onChange={handleChange}
+                  fullWidth
                 />
               </Grid>
               <Grid item xs={12} sm={12}>
@@ -114,6 +117,7 @@ export function Signup() {
                   type="date"
                   value={formData.dob}
                   onChange={handleChange}
+                  fullWidth
                 />
               </Grid>
               <Grid item xs={12} sm={12}>
@@ -123,6 +127,7 @@ export function Signup() {
                   type='number'
                   value={formData.mobile}
                   onChange={handleChange}
+                  fullWidth
                 />
               </Grid>
               <Grid item xs={12} sm={12}>
@@ -132,6 +137,7 @@ export function Signup() {
                   type='text'
                   value={formData.gender}
                   onChange={handleChange}
+                  fullWidth
                 />
               </Grid>
               <Grid item sm={12}>

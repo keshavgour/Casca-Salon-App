@@ -5,7 +5,7 @@ interface IPROPS extends StandardTextFieldProps{
     
 }
 
-const TextFieldComponent: React.FC<IPROPS> = ({label, name, type, value, onChange}) => {
+const TextFieldComponent: React.FC<IPROPS> = ({label, name, type, value, onChange, fullWidth}) => {
   return (
     <Grid>
       <TextField variant='outlined'
@@ -14,7 +14,7 @@ const TextFieldComponent: React.FC<IPROPS> = ({label, name, type, value, onChang
        type={type}
        value={value}
        onChange={onChange}
-       fullWidth
+       fullWidth={fullWidth}
         required
        />
     </Grid>

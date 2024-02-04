@@ -59,7 +59,7 @@ export const Nearby: React.FC<IPROPS> = ({typographyData, seeAll}) => {
              selected={selectedTab === 'makeup'}
              onClick={() => handleTabClick('makeup')}
              />
-          </Grid>
+                        </Grid>
           <Grid item>
             <ButtonComponent
              label="Manicure" 
