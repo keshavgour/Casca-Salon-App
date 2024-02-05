@@ -1,6 +1,5 @@
-import theme from "./themes/Theme";
-import { Box, ThemeProvider } from "@mui/material";
-import { Routers } from "./Routers";
+import { Box } from "@mui/material";
+import { Routers } from "./Routes/Routers";
 
 function App() {
   return (
