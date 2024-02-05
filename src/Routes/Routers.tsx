@@ -1,17 +1,17 @@
 import { Box } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { DashboardPage } from "../pages";
-import { HaircutPage } from "../pages";
-import { MakeupPage } from "../pages";
-import { ManicurePage } from "../pages";
-import { MassagePage } from "../pages";
-import { NotificationPage } from "../pages";
-import { NearbyLocationPage } from "../pages";
-import { ProfilePage } from "../pages";
-import { InboxPage } from "../pages";
-import { MyBookingPage } from "../pages";
-import { ExplorePage } from "../pages";
-import { SignupPage } from "../pages";
+import { DashboardPage } from "pages";
+import { HaircutPage } from "pages";
+import { MakeupPage } from "pages";
+import { ManicurePage } from "pages";
+import { MassagePage } from "pages";
+import { NotificationPage } from "pages";
+import { NearbyLocationPage } from "pages";
+import { ProfilePage } from "pages";
+import { InboxPage } from "pages";
+import { MyBookingPage } from "pages";
+import { ExplorePage } from "pages";
+import { SignupPage } from "pages";
 
 export const Routers = () => {
   return (
