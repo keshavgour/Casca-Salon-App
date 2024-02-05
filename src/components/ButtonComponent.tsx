@@ -1,13 +1,13 @@
 import { Button, Grid } from "@mui/material";
 import React from "react";
 
-interface IPROPS {
+interface iprops {
   label: string;
   selected: boolean;
   onClick: () => void;
 }
 
-const ButtonComponent: React.FC<IPROPS> = ({ label, selected, onClick }) => {
+const ButtonComponent: React.FC<iprops> = ({ label, selected, onClick }) => {
   return (
     <Grid>
       <Button

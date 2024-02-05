@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { DashboardPage } from "./pages";
+import { DashboardPage, LoginPage } from "./pages";
 import { HaircutPage } from "./pages";
 import { MakeupPage } from "./pages";
 import { ManicurePage } from "./pages";
@@ -30,6 +30,7 @@ export const Routers = () => {
           <Route path="/myBooking" element={<MyBookingPage />} />
           <Route path="/explore" element={<ExplorePage />} />
           <Route path="/" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </Box>

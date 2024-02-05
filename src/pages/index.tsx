@@ -10,3 +10,4 @@ export * from "pages/InboxPage";
 export * from "pages/MyBookingPage";
 export * from "pages/ExplorePage";
 export * from "pages/SignupPage";
+export * from "pages/LoginPage";
