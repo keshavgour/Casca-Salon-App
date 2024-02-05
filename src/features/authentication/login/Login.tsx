@@ -40,7 +40,7 @@ export const Login = () => {
             <BackButtonComponent onClick={clickBack} />
           </Grid>
           <Grid item mt={8}>
-            <Typography variant="h4">Login to your Account</Typography>
+            <Typography variant="h4">Login to your Account!</Typography>
           </Grid>
           <Grid item xs={12}>
             <TextFieldComponent
