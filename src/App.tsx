@@ -1,12 +1,14 @@
-
-import { Box } from '@mui/material';
-import { Routers } from './Routers';
+import theme from "./themes/Theme";
+import { Box, ThemeProvider } from "@mui/material";
+import { Routers } from "./Routers";
 
 function App() {
   return (
-    <Box>
-      <Routers />
-    </Box>
+    <ThemeProvider theme={theme}>
+      <Box>
+        <Routers />
+      </Box>
+    </ThemeProvider>
   );
 }
 
