@@ -51,7 +51,7 @@ export function Signup() {
     navigate("/login");
   };
 
-  const steps = ["Create your Account", "Fill Your Profile"];
+  const steps = ["Create your Account!", "Fill Your Profile"];
 
   const renderStep = (stepIndex: number) => {
     switch (stepIndex) {
