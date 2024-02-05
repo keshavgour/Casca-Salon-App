@@ -9,13 +9,7 @@ interface BarProp {
   backward: string;
   forward: string;
 }
-const ChipTabHeader: React.FC<BarProp> = ({
-  isPage,
-  heading,
-  linktext,
-  backward,
-  forward,
-}) => {
+const ChipTabHeader: React.FC<BarProp> = ({ isPage, heading, linktext, backward, forward }) => {
   return (
     <Grid container sx={{ py: 1 }}>
       <Grid xs={8}>
@@ -26,7 +20,7 @@ const ChipTabHeader: React.FC<BarProp> = ({
       </Grid>
       <Grid xs={4} sx={{ textAlign: "end" }}>
         {isPage ? (
-          <IconButton aria-label="search">
+          <IconButton aria-label="menu">
             <PendingOutlined fontSize="large" />
           </IconButton>
         ) : (

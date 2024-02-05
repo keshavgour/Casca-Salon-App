@@ -3,15 +3,21 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { Container, Divider } from "@mui/material";
 import ChipTabHeader from "../../components/ChipTabHeader";
-interface GalleryProps{
-  isPage : boolean;
+interface GalleryProps {
+  isPage: boolean;
 }
-const Gallery : React.FC<GalleryProps> = ({isPage}) =>{
+const Gallery: React.FC<GalleryProps> = ({ isPage }) => {
   return (
     <Container>
-      <ChipTabHeader isPage={isPage} heading="Our Gallery" linktext="See All" forward="/gallery" backward="/"/>
+      <ChipTabHeader
+        isPage={isPage}
+        heading="Our Gallery"
+        linktext="See All"
+        forward="/gallery"
+        backward="/saloondetails"
+      />
       <Divider />
-      <ImageList cols={3}  gap={25}>
+      <ImageList cols={3} gap={25}>
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
             <img
@@ -19,14 +25,14 @@ const Gallery : React.FC<GalleryProps> = ({isPage}) =>{
               src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
               alt={item.title}
               loading="lazy"
-              style={{borderRadius:"25px"}}
+              style={{ borderRadius: "25px" }}
             />
           </ImageListItem>
         ))}
       </ImageList>
     </Container>
   );
-}
+};
 const itemData = [
   {
     img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",

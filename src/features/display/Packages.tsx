@@ -2,10 +2,10 @@ import React from "react";
 import packagelist from "../../temp-object-file/Packages";
 import { Box, Button, Container, Divider, Grid, Paper, Typography } from "@mui/material";
 import ChipTabHeader from "../../components/ChipTabHeader";
-interface PackageProps{
-    isPage : boolean;
+interface PackageProps {
+  isPage: boolean;
 }
-const Packages : React.FC<PackageProps>=({isPage})=>{
+const Packages: React.FC<PackageProps> = ({ isPage }) => {
   const boxStyle = {
     width: "90%",
     height: 120,
@@ -38,9 +38,9 @@ const Packages : React.FC<PackageProps>=({isPage})=>{
         heading="Our Packages"
         linktext="See all"
         forward="/allpackages"
-        backward="/"
+        backward="/saloondetails"
       />
-      <Divider/>
+      <Divider />
       <Grid container>
         {packagelist.map((pack) => {
           return (
@@ -83,5 +83,5 @@ const Packages : React.FC<PackageProps>=({isPage})=>{
       </Grid>
     </Container>
   );
-}
+};
 export default Packages;

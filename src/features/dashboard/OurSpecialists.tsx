@@ -1,5 +1,13 @@
-import React from "react";
-import { Avatar, Box, Button, Container, Divider, Typography, IconButton } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  Container,
+  Divider,
+  Typography,
+  IconButton,
+  Grid,
+} from "@mui/material";
 import { SearchOutlined } from "@mui/icons-material/";
 import listSpecialist from "../../temp-object-file/specialist";
 import BackBtn from "../../components/BackBtn";
@@ -13,26 +21,19 @@ export default function OurSpecialists() {
         marginX: "auto",
       }}
     >
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <BackBtn to="/"/>
+      <Grid container sx={{ py: 1 }}>
+        <Grid xs={8}>
+          <BackBtn to="/saloondetails" />
           <Typography variant="titleTypo" component="span">
             Our Specialists
           </Typography>
-        </Box>
-        <Box>
-          <IconButton aria-label="search">
+        </Grid>
+        <Grid xs={4} sx={{ textAlign: "end" }}>
+          <IconButton aria-label="menu">
             <SearchOutlined fontSize="large" />
           </IconButton>
-        </Box>
-      </Box>
+        </Grid>
+      </Grid>
       {listSpecialist.map((card) => {
         return (
           <>
@@ -44,7 +45,7 @@ export default function OurSpecialists() {
                 justifyContent: "space-between",
                 marginX: "auto",
                 marginY: 2,
-                paddingX: 2
+                paddingX: 2,
               }}
             >
               <Box sx={{ display: "flex", alignItems: "center" }}>

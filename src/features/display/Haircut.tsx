@@ -1,16 +1,6 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Box,
-  IconButton,
-  Typography,
-  styled,
-  Button,
-  ButtonProps,
-} from "@mui/material";
-import {
-  PendingOutlined
-} from "@mui/icons-material";
+import { Container, Box, IconButton, Typography, styled, Button, ButtonProps } from "@mui/material";
+import { PendingOutlined } from "@mui/icons-material";
 import HaircutBox from "../../components/HaircutBox";
 import { menhaircutlist, womenhaircutlist } from "../../temp-object-file/Haircuts";
 import BackBtn from "../../components/BackBtn";
@@ -51,7 +41,7 @@ export default function Haircut() {
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <BackBtn to="/allservices"/>
+          <BackBtn to="/allservices" />
           <Typography variant="titleTypo" component="span">
             Haircut
           </Typography>
@@ -109,7 +99,7 @@ export default function Haircut() {
             />
           );
         })}
-        <BlockBtn btnText="Apply" btnSubText=""/>
+      <BlockBtn btnText="Apply" btnSubText="" />
     </Container>
   );
 }

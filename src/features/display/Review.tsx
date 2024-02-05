@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 import listReviews from "../../temp-object-file/Reviews";
-import {
-  Chip,
-  Divider,
-  IconButton,
-  Typography,
-  Container,
-  Grid,
-  Link,
-} from "@mui/material";
-import { Grade, PendingOutlined} from "@mui/icons-material";
+import { Chip, Divider, IconButton, Typography, Container, Grid, Link } from "@mui/material";
+import { Grade, PendingOutlined } from "@mui/icons-material";
 import { Link as RouterLink } from "react-router-dom";
 import BackBtn from "../../components/BackBtn";
 import ReviewBox from "../../components/ReviewBox";
@@ -48,7 +40,7 @@ const Review: React.FC<ReviewProps> = ({ isPage }) => {
     <Container>
       <Grid container spacing={3} sx={{ my: 1 }}>
         <Grid item xs={8}>
-          {isPage && <BackBtn to="/" />}
+          {isPage && <BackBtn to="/saloondetails" />}
           <Typography variant="titleTypo" component="span">
             {isPage ? "Review" : `${(<Grade color="primary" />)} 4.8 (3,279 reviews)`}
           </Typography>
@@ -90,7 +82,7 @@ const Review: React.FC<ReviewProps> = ({ isPage }) => {
         </Grid>
       )}
       <Divider sx={{ my: 1 }} />
-      
+
       {filteredReview.map((review, index) => (
         <ReviewBox
           key={index}
@@ -106,7 +98,6 @@ const Review: React.FC<ReviewProps> = ({ isPage }) => {
           handleDislike={handleDislike}
         />
       ))}
-    
     </Container>
   );
 };

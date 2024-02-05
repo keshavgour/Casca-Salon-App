@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { Box, Button, Container, Divider, Typography, Chip } from "@mui/material";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import GradeIcon from "@mui/icons-material/Grade";
-import Carousel from "../../components/MyCarousel";
-import NavBtnGrp from "../../components/NavBtnGrp";
-import CardsSpecialists from "../../components/CardsSpecialists";
-import listSpecialist from "../../temp-object-file/specialist";
-import ChipTabHeader from "../../components/ChipTabHeader";
-import AboutUs from "../display/AboutUs";
-import Services from "../display/Services";
-import Gallery from "../display/Gallery";
-import Packages from "../display/Packages";
-import Review from "../display/Review";
+import Carousel from "components/MyCarousel";
+import NavBtnGrp from "components/NavBtnGrp";
+import CardsSpecialists from "components/CardsSpecialists";
+import listSpecialist from "temp-object-file/specialist";
+import ChipTabHeader from "components/ChipTabHeader";
+import AboutUs from "features/display/AboutUs";
+import Services from "features/display/Services";
+import Gallery from "features/display/Gallery";
+import Packages from "features/display/Packages";
+import Review from "features/display/Review";
 
 export default function SaloonDetails() {
   const [selectChip, setselectChip] = useState("About us");
