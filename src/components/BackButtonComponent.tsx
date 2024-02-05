@@ -1,19 +1,19 @@
-import { ArrowBack } from '@mui/icons-material'
-import { Grid, IconButton } from '@mui/material'
-import React from 'react'
+import { ArrowBack } from "@mui/icons-material";
+import { Grid, IconButton } from "@mui/material";
+import React from "react";
 
-interface IPROPS {
-    onClick:() => void
+interface iprops {
+  onClick: () => void;
 }
 
-const BackButtonComponent: React.FC<IPROPS> = ({onClick}) => {
+const BackButtonComponent: React.FC<iprops> = ({ onClick }) => {
   return (
     <Grid>
-       <IconButton onClick={onClick} sx={{":hover":{backgroundColor:'#fff3e0'}}}>
-                    <ArrowBack sx={{":hover":{color:'#ff9800'}}}/>
-                   </IconButton>
+      <IconButton onClick={onClick} sx={{ ":hover": { backgroundColor: "#fff3e0" } }}>
+        <ArrowBack sx={{ ":hover": { color: "#ff9800" } }} />
+      </IconButton>
     </Grid>
-  )
-}
+  );
+};
 
-export default BackButtonComponent
+export default BackButtonComponent;

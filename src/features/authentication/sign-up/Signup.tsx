@@ -1,29 +1,31 @@
-import React, { useState } from 'react';
-import { Container, Button, Typography, Grid } from '@mui/material';
-import ButtonComponent from '../../../components/ButtonComponent';
-import TextFieldComponent from '../../../components/TextFieldComponent';
-import BackButtonComponent from '../../../components/BackButtonComponent';
+import React, { useState } from "react";
+import { Container, Button, Typography, Grid } from "@mui/material";
+import ButtonComponent from "components/ButtonComponent";
+import TextFieldComponent from "components/TextFieldComponent";
+import BackButtonComponent from "components/BackButtonComponent";
+import { useNavigate } from "react-router-dom";
 
 interface FormData {
   email: string;
   password: string;
   fullName: string;
-  nickname:string;
+  nickname: string;
   dob: string;
   gender: string;
   mobile: string;
 }
 
 export function Signup() {
+  const navigate = useNavigate();
   const [step, setStep] = useState<number>(0);
   const [formData, setFormData] = useState<FormData>({
-    email: '',
-    password: '',
-    fullName: '',
-    nickname:'',
-    dob: '',
-    gender: '',
-    mobile: ''
+    email: "",
+    password: "",
+    fullName: "",
+    nickname: "",
+    dob: "",
+    gender: "",
+    mobile: "",
   });
 
   const handleNext = () => {
@@ -38,17 +40,18 @@ export function Signup() {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission here, you can send formData to your backend
+
     console.log(formData);
+    navigate("/login");
   };
 
-  const steps = ['Create your Account', 'Fill Your Profile'];
+  const steps = ["Create your Account", "Fill Your Profile"];
 
   const renderStep = (stepIndex: number) => {
     switch (stepIndex) {
@@ -57,13 +60,13 @@ export function Signup() {
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <TextFieldComponent 
-                label='Email'
-                name='email'
-                type='email'
-                value={formData.email}
-                onChange={handleChange}
-                fullWidth
+                <TextFieldComponent
+                  label="Email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  fullWidth
                 />
               </Grid>
               <Grid item xs={12}>
@@ -76,12 +79,8 @@ export function Signup() {
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} textAlign='center'>
-                <ButtonComponent 
-                    label="Sign up"
-                    selected
-                    onClick={handleNext}     
-                />
+              <Grid item xs={12} textAlign="center">
+                <ButtonComponent label="Sign up" selected onClick={handleNext} />
               </Grid>
             </Grid>
           </form>
@@ -93,7 +92,7 @@ export function Signup() {
               <Grid item xs={12} sm={12}>
                 <TextFieldComponent
                   label="Full Name"
-                  type='text'
+                  type="text"
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
@@ -103,7 +102,7 @@ export function Signup() {
               <Grid item xs={12} sm={12}>
                 <TextFieldComponent
                   label="Nickname"
-                  type='text'
+                  type="text"
                   name="nickname"
                   value={formData.nickname}
                   onChange={handleChange}
@@ -124,7 +123,7 @@ export function Signup() {
                 <TextFieldComponent
                   label="Mobile Number"
                   name="mobile"
-                  type='number'
+                  type="number"
                   value={formData.mobile}
                   onChange={handleChange}
                   fullWidth
@@ -134,24 +133,33 @@ export function Signup() {
                 <TextFieldComponent
                   label="Gender"
                   name="gender"
-                  type='text'
+                  type="text"
                   value={formData.gender}
                   onChange={handleChange}
                   fullWidth
                 />
               </Grid>
               <Grid item sm={12}>
-           <Button fullWidth
-            type='submit'
-            variant='contained'
-           sx={{
-            "&:hover":{backgroundColor : '#ff9800' ,color:"white",border:'1px solid #ff9800'},
-           color: 'white' , backgroundColor:'#ff9800' , border:'1px solid #ff9800', borderRadius:'100px'
-          }}>Continue
-           </Button>
-           </Grid>
+                <Button
+                  fullWidth
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    "&:hover": {
+                      backgroundColor: "#ff9800",
+                      color: "white",
+                      border: "1px solid #ff9800",
+                    },
+                    color: "white",
+                    backgroundColor: "#ff9800",
+                    border: "1px solid #ff9800",
+                    borderRadius: "100px",
+                  }}
+                >
+                  Continue
+                </Button>
+              </Grid>
             </Grid>
-           
           </form>
         );
       default:
@@ -160,19 +168,18 @@ export function Signup() {
   };
 
   return (
-    <Container maxWidth="sm" style={{ marginTop: '4rem' }}>
-        <Grid container>
+    <Container maxWidth="sm" style={{ marginTop: "4rem" }}>
+      <Grid container>
         <Grid item>
-        {steps[step] === 'Fill Your Profile'? <BackButtonComponent onClick={clickBack}/> : '' }
+          {steps[step] === "Fill Your Profile" ? <BackButtonComponent onClick={clickBack} /> : ""}
         </Grid>
         <Grid item pl={1}>
-      <Typography variant="h4" align="center" gutterBottom>
-        {steps[step]}
-      </Typography>
-      </Grid>
+          <Typography variant="h4" align="center" gutterBottom>
+            {steps[step]}
+          </Typography>
+        </Grid>
       </Grid>
       {renderStep(step)}
     </Container>
   );
 }
-
