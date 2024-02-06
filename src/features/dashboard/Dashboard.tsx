@@ -29,10 +29,10 @@ export const Dashboard = () => {
           <Services />
         </Grid>
         <Grid item>
-          <Nearby typographyData="Nearby Your Location" seeAll="See All" />
+          <Nearby typographyData="Nearby Your Location" />
         </Grid>
         <Grid item>
-          <Nearby typographyData="Most Popular" seeAll="See All" />
+          <Nearby typographyData="Most Popular" />
         </Grid>
         {/* <Grid item> 
         <MostPopularData />

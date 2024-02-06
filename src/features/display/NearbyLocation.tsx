@@ -19,7 +19,7 @@ const NearbyLocation = () => {
           </IconButton>
         </Grid>
       </Grid>
-      <Nearby typographyData="Nearby Your Location" seeAll="" />
+      <Nearby typographyData="Nearby Your Location" />
     </Container>
   );
 };

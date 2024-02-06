@@ -26,7 +26,7 @@ export const Services = () => {
 
   return (
     <Grid container spacing={24}>
-      <Grid item xs={3}>
+      <Grid item>
         <IconButton sx={{ backgroundColor: "#fff3e0" }} onClick={clickHaircuts}>
           <ContentCutIcon fontSize="large" sx={{ color: "#ff9800" }} />
         </IconButton>
@@ -34,7 +34,7 @@ export const Services = () => {
           Haircuts
         </Typography>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item>
         <IconButton sx={{ backgroundColor: "#fff3e0" }} onClick={clickMakeup}>
           <BrushIcon fontSize="large" sx={{ color: "#ff9800" }} />
         </IconButton>
@@ -42,7 +42,7 @@ export const Services = () => {
           Make up
         </Typography>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item>
         <IconButton sx={{ backgroundColor: "#fff3e0" }} onClick={clickManicure}>
           <SpaIcon fontSize="large" sx={{ color: "#ff9800" }} />
         </IconButton>
@@ -50,7 +50,7 @@ export const Services = () => {
           Manicure
         </Typography>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item>
         <IconButton sx={{ backgroundColor: "#fff3e0" }} onClick={clickMassage}>
           <FaceRetouchingNaturalIcon fontSize="large" sx={{ color: "#ff9800" }} />
         </IconButton>

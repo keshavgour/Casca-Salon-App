@@ -1,19 +1,18 @@
 import { Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import ButtonComponent from "components/ButtonComponent";
 import AllData from "features/display/AllData";
 import NearByHaircuts from "features/display/NearbyHaircuts";
 import NearByMakeup from "features/display/NearbyMakeup";
 import NearByManicure from "features/display/NearbyManicure";
 import NearByMassage from "features/display/NearbyMassage";
+import { Link } from "react-router-dom";
 
 interface IPROPS {
   typographyData: string;
-  seeAll: string;
 }
 
-export const Nearby: React.FC<IPROPS> = ({ typographyData, seeAll }) => {
+export const Nearby: React.FC<IPROPS> = ({ typographyData }) => {
   const [selectedTab, setSelectedTab] = useState("all");
 
   const handleTabClick = (tabName: string) => {
@@ -31,7 +30,7 @@ export const Nearby: React.FC<IPROPS> = ({ typographyData, seeAll }) => {
           </Grid>
           <Grid item pl={40} sx={{ color: "#ff9800", fontSize: "20px" }}>
             <Link to="/nearbyLocation" style={{ color: "#ff9800", textDecoration: "none" }}>
-              {seeAll}
+              See All
             </Link>
           </Grid>
         </Grid>

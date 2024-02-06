@@ -46,8 +46,8 @@ export function Signup() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     console.log(formData);
+
     navigate("/login");
   };
 
