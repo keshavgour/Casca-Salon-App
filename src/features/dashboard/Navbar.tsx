@@ -31,7 +31,7 @@ export const Navbar: React.FC<IPROPS> = ({ pageHeading }) => {
   };
   return (
     <Grid container pl={6} justifyContent="space-between">
-      <Grid item lg={4}>
+      <Grid item lg={4} xs={3}>
         <Grid container spacing={1.5}>
           <Grid item>
             <img src={logo} alt="logo" width="55px" />
@@ -43,7 +43,7 @@ export const Navbar: React.FC<IPROPS> = ({ pageHeading }) => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item lg={6}>
+      <Grid item lg={6} xs={5}>
         <Grid container spacing={3} pl={5}>
           <Grid item>
             <IconButton
@@ -113,7 +113,7 @@ export const Navbar: React.FC<IPROPS> = ({ pageHeading }) => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item lg={1.7}>
+      <Grid item lg={1.7} xs={2}>
         <Grid container spacing={2}>
           <Grid item>
             <Grid container direction="column" alignItems="center">
