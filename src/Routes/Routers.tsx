@@ -12,6 +12,7 @@ import { InboxPage } from "pages";
 import { MyBookingPage } from "pages";
 import { ExplorePage } from "pages";
 import { SignupPage } from "pages";
+import { RegisterPage } from "pages";
 
 export const Routers = () => {
   return (
@@ -29,8 +30,9 @@ export const Routers = () => {
           <Route path="/inbox" element={<InboxPage />} />
           <Route path="/myBooking" element={<MyBookingPage />} />
           <Route path="/explore" element={<ExplorePage />} />
-          <Route path="/" element={<SignupPage />} />
+          <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<RegisterPage />}></Route>
         </Routes>
       </BrowserRouter>
     </Box>

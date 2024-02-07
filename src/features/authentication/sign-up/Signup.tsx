@@ -1,185 +1,158 @@
-import React, { useState } from "react";
-import { Container, Button, Typography, Grid } from "@mui/material";
-import ButtonComponent from "components/ButtonComponent";
-import TextFieldComponent from "components/TextFieldComponent";
+import { Button, Grid, Typography } from "@mui/material";
+import { Container } from "@mui/system";
 import BackButtonComponent from "components/BackButtonComponent";
+import TextFieldComponent from "components/TextFieldComponent";
+import { axiosBaseURL } from "lib/axios";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface FormData {
   email: string;
-  password: string;
   fullName: string;
   nickname: string;
-  dob: string;
+  dateOfBirth: string;
   gender: string;
-  mobile: string;
+  mobileNumber: string;
 }
 
-export function Signup() {
+export const Signup = () => {
   const navigate = useNavigate();
-  const [step, setStep] = useState<number>(0);
   const [formData, setFormData] = useState<FormData>({
     email: "",
-    password: "",
     fullName: "",
     nickname: "",
-    dob: "",
+    dateOfBirth: "",
     gender: "",
-    mobile: "",
+    mobileNumber: "",
   });
 
-  const handleNext = () => {
-    setStep((prevStep) => prevStep + 1);
-  };
-
   const clickBack = () => {
-    setStep((prevStep) => prevStep - 1);
+    navigate("/");
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setFormData((values) => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(formData);
-
-    navigate("/login");
-  };
-
-  const steps = ["Create your Account!", "Fill Your Profile"];
-
-  const renderStep = (stepIndex: number) => {
-    switch (stepIndex) {
-      case 0:
-        return (
-          <form onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextFieldComponent
-                  label="Email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextFieldComponent
-                  label="Password"
-                  name="password"
-                  type="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={12} textAlign="center">
-                <ButtonComponent label="Sign up" selected onClick={handleNext} />
-              </Grid>
-            </Grid>
-          </form>
-        );
-      case 1:
-        return (
-          <form onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={12}>
-                <TextFieldComponent
-                  label="Full Name"
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <TextFieldComponent
-                  label="Nickname"
-                  type="text"
-                  name="nickname"
-                  value={formData.nickname}
-                  onChange={handleChange}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <TextFieldComponent
-                  label=""
-                  name="dob"
-                  type="date"
-                  value={formData.dob}
-                  onChange={handleChange}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <TextFieldComponent
-                  label="Mobile Number"
-                  name="mobile"
-                  type="number"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <TextFieldComponent
-                  label="Gender"
-                  name="gender"
-                  type="text"
-                  value={formData.gender}
-                  onChange={handleChange}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item sm={12}>
-                <Button
-                  fullWidth
-                  type="submit"
-                  variant="contained"
-                  sx={{
-                    "&:hover": {
-                      backgroundColor: "#ff9800",
-                      color: "white",
-                      border: "1px solid #ff9800",
-                    },
-                    color: "white",
-                    backgroundColor: "#ff9800",
-                    border: "1px solid #ff9800",
-                    borderRadius: "100px",
-                  }}
-                >
-                  Continue
-                </Button>
-              </Grid>
-            </Grid>
-          </form>
-        );
-      default:
-        return null;
-    }
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    axiosBaseURL
+      .post("/createProfile", formData)
+      .then((res) => {
+        navigate("/login");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
-    <Container maxWidth="sm" style={{ marginTop: "4rem" }}>
-      <Grid container>
-        <Grid item>
-          {steps[step] === "Fill Your Profile" ? <BackButtonComponent onClick={clickBack} /> : ""}
+    <Container maxWidth="sm">
+      <form onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid item mt={8}>
+            <BackButtonComponent onClick={clickBack} />
+          </Grid>
+          <Grid item mt={8}>
+            <Typography variant="h4">Fill Your Profile</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <TextFieldComponent
+              label="Email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <TextFieldComponent
+              label="Full Name"
+              type="text"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <TextFieldComponent
+              label="Nickname"
+              type="text"
+              name="nickname"
+              value={formData.nickname}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <TextFieldComponent
+              label=""
+              name="dateOfBirth"
+              type="date"
+              value={formData.dateOfBirth}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <TextFieldComponent
+              label="Mobile Number"
+              name="mobileNumber"
+              type="number"
+              value={formData.mobileNumber}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <TextFieldComponent
+              label="Gender"
+              name="gender"
+              type="text"
+              value={formData.gender}
+              onChange={handleChange}
+              fullWidth
+            />
+            {/* <FormControl fullWidth variant="outlined">
+              <InputLabel id="gender-label">Gender</InputLabel>
+              <Select
+                labelId="gender-label"
+                id="gender"
+                label="gender"
+                name="gender"
+                value={formData.gender}
+                onChange={(event) => handleChange}
+              >
+                <MenuItem value="male">Male</MenuItem>
+                <MenuItem value="female">Female</MenuItem>
+              </Select>
+            </FormControl> */}
+          </Grid>
+
+          <Grid item xs={12}>
+            <Button
+              fullWidth
+              type="submit"
+              variant="contained"
+              sx={{
+                "&:hover": {
+                  backgroundColor: "#ff9800",
+                  color: "white",
+                  border: "1px solid #ff9800",
+                },
+                color: "white",
+                backgroundColor: "#ff9800",
+                border: "1px solid #ff9800",
+                borderRadius: "100px",
+              }}
+            >
+              Continue
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item pl={1}>
-          <Typography variant="h4" align="center" gutterBottom>
-            {steps[step]}
-          </Typography>
-        </Grid>
-      </Grid>
-      {renderStep(step)}
+      </form>
     </Container>
   );
-}
+};
