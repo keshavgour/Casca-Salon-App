@@ -8,11 +8,11 @@ import NearByManicure from "features/display/NearbyManicure";
 import NearByMassage from "features/display/NearbyMassage";
 import { Link } from "react-router-dom";
 
-interface IPROPS {
+interface iprops {
   typographyData: string;
 }
 
-export const Nearby: React.FC<IPROPS> = ({ typographyData }) => {
+export const Nearby: React.FC<iprops> = ({ typographyData }) => {
   const [selectedTab, setSelectedTab] = useState("all");
 
   const handleTabClick = (tabName: string) => {

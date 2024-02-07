@@ -1,6 +1,5 @@
 import { Button, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import BackButtonComponent from "components/BackButtonComponent";
 import TextFieldComponent from "components/TextFieldComponent";
 import { axiosBaseURL } from "lib/axios";
 import React, { useState } from "react";
@@ -9,15 +8,16 @@ import { useNavigate } from "react-router-dom";
 interface FormData {
   email: string;
   password: string;
+  passwordConfirm: string;
 }
 
-export const Login = () => {
+export const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
+    passwordConfirm: "",
   });
-  const [error, setError] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
@@ -25,23 +25,14 @@ export const Login = () => {
     setFormData((values) => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    try {
-      const res = await axiosBaseURL.post("/login", formData);
-      if (res.status === 200) {
-        navigate("/dashboard");
-      } else {
-        setError("Invalid credentials");
-      }
-    } catch (error) {
-      setError(" Failed to log in");
-    }
-  };
-
-  const clickBack = () => {
-    navigate("/");
+    axiosBaseURL
+      .post("/register", formData)
+      .then((res) => {
+        navigate("/signup");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -49,10 +40,7 @@ export const Login = () => {
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item mt={8}>
-            <BackButtonComponent onClick={clickBack} />
-          </Grid>
-          <Grid item mt={8}>
-            <Typography variant="h4">Login to your Account!</Typography>
+            <Typography variant="h4">Create your Account</Typography>
           </Grid>
           <Grid item xs={12}>
             <TextFieldComponent
@@ -75,6 +63,16 @@ export const Login = () => {
             />
           </Grid>
           <Grid item xs={12}>
+            <TextFieldComponent
+              label="Confirm Password"
+              name="passwordConfirm"
+              type="password"
+              value={formData.passwordConfirm}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
             <Button
               fullWidth
               type="submit"
@@ -91,15 +89,8 @@ export const Login = () => {
                 borderRadius: "100px",
               }}
             >
-              Sign in
+              Sign up
             </Button>
-          </Grid>
-          <Grid item>
-            {error && (
-              <Typography variant="h6" sx={{ color: "red" }}>
-                {error}
-              </Typography>
-            )}
           </Grid>
         </Grid>
       </form>
