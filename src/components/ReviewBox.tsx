@@ -1,6 +1,9 @@
 import React from "react";
 import { Grid, Avatar, Typography, Chip, IconButton } from "@mui/material";
 import { Favorite, FavoriteBorder, Grade, PendingOutlined } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "store/store";
+import { decrementLike, incrementLike } from "store/slices/LikeSlice";
 
 interface ReviewBoxProps {
   id: number;
@@ -9,24 +12,19 @@ interface ReviewBoxProps {
   comment: string;
   rating: string;
   time: number;
-  isLiked: boolean;
-  count: number;
-  handleLike: () => void;
-  handleDislike: () => void;
 }
 
-const ReviewBox: React.FC<ReviewBoxProps> = ({
-  id,
-  image,
-  customer,
-  comment,
-  rating,
-  time,
-  isLiked,
-  count,
-  handleLike,
-  handleDislike,
-}) => {
+const ReviewBox: React.FC<ReviewBoxProps> = ({ id, image, customer, comment, rating, time }) => {
+  const dispatch = useDispatch();
+  const { count, liked } = useSelector((state: RootState) => state.like);
+  const handleLike = () => {
+    if (liked) {
+      dispatch(decrementLike());
+    } else {
+      dispatch(incrementLike());
+    }
+  };
+
   return (
     <Grid
       container
@@ -64,15 +62,9 @@ const ReviewBox: React.FC<ReviewBoxProps> = ({
       </Grid>
       <Grid item xs={12}>
         <Grid container justifyContent={"flex-start"} alignItems={"center"}>
-          {isLiked ? (
-            <IconButton onClick={handleLike}>
-              <Favorite color="error" />
-            </IconButton>
-          ) : (
-            <IconButton onClick={handleDislike}>
-              <FavoriteBorder />
-            </IconButton>
-          )}
+          <IconButton onClick={handleLike}>
+            {liked ? <Favorite color="error" /> : <FavoriteBorder />}
+          </IconButton>
           <Typography variant="infoTypo2" component="span">
             {count}
           </Typography>

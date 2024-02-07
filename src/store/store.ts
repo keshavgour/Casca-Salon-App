@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-
+import likeSlice from "./slices/LikeSlice";
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    like: likeSlice,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
