@@ -19,7 +19,7 @@ const Services: React.FC<ServiceProps> = ({ isPage }) => {
       <Divider />
       <Stack direction="column" spacing={3} sx={{ width: "98%", marginX: "auto", marginY: 2 }}>
         {servicelist.map((list) => {
-          return <ServiceBox title={list.title} types={list.types} to="/haircuts" />;
+          return <ServiceBox title={list.title} types={list.types} to="/haircut" />;
         })}
       </Stack>
       <BlockBtn btnText="Book Now" btnSubText="" />

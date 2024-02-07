@@ -6,6 +6,8 @@ import { PackagesPage } from "pages/PackagesPage";
 import { GalleryPage } from "pages/GalleryPage";
 import { ReviewPage } from "pages/ReviewPage";
 import { SpecialistsPage } from "pages/SpecialistsPage";
+import PackageDetails from "features/display/PackageDetails";
+
 export default function RoutesSaloonDetail() {
   return (
     <Router>
@@ -17,6 +19,7 @@ export default function RoutesSaloonDetail() {
         <Route path="/gallery" Component={GalleryPage} />
         <Route path="/allreviews" Component={ReviewPage} />
         <Route path="/haircut" Component={Haircut} />
+        <Route path="/packagedetails" Component={PackageDetails} />
       </Routes>
     </Router>
   );

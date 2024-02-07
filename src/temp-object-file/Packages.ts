@@ -1,101 +1,102 @@
 const packagelist = [
-    {
-        id:1,
-        image:"../assets/Photo1.jpg",
-        packagename:"Haircut & Hairstyle",
-        description:"Special Offers Package, valid until Dec 10, 2024",
-        price:"$125"
-    },
-    {
-        id:2,
-        image:"../assets/Photo1.jpg",
-        packagename:"Beauty Make up",
-        description:"Special Offers Package, valid until Dec 20, 2024",
-        price:"$140"
-    },
-    {
-        id:3,
-        image:"../assets/Photo1.jpg",
-        packagename:"Haircut & Hair Coloring",
-        description:"Special Offers Package, valid until Dec 16, 2024",
-        price:"$100"
-    },
-    {
-        id:4,
-        image:"../assets/Photo1.jpg",
-        packagename:"Bridal Make up",
-        description:"Special Offers Package, valid until Dec 24, 2024",
-        price:"$160"
-    },
-    {
-        id:5,
-        image:"../assets/Photo1.jpg",
-        packagename:"Hairwash & Coloring",
-        description:"Special Offers Package, valid until Dec 24, 2024",
-        price:"$130"
-    },
-    {
-        id:6,
-        image:"../assets/Photo1.jpg",
-        packagename:"Shaving",
-        description:"Special Offers Package, valid until Dec 26, 2024",
-        price:"$90"
-    },
-    {
-        id:7,
-        image:"../assets/Photo1.jpg",
-        packagename:"Hair Dryer",
-        description:"Special Offers Package, valid until Dec 20, 2024",
-        price:"$135"
-    },
-    {
-        id:8,
-        image:"../assets/Photo1.jpg",
-        packagename:"Haircut & Hairstyle",
-        description:"Special Offers Package, valid until Dec 10, 2024",
-        price:"$125"
-    },
-    {
-        id:9,
-        image:"../assets/Photo1.jpg",
-        packagename:"Beauty Make up",
-        description:"Special Offers Package, valid until Dec 20, 2024",
-        price:"$140"
-    },
-    {
-        id:10,
-        image:"../assets/Photo1.jpg",
-        packagename:"Haircut & Hair Coloring",
-        description:"Special Offers Package, valid until Dec 16, 2024",
-        price:"$100"
-    },
-    {
-        id:11,
-        image:"../assets/Photo1.jpg",
-        packagename:"Bridal Make up",
-        description:"Special Offers Package, valid until Dec 24, 2024",
-        price:"$160"
-    },
-    {
-        id:12,
-        image:"../assets/Photo1.jpg",
-        packagename:"Hairwash & Coloring",
-        description:"Special Offers Package, valid until Dec 24, 2024",
-        price:"$130"
-    },
-    {
-        id:13,
-        image:"../assets/Photo1.jpg",
-        packagename:"Shaving",
-        description:"Special Offers Package, valid until Dec 26, 2024",
-        price:"$90"
-    },
-    {
-        id:14,
-        image:"../assets/Photo1.jpg",
-        packagename:"Hair Dryer",
-        description:"Special Offers Package, valid until Dec 20, 2024",
-        price:"$135"
-    }
-]
+  {
+    id: 1,
+    image:
+      "data:image/jpeg;base64,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",
+    packagename: "Haircut & Hairstyle",
+    description: "Special Offers Package, valid until Dec 10, 2024",
+    price: "$125",
+  },
+  {
+    id: 2,
+    image: "../assets/Photo1.jpg",
+    packagename: "Beauty Make up",
+    description: "Special Offers Package, valid until Dec 20, 2024",
+    price: "$140",
+  },
+  {
+    id: 3,
+    image: "../assets/Photo1.jpg",
+    packagename: "Haircut & Hair Coloring",
+    description: "Special Offers Package, valid until Dec 16, 2024",
+    price: "$100",
+  },
+  {
+    id: 4,
+    image: "../assets/Photo1.jpg",
+    packagename: "Bridal Make up",
+    description: "Special Offers Package, valid until Dec 24, 2024",
+    price: "$160",
+  },
+  {
+    id: 5,
+    image: "../assets/Photo1.jpg",
+    packagename: "Hairwash & Coloring",
+    description: "Special Offers Package, valid until Dec 24, 2024",
+    price: "$130",
+  },
+  {
+    id: 6,
+    image: "../assets/Photo1.jpg",
+    packagename: "Shaving",
+    description: "Special Offers Package, valid until Dec 26, 2024",
+    price: "$90",
+  },
+  {
+    id: 7,
+    image: "../assets/Photo1.jpg",
+    packagename: "Hair Dryer",
+    description: "Special Offers Package, valid until Dec 20, 2024",
+    price: "$135",
+  },
+  {
+    id: 8,
+    image: "../assets/Photo1.jpg",
+    packagename: "Haircut & Hairstyle",
+    description: "Special Offers Package, valid until Dec 10, 2024",
+    price: "$125",
+  },
+  {
+    id: 9,
+    image: "../assets/Photo1.jpg",
+    packagename: "Beauty Make up",
+    description: "Special Offers Package, valid until Dec 20, 2024",
+    price: "$140",
+  },
+  {
+    id: 10,
+    image: "../assets/Photo1.jpg",
+    packagename: "Haircut & Hair Coloring",
+    description: "Special Offers Package, valid until Dec 16, 2024",
+    price: "$100",
+  },
+  {
+    id: 11,
+    image: "../assets/Photo1.jpg",
+    packagename: "Bridal Make up",
+    description: "Special Offers Package, valid until Dec 24, 2024",
+    price: "$160",
+  },
+  {
+    id: 12,
+    image: "../assets/Photo1.jpg",
+    packagename: "Hairwash & Coloring",
+    description: "Special Offers Package, valid until Dec 24, 2024",
+    price: "$130",
+  },
+  {
+    id: 13,
+    image: "../assets/Photo1.jpg",
+    packagename: "Shaving",
+    description: "Special Offers Package, valid until Dec 26, 2024",
+    price: "$90",
+  },
+  {
+    id: 14,
+    image: "../assets/Photo1.jpg",
+    packagename: "Hair Dryer",
+    description: "Special Offers Package, valid until Dec 20, 2024",
+    price: "$135",
+  },
+];
 export default packagelist;
