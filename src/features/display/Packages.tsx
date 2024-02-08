@@ -44,9 +44,9 @@ const Packages: React.FC<PackageProps> = ({ isPage }) => {
       />
       <Divider />
       <Grid container>
-        {packagelist.map((pack) => {
+        {packagelist.map((pack, index) => {
           return (
-            <Grid xs={12} md={6} lg={4}>
+            <Grid xs={12} md={6} lg={4} key={index}>
               <Paper elevation={3} sx={boxStyle} key={pack.id}>
                 <img src={pack.image} alt={pack.packagename} style={imgStyle} />
                 <Box

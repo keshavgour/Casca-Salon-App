@@ -1,37 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import listReviews from "temp-object-file/Reviews";
 import { Chip, Divider, IconButton, Typography, Container, Grid, Link } from "@mui/material";
 import { Grade, PendingOutlined } from "@mui/icons-material";
 import { Link as RouterLink } from "react-router-dom";
 import BackBtn from "components/BackBtn";
 import ReviewBox from "components/ReviewBox";
-
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "store/store";
+import { setSelectedChip, setFilteredReviews } from "store/slices/FilterReviewSlice";
 interface ReviewProps {
   isPage: boolean;
 }
-interface ReviewObj {
-  id: number;
-  image: string;
-  customer: string;
-  comment: string;
-  rating: string;
-  time: number;
-}
+
 const Review: React.FC<ReviewProps> = ({ isPage }) => {
   const rating = ["All", "5", "4", "3", "2", "1"];
-  const [filteredReview, setFilteredReview] = useState<ReviewObj[]>(listReviews);
-  const [selectedChip, setSelectedChip] = useState("All");
+  const dispatch = useDispatch();
+  const { selectedChip, filteredreview } = useSelector((state: RootState) => state.filterReview);
 
   const handleChipClick = (label: string) => {
-    if (label === "All") {
-      const unfiltered = listReviews.map((review) => review);
-      setFilteredReview(unfiltered);
-      setSelectedChip(label);
-    } else {
-      const filtered = listReviews.filter((review) => review.rating === label);
-      setFilteredReview(filtered);
-      setSelectedChip(label);
-    }
+    dispatch(setSelectedChip(label));
+    dispatch(setFilteredReviews(listReviews));
   };
   return (
     <Container>
@@ -58,14 +46,14 @@ const Review: React.FC<ReviewProps> = ({ isPage }) => {
         <Grid container spacing={3} sx={{ my: 1 }}>
           {rating.map((label, index) => {
             return (
-              <Grid item xs={2}>
+              <Grid item xs={2} key={index}>
                 <Chip
                   key={index}
                   icon={<Grade color="primary" />}
                   label={label}
                   color="primary"
                   variant={selectedChip === `${label}` ? "filled" : "outlined"}
-                  onClick={() => handleChipClick(`${label}`)}
+                  onClick={() => handleChipClick(label)}
                   sx={{ width: 150 }}
                 />
               </Grid>
@@ -80,7 +68,7 @@ const Review: React.FC<ReviewProps> = ({ isPage }) => {
       )}
       <Divider sx={{ my: 1 }} />
 
-      {filteredReview.map((review, index) => (
+      {filteredreview.map((review, index) => (
         <ReviewBox
           key={index}
           id={review.id}

@@ -1,5 +1,5 @@
-import { Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { Grid, Typography } from "@mui/material";
 import ButtonComponent from "components/ButtonComponent";
 import AllData from "features/display/AllData";
 import NearByHaircuts from "features/display/NearbyHaircuts";

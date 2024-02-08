@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, ThemeProvider } from "@mui/material";
 import { Routers } from "./Routes/Routers";
 import RoutesSaloonDetail from "Routes/RoutesSaloonDetail";

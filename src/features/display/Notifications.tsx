@@ -1,5 +1,5 @@
-import { Avatar, Container, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
+import { Avatar, Container, Grid, Paper, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import BackButtonComponent from "components/BackButtonComponent";
 

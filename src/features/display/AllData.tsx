@@ -1,3 +1,4 @@
+import React from "react";
 import { Grid } from "@mui/material";
 import allSalon from "temp-object-file/AllSalon";
 import SalonDataDisplay from "features/display/SalonDataDisplay";

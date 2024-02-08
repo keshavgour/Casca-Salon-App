@@ -1,3 +1,4 @@
+import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Box } from "@mui/material";
 
@@ -24,7 +25,7 @@ const MyCarousel = () => {
     >
       {images.map((image, index) => {
         return (
-          <Box>
+          <Box key={index}>
             <img
               src={image}
               alt={`${index}`}

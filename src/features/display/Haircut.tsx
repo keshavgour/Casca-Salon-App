@@ -15,14 +15,14 @@ export default function Haircut() {
   };
   const TabBtn = styled(({ variant, ...other }: TabBtnProps) => (
     <Button {...other} variant={variant || "contained"} />
-  ))(({ theme }) => ({
+  ))({
     width: "40%",
     height: 45,
     borderRadius: 25,
     textTransform: "none",
     fontSize: 18,
     fontWeight: 400,
-  }));
+  });
   return (
     <Container
       sx={{
@@ -76,7 +76,7 @@ export default function Haircut() {
         </TabBtn>
       </Box>
       {selectedTab === "menhaircuts" &&
-        menhaircutlist.map((list) => {
+        menhaircutlist.map((list, index) => {
           return (
             <HaircutBox
               hid={list.id}
@@ -84,11 +84,12 @@ export default function Haircut() {
               haircut={list.haircut}
               booking={list.booking}
               price={list.price}
+              key={index}
             />
           );
         })}
       {selectedTab === "womenhaircuts" &&
-        womenhaircutlist.map((list) => {
+        womenhaircutlist.map((list, index) => {
           return (
             <HaircutBox
               hid={list.id}
@@ -96,6 +97,7 @@ export default function Haircut() {
               haircut={list.haircut}
               booking={list.booking}
               price={list.price}
+              key={index}
             />
           );
         })}
