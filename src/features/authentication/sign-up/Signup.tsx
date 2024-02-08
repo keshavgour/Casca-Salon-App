@@ -6,14 +6,7 @@ import { axiosBaseURL } from "lib/axios";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  setDateOfBirth,
-  setFullName,
-  setGender,
-  setMobileNumber,
-  setNickname,
-  setEmail,
-} from "store/slices/signupSlice";
+import { setProfile } from "store/slices/signupSlice";
 import { RootState } from "store/store";
 
 export const Signup = () => {
@@ -26,30 +19,10 @@ export const Signup = () => {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    switch (name) {
-      case "email":
-        dispatch(setEmail(value));
-        break;
-      case "fullName":
-        dispatch(setFullName(value));
-        break;
-      case "nickname":
-        dispatch(setNickname(value));
-        break;
-      case "dateOfBirth":
-        dispatch(setDateOfBirth(value));
-        break;
-      case "gender":
-        dispatch(setGender(value));
-        break;
-      case "mobileNumber":
-        dispatch(setMobileNumber(value));
-        break;
-      default:
-        break;
-    }
+    const {
+      target: { name, value },
+    } = event;
+    dispatch(setProfile({ ...formData, [name]: value }));
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -57,6 +30,7 @@ export const Signup = () => {
     axiosBaseURL
       .post("/createProfile", formData)
       .then((res) => {
+        console.log(res);
         navigate("/login");
       })
       .catch((err) => console.log(err));

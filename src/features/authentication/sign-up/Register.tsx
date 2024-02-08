@@ -5,7 +5,7 @@ import { axiosBaseURL } from "lib/axios";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setEmail, setPassword, setPasswordConfirm } from "store/slices/registrationSlice";
+import { setData } from "store/slices/registrationSlice";
 import { RootState } from "store/store";
 
 export const Register = () => {
@@ -14,21 +14,10 @@ export const Register = () => {
   const formData = useSelector((state: RootState) => state.registration);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    switch (name) {
-      case "email":
-        dispatch(setEmail(value));
-        break;
-      case "password":
-        dispatch(setPassword(value));
-        break;
-      case "passwordConfirm":
-        dispatch(setPasswordConfirm(value));
-        break;
-      default:
-        break;
-    }
+    const {
+      target: { name, value },
+    } = event;
+    dispatch(setData({ ...formData, [name]: value }));
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

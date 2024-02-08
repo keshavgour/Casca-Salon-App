@@ -1,9 +1,9 @@
 import { Grid, TextField, StandardTextFieldProps } from "@mui/material";
 import React from "react";
 
-interface iprops extends StandardTextFieldProps {}
+//interface iprops extends StandardTextFieldProps {}
 
-const TextFieldComponent: React.FC<iprops> = ({
+const TextFieldComponent: React.FC<StandardTextFieldProps> = ({
   label,
   name,
   type,

@@ -6,7 +6,7 @@ import { axiosBaseURL } from "lib/axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setEmail, setPassword } from "store/slices/loginSlice";
+import { setInfo } from "store/slices/loginSlice";
 import { RootState } from "store/store";
 
 export const Login = () => {
@@ -16,18 +16,10 @@ export const Login = () => {
   const [error, setError] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    switch (name) {
-      case "email":
-        dispatch(setEmail(value));
-        break;
-      case "password":
-        dispatch(setPassword(value));
-        break;
-      default:
-        break;
-    }
+    const {
+      target: { name, value },
+    } = event;
+    dispatch(setInfo({ ...formData, [name]: value }));
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
