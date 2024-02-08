@@ -1,8 +1,8 @@
+import React from "react";
 import { Button, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import TextFieldComponent from "components/TextFieldComponent";
 import { axiosBaseURL } from "lib/axios";
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setEmail, setPassword, setPasswordConfirm } from "store/slices/registrationSlice";
@@ -36,6 +36,7 @@ export const Register = () => {
     axiosBaseURL
       .post("/register", formData)
       .then((res) => {
+        console.log(res);
         navigate("/signup");
       })
       .catch((err) => console.log(err));

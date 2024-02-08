@@ -1,3 +1,4 @@
+import React from "react";
 import { Container, Divider, Stack } from "@mui/material";
 import ChipTabHeader from "../../components/ChipTabHeader";
 import servicelist from "../../temp-object-file/Services";
@@ -18,8 +19,8 @@ const Services: React.FC<ServiceProps> = ({ isPage }) => {
       />
       <Divider />
       <Stack direction="column" spacing={3} sx={{ width: "98%", marginX: "auto", marginY: 2 }}>
-        {servicelist.map((list) => {
-          return <ServiceBox title={list.title} types={list.types} to="/haircut" />;
+        {servicelist.map((list, index) => {
+          return <ServiceBox title={list.title} types={list.types} to="/haircut" key={index} />;
         })}
       </Stack>
       <BlockBtn btnText="Book Now" btnSubText="" />

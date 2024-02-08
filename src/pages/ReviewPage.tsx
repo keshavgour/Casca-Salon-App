@@ -1,3 +1,4 @@
+import React from "react";
 import Review from "features/display/Review";
 export const ReviewPage = () => {
   return (

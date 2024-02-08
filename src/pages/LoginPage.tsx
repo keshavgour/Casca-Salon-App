@@ -1,5 +1,5 @@
-import { Login } from "features/authentication/login";
 import React from "react";
+import { Login } from "features/authentication/login";
 
 export const LoginPage = () => {
   return (

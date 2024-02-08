@@ -1,5 +1,5 @@
-import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
+import { Container, Grid, Typography } from "@mui/material";
 import Search from "features/Search";
 import SalonDataDisplay from "features/display/SalonDataDisplay";
 import { useNavigate } from "react-router-dom";
