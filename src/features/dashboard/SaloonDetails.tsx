@@ -12,7 +12,6 @@ import Services from "features/display/Services";
 import Gallery from "features/display/Gallery";
 import Packages from "features/display/Packages";
 import Review from "features/display/Review";
-
 export default function SaloonDetails() {
   const [selectChip, setselectChip] = useState("About us");
   const handleChipClick = (chipName: string) => {
@@ -80,7 +79,7 @@ export default function SaloonDetails() {
             }}
           >
             <Typography variant="h2" component="span">
-              Barbarella Inova
+              Galaxy Salon
             </Typography>
             <Button variant="contained" sx={btnOpen}>
               Open
@@ -89,11 +88,11 @@ export default function SaloonDetails() {
           <Box sx={{ width: "inherit", display: "flex", flexDirection: "column" }}>
             <Typography variant="infoTypo1" component="span">
               <LocationOnRoundedIcon sx={{ color: "primary.main", marginRight: 2 }} />
-              6993 Meadow Valley Terrace, New York
+              0992 Novik Parkway
             </Typography>
             <Typography variant="infoTypo1" component="span">
               <GradeIcon sx={{ color: "primary.main", marginRight: 2 }} />
-              4.8 (3,279 reviews)
+              4.9 (3,279 reviews)
             </Typography>
           </Box>
           <Box sx={{ marginY: 3 }}>

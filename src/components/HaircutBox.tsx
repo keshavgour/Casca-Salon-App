@@ -7,7 +7,7 @@ interface HaircutBoxProps {
   booking: number;
   price: number;
 }
-const HaircutBox : React.FC<HaircutBoxProps>=({hid, image, haircut, booking, price})=>{
+const HaircutBox: React.FC<HaircutBoxProps> = ({ hid, image, haircut, booking, price }) => {
   return (
     <Paper
       elevation={2}
@@ -30,7 +30,11 @@ const HaircutBox : React.FC<HaircutBoxProps>=({hid, image, haircut, booking, pri
         }}
       >
         <Box>
-          <img src={image} alt={haircut} style={{width:100, height:100, border:"2px solid red", borderRadius:15, marginRight:10}}/>
+          <img
+            src={image}
+            alt={haircut}
+            style={{ width: 100, height: 100, borderRadius: 15, marginRight: 10 }}
+          />
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Typography variant="infoTypo2" component="span">
@@ -52,5 +56,5 @@ const HaircutBox : React.FC<HaircutBoxProps>=({hid, image, haircut, booking, pri
       />
     </Paper>
   );
-}
+};
 export default HaircutBox;

@@ -4,12 +4,7 @@ import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import CallRoundedIcon from "@mui/icons-material/CallRounded";
 import TextsmsRoundedIcon from "@mui/icons-material/TextsmsRounded";
-import {
-  Box,
-  Button,
-  Typography,
-  styled,
-} from "@mui/material";
+import { Box, Button, Typography, styled } from "@mui/material";
 
 export default function NavBtnGrp() {
   // btntheme.palette.primary.main
@@ -45,13 +40,12 @@ export default function NavBtnGrp() {
     alignItems: "center",
     justifyContent: "space-between",
   });
+
   return (
     <Box sx={BtnContainer}>
       <BoxBtn>
         <Button sx={NavButton}>
-          <ExploreRoundedIcon
-            fontSize="large"
-          />
+          <ExploreRoundedIcon fontSize="large" />
         </Button>
         <Typography variant="h6" component="span">
           Website
@@ -67,7 +61,7 @@ export default function NavBtnGrp() {
       </BoxBtn>
       <BoxBtn>
         <Button sx={NavButton}>
-          <CallRoundedIcon fontSize="large"/>
+          <CallRoundedIcon fontSize="large" />
         </Button>
         <Typography variant="h6" component="span">
           Call
@@ -75,7 +69,7 @@ export default function NavBtnGrp() {
       </BoxBtn>
       <BoxBtn>
         <Button sx={NavButton}>
-          <LocationOnRoundedIcon fontSize="large"/>
+          <LocationOnRoundedIcon fontSize="large" />
         </Button>
         <Typography variant="h6" component="span">
           Direction
@@ -83,7 +77,7 @@ export default function NavBtnGrp() {
       </BoxBtn>
       <BoxBtn>
         <Button sx={NavButton}>
-          <SendRoundedIcon fontSize="large"/>
+          <SendRoundedIcon fontSize="large" />
         </Button>
         <Typography variant="h6" component="span">
           Share

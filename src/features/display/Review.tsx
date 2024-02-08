@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import listReviews from "../../temp-object-file/Reviews";
+import listReviews from "temp-object-file/Reviews";
 import { Chip, Divider, IconButton, Typography, Container, Grid, Link } from "@mui/material";
 import { Grade, PendingOutlined } from "@mui/icons-material";
 import { Link as RouterLink } from "react-router-dom";
-import BackBtn from "../../components/BackBtn";
-import ReviewBox from "../../components/ReviewBox";
+import BackBtn from "components/BackBtn";
+import ReviewBox from "components/ReviewBox";
+
 interface ReviewProps {
   isPage: boolean;
 }
@@ -19,22 +20,18 @@ interface ReviewObj {
 const Review: React.FC<ReviewProps> = ({ isPage }) => {
   const rating = ["All", "5", "4", "3", "2", "1"];
   const [filteredReview, setFilteredReview] = useState<ReviewObj[]>(listReviews);
-  const [isLiked, setIsLiked] = useState(false);
-  const [count, setCount] = useState(0);
   const [selectedChip, setSelectedChip] = useState("All");
 
-  const handleLike = () => {
-    setIsLiked(!isLiked);
-    setCount((count) => count + 1);
-  };
-  const handleDislike = () => {
-    setIsLiked(!isLiked);
-    setCount((count) => count - 1);
-  };
   const handleChipClick = (label: string) => {
-    const filtered = listReviews.filter((review) => review.rating === label);
-    setFilteredReview(filtered);
-    setSelectedChip(label);
+    if (label === "All") {
+      const unfiltered = listReviews.map((review) => review);
+      setFilteredReview(unfiltered);
+      setSelectedChip(label);
+    } else {
+      const filtered = listReviews.filter((review) => review.rating === label);
+      setFilteredReview(filtered);
+      setSelectedChip(label);
+    }
   };
   return (
     <Container>
@@ -92,10 +89,6 @@ const Review: React.FC<ReviewProps> = ({ isPage }) => {
           comment={review.comment}
           rating={review.rating}
           time={review.time}
-          isLiked={isLiked}
-          count={count}
-          handleLike={handleLike}
-          handleDislike={handleDislike}
         />
       ))}
     </Container>

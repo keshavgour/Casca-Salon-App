@@ -2,6 +2,7 @@ import React from "react";
 import packagelist from "../../temp-object-file/Packages";
 import { Box, Button, Container, Divider, Grid, Paper, Typography } from "@mui/material";
 import ChipTabHeader from "../../components/ChipTabHeader";
+import { Link as RouterLink } from "react-router-dom";
 interface PackageProps {
   isPage: boolean;
 }
@@ -26,10 +27,11 @@ const Packages: React.FC<PackageProps> = ({ isPage }) => {
     width: 100,
     height: 35,
     borderRadius: 10,
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: "bold",
     backgroundColor: "primary.main",
     color: "white",
+    textTransform: "none",
   };
   return (
     <Container>
@@ -71,7 +73,12 @@ const Packages: React.FC<PackageProps> = ({ isPage }) => {
                     <Typography variant="linkTypo" component="span">
                       {pack.price}
                     </Typography>
-                    <Button value={pack.id} variant="contained" sx={btnStyle}>
+                    <Button
+                      component={RouterLink}
+                      to="/packagedetails"
+                      variant="contained"
+                      sx={btnStyle}
+                    >
                       Book Now
                     </Button>
                   </Box>

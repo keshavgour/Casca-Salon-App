@@ -3,11 +3,14 @@ import registrationReducer from "store/slices/registrationSlice";
 import signupReducer from "store/slices/signupSlice";
 import loginReducer from "store/slices/loginSlice";
 
+import likeSlice from "./slices/LikeSlice";
+
 export const store = configureStore({
   reducer: {
     registration: registrationReducer,
     signup: signupReducer,
     login: loginReducer,
+    like: likeSlice,
   },
 });
 
