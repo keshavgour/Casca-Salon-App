@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface RegistrationState {
   email: string;
@@ -15,5 +15,18 @@ const initialState: RegistrationState = {
 export const registrationSlice = createSlice({
   name: "registration",
   initialState,
-  reducers: {},
+  reducers: {
+    setEmail: (state, action: PayloadAction<string>) => {
+      state.email = action.payload;
+    },
+    setPassword: (state, action: PayloadAction<string>) => {
+      state.password = action.payload;
+    },
+    setPasswordConfirm: (state, action: PayloadAction<string>) => {
+      state.passwordConfirm = action.payload;
+    },
+  },
 });
+
+export const { setEmail, setPassword, setPasswordConfirm } = registrationSlice.actions;
+export default registrationSlice.reducer;
