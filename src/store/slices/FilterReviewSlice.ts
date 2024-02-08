@@ -23,7 +23,7 @@ const filterReviewSlice = createSlice({
       state.selectedChip = actions.payload;
     },
     setFilteredReviews(state, action: PayloadAction<ReviewObj[]>) {
-      if ((state.selectedChip = "All")) {
+      if (state.selectedChip === "All") {
         state.filteredreview = action.payload;
       } else {
         state.filteredreview = action.payload.filter(
@@ -33,6 +33,5 @@ const filterReviewSlice = createSlice({
     },
   },
 });
-
 export const { setSelectedChip, setFilteredReviews } = filterReviewSlice.actions;
 export default filterReviewSlice.reducer;
