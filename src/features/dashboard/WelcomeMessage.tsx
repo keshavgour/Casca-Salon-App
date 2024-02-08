@@ -3,6 +3,7 @@ import React from "react";
 import WavingHandIcon from "@mui/icons-material/WavingHand";
 
 export const WelcomeMessage = () => {
+  // const data = useSelector((state: RootState) => state.login);
   return (
     <Grid container>
       <Grid item>
