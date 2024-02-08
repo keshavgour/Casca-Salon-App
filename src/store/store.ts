@@ -4,6 +4,7 @@ import signupReducer from "store/slices/signupSlice";
 import loginReducer from "store/slices/loginSlice";
 
 import likeSlice from "./slices/LikeSlice";
+import FilterReviewSlice from "./slices/FilterReviewSlice";
 
 export const store = configureStore({
   reducer: {
