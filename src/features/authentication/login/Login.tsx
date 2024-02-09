@@ -4,14 +4,14 @@ import { Container } from "@mui/system";
 import BackButtonComponent from "components/BackButtonComponent";
 import TextFieldComponent from "components/TextFieldComponent";
 import { axiosBaseURL } from "lib/axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setInfo } from "store/slices/loginSlice";
 import { RootState } from "store/store";
+import { useActions } from "hooks/useActions";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { setInfo } = useActions();
   const formData = useSelector((state: RootState) => state.login);
   const [error, setError] = useState("");
 
@@ -19,14 +19,14 @@ export const Login = () => {
     const {
       target: { name, value },
     } = event;
-    dispatch(setInfo({ ...formData, [name]: value }));
+    setInfo({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
-      const res = await axiosBaseURL.post("/login", formData);
+      const res = await axiosBaseURL.post("/auth/login", formData);
       if (res.status === 200) {
         navigate("/dashboard");
       } else {

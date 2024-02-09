@@ -22,4 +22,7 @@ const loginSlice = createSlice({
 });
 
 export const { setInfo } = loginSlice.actions;
+
+export const loginActions = { setInfo };
+
 export default loginSlice.reducer;

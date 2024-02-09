@@ -34,4 +34,6 @@ export const signupSlice = createSlice({
 });
 
 export const { setProfile } = signupSlice.actions;
+
+export const signupActions = { setProfile };
 export default signupSlice.reducer;

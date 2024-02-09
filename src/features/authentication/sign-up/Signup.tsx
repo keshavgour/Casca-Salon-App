@@ -4,14 +4,15 @@ import { Container } from "@mui/system";
 import BackButtonComponent from "components/BackButtonComponent";
 import TextFieldComponent from "components/TextFieldComponent";
 import { axiosBaseURL } from "lib/axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setProfile } from "store/slices/signupSlice";
+
 import { RootState } from "store/store";
+import { useActions } from "hooks/useActions";
 
 export const Signup = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { setProfile } = useActions();
   const formData = useSelector((state: RootState) => state.signup);
 
   const clickBack = () => {
@@ -22,13 +23,13 @@ export const Signup = () => {
     const {
       target: { name, value },
     } = event;
-    dispatch(setProfile({ ...formData, [name]: value }));
+    setProfile({ ...formData, [name]: value });
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     axiosBaseURL
-      .post("/createProfile", formData)
+      .post("/auth/createProfile", formData)
       .then((res) => {
         console.log(res);
         navigate("/login");

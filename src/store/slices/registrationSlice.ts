@@ -25,4 +25,9 @@ export const registrationSlice = createSlice({
 });
 
 export const { setData } = registrationSlice.actions;
+
+export const registrationActions = {
+  setData,
+};
+
 export default registrationSlice.reducer;
