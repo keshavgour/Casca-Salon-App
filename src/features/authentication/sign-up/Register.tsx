@@ -3,44 +3,58 @@ import { Button, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import TextFieldComponent from "components/TextFieldComponent";
 import { axiosBaseURL } from "lib/axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setEmail, setPassword, setPasswordConfirm } from "store/slices/registrationSlice";
 import { RootState } from "store/store";
+import { useActions } from "hooks/useActions";
+//import { useQuery } from "@tanstack/react-query";
 
 export const Register = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { setData } = useActions();
+
   const formData = useSelector((state: RootState) => state.registration);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    switch (name) {
-      case "email":
-        dispatch(setEmail(value));
-        break;
-      case "password":
-        dispatch(setPassword(value));
-        break;
-      case "passwordConfirm":
-        dispatch(setPasswordConfirm(value));
-        break;
-      default:
-        break;
-    }
+    const {
+      target: { name, value },
+    } = event;
+    setData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     axiosBaseURL
-      .post("/register", formData)
+      .post("/auth/register", formData)
       .then((res) => {
         console.log(res);
         navigate("/signup");
       })
       .catch((err) => console.log(err));
   };
+
+  // const fetchData = async () => {
+  //   const res = await axiosBaseURL.post("/auth/register", formData);
+  //   return res.data;
+  // };
+
+  // const { isLoading, isError, data, error } = useQuery({
+  //   queryFn: fetchData,
+  //   queryKey: ["getData"],
+  // });
+
+  // if (isLoading) {
+  //   return <p>Loading.......</p>;
+  // }
+
+  // if (isError) {
+  //   return <p>Error: {error.message}</p>;
+  // }
+
+  // if (data) {
+  //   navigate("/signup");
+  // }
 
   return (
     <Container maxWidth="sm">

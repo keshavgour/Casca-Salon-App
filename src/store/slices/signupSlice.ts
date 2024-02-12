@@ -22,27 +22,18 @@ export const signupSlice = createSlice({
   name: "signup",
   initialState,
   reducers: {
-    setEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload;
-    },
-    setFullName: (state, action: PayloadAction<string>) => {
-      state.fullName = action.payload;
-    },
-    setNickname: (state, action: PayloadAction<string>) => {
-      state.nickname = action.payload;
-    },
-    setDateOfBirth: (state, action: PayloadAction<string>) => {
-      state.dateOfBirth = action.payload;
-    },
-    setGender: (state, action: PayloadAction<string>) => {
-      state.gender = action.payload;
-    },
-    setMobileNumber: (state, action: PayloadAction<string>) => {
-      state.mobileNumber = action.payload;
+    setProfile: (state, action: PayloadAction<SignupState>) => {
+      state.email = action.payload.email;
+      state.fullName = action.payload.fullName;
+      state.nickname = action.payload.nickname;
+      state.dateOfBirth = action.payload.dateOfBirth;
+      state.gender = action.payload.gender;
+      state.mobileNumber = action.payload.mobileNumber;
     },
   },
 });
 
-export const { setFullName, setNickname, setDateOfBirth, setGender, setMobileNumber, setEmail } =
-  signupSlice.actions;
+export const { setProfile } = signupSlice.actions;
+
+export const signupActions = { setProfile };
 export default signupSlice.reducer;

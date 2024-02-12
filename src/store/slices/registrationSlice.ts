@@ -16,17 +16,18 @@ export const registrationSlice = createSlice({
   name: "registration",
   initialState,
   reducers: {
-    setEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload;
-    },
-    setPassword: (state, action: PayloadAction<string>) => {
-      state.password = action.payload;
-    },
-    setPasswordConfirm: (state, action: PayloadAction<string>) => {
-      state.passwordConfirm = action.payload;
+    setData: (state, action: PayloadAction<RegistrationState>) => {
+      state.email = action.payload.email;
+      state.password = action.payload.password;
+      state.passwordConfirm = action.payload.passwordConfirm;
     },
   },
 });
 
-export const { setEmail, setPassword, setPasswordConfirm } = registrationSlice.actions;
+export const { setData } = registrationSlice.actions;
+
+export const registrationActions = {
+  setData,
+};
+
 export default registrationSlice.reducer;

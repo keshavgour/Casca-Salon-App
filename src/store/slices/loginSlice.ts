@@ -14,14 +14,15 @@ const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    setEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload;
-    },
-    setPassword: (state, action: PayloadAction<string>) => {
-      state.password = action.payload;
+    setInfo: (state, action: PayloadAction<LoginState>) => {
+      state.email = action.payload.email;
+      state.password = action.payload.password;
     },
   },
 });
 
-export const { setEmail, setPassword } = loginSlice.actions;
+export const { setInfo } = loginSlice.actions;
+
+export const loginActions = { setInfo };
+
 export default loginSlice.reducer;

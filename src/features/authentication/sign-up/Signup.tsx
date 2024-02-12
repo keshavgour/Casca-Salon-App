@@ -4,21 +4,15 @@ import { Container } from "@mui/system";
 import BackButtonComponent from "components/BackButtonComponent";
 import TextFieldComponent from "components/TextFieldComponent";
 import { axiosBaseURL } from "lib/axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  setDateOfBirth,
-  setFullName,
-  setGender,
-  setMobileNumber,
-  setNickname,
-  setEmail,
-} from "store/slices/signupSlice";
+
 import { RootState } from "store/store";
+import { useActions } from "hooks/useActions";
 
 export const Signup = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { setProfile } = useActions();
   const formData = useSelector((state: RootState) => state.signup);
 
   const clickBack = () => {
@@ -26,36 +20,16 @@ export const Signup = () => {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    switch (name) {
-      case "email":
-        dispatch(setEmail(value));
-        break;
-      case "fullName":
-        dispatch(setFullName(value));
-        break;
-      case "nickname":
-        dispatch(setNickname(value));
-        break;
-      case "dateOfBirth":
-        dispatch(setDateOfBirth(value));
-        break;
-      case "gender":
-        dispatch(setGender(value));
-        break;
-      case "mobileNumber":
-        dispatch(setMobileNumber(value));
-        break;
-      default:
-        break;
-    }
+    const {
+      target: { name, value },
+    } = event;
+    setProfile({ ...formData, [name]: value });
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     axiosBaseURL
-      .post("/createProfile", formData)
+      .post("/auth/createProfile", formData)
       .then((res) => {
         console.log(res);
         navigate("/login");
