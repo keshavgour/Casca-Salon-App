@@ -1,10 +1,9 @@
 import React from "react";
 import { Grid, Avatar, Typography, Chip, IconButton } from "@mui/material";
 import { Favorite, FavoriteBorder, Grade, PendingOutlined } from "@mui/icons-material";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "store/store";
-import { decrementLike, incrementLike } from "store/slices/LikeSlice";
-
+import { useDispatch } from "react-redux";
+// import { RootState } from "store/store";
+import { setLikeStatus, removeLikeStatus } from "store/slices/reviewSlice";
 interface ReviewBoxProps {
   id: number;
   image: string;
@@ -12,17 +11,26 @@ interface ReviewBoxProps {
   comment: string;
   rating: string;
   time: number;
+  likeStatus: boolean;
+  likeCount: number;
+  // handleLike: (param: number) => {};
 }
 
-const ReviewBox: React.FC<ReviewBoxProps> = ({ id, image, customer, comment, rating, time }) => {
+const ReviewBox: React.FC<ReviewBoxProps> = ({
+  id,
+  image,
+  customer,
+  comment,
+  rating,
+  time,
+  likeStatus,
+  likeCount,
+}) => {
   const dispatch = useDispatch();
-  const { count, liked } = useSelector((state: RootState) => state.like);
-  const handleLike = () => {
-    if (liked) {
-      dispatch(decrementLike());
-    } else {
-      dispatch(incrementLike());
-    }
+  // const { liked } = useSelector((state: RootState) => state.like);
+  const handleClick = (id: number) => {
+    dispatch(setLikeStatus(id));
+    dispatch(removeLikeStatus(id));
   };
 
   return (
@@ -62,11 +70,11 @@ const ReviewBox: React.FC<ReviewBoxProps> = ({ id, image, customer, comment, rat
       </Grid>
       <Grid item xs={12}>
         <Grid container justifyContent={"flex-start"} alignItems={"center"}>
-          <IconButton onClick={handleLike}>
-            {liked ? <Favorite color="error" /> : <FavoriteBorder />}
+          <IconButton onClick={() => handleClick}>
+            {likeStatus ? <Favorite color="error" /> : <FavoriteBorder />}
           </IconButton>
           <Typography variant="infoTypo2" component="span">
-            {count}
+            {likeCount}
           </Typography>
           <Typography variant="infoTypo1" component="span" sx={{ marginLeft: 5 }}>
             {time} months ago

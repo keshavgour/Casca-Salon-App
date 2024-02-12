@@ -3,10 +3,11 @@ const listReviews = [
     id: 1,
     image: "../assets/Photo1.jpg",
     customer: "Marielle Wigington",
-    comment:
-      "The people who work here are very friendly and professional, I really like it!👍👍",
+    comment: "The people who work here are very friendly and professional, I really like it!👍👍",
     rating: "5",
-    time: 1,
+    time: 0,
+    likeStatus: false,
+    likeCount: 0,
   },
   {
     id: 2,
@@ -16,6 +17,8 @@ const listReviews = [
       "This is my first time trying the service, but the results are very satisfying! love it!❤️❤️❤️",
     rating: "1",
     time: 1,
+    likeStatus: false,
+    likeCount: 0,
   },
   {
     id: 3,
@@ -25,15 +28,18 @@ const listReviews = [
       "I just found out that this salon is near my house, I think I'll be visiting it more often! 😁😁",
     rating: "4",
     time: 2,
+    likeStatus: false,
+    likeCount: 0,
   },
   {
     id: 4,
     image: "../assets/Photo1.jpg",
     customer: "Tynisha Obey",
-    comment:
-      "Professional service and satisfying results! highly recommend to my friends! 🔥🔥🔥",
+    comment: "Professional service and satisfying results! highly recommend to my friends! 🔥🔥🔥",
     rating: "2",
     time: 3,
+    likeStatus: false,
+    likeCount: 0,
   },
   {
     id: 5,
@@ -42,16 +48,19 @@ const listReviews = [
     comment:
       "This is my first time trying this service, but the results are very satisfying! love it! ❤️",
     rating: "4",
-    time: 1,
+    time: 3,
+    likeStatus: false,
+    likeCount: 0,
   },
   {
     id: 6,
     image: "../assets/Photo1.jpg",
     customer: "Marielle Wigington",
-    comment:
-      "The people who work here are very friendly and professional, I really like it!👍👍",
+    comment: "The people who work here are very friendly and professional, I really like it!👍👍",
     rating: "5",
-    time: 1,
+    time: 3,
+    likeStatus: false,
+    likeCount: 0,
   },
   {
     id: 7,
@@ -60,7 +69,9 @@ const listReviews = [
     comment:
       "This is my first time trying the service, but the results are very satisfying! love it!❤️❤️❤️",
     rating: "1",
-    time: 1,
+    time: 2,
+    likeStatus: false,
+    likeCount: 0,
   },
   {
     id: 8,
@@ -70,15 +81,18 @@ const listReviews = [
       "I just found out that this salon is near my house, I think I'll be visiting it more often! 😁😁",
     rating: "3",
     time: 2,
+    likeStatus: false,
+    likeCount: 0,
   },
   {
     id: 9,
     image: "../assets/Photo1.jpg",
     customer: "Tynisha Obey",
-    comment:
-      "Professional service and satisfying results! highly recommend to my friends! 🔥🔥🔥",
+    comment: "Professional service and satisfying results! highly recommend to my friends! 🔥🔥🔥",
     rating: "5",
     time: 3,
+    likeStatus: false,
+    likeCount: 0,
   },
   {
     id: 10,
@@ -88,6 +102,8 @@ const listReviews = [
       "This is my first time trying this service, but the results are very satisfying! love it! ❤️",
     rating: "4",
     time: 1,
+    likeStatus: false,
+    likeCount: 0,
   },
 ];
 export default listReviews;
