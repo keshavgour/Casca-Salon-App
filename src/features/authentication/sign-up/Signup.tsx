@@ -29,7 +29,7 @@ export const Signup = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     axiosBaseURL
-      .post("/auth/createProfile", formData)
+      .post("/auth/register", formData)
       .then((res) => {
         console.log(res);
         navigate("/login");
