@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
-//import { useQuery } from "@tanstack/react-query";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -35,7 +34,7 @@ export const Register = () => {
   };
 
   // const fetchData = async () => {
-  //   const res = await axiosBaseURL.post("/auth/register", formData);
+  //   const res = await axiosBaseURL.post("/auth/signup", formData);
   //   return res.data;
   // };
 
