@@ -8,7 +8,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
-import login from "Services/loginService";
+// import login from "Services/loginService";
+import axiosInstance from "lib/axios";
 // import { ConstructionOutlined } from "@mui/icons-material";
 export const Login = () => {
   const navigate = useNavigate();
@@ -25,29 +26,32 @@ export const Login = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // try {
-    //   const res = await axiosBaseURL.post("/auth/login", formData);
-    //   if (res.status === 200) {
-    //     console.log(res.data.access_token);
-    //     navigate("/dashboard");
-    //   } else {
-    //     setError("Invalid credentials");
-    //   }
-    // } catch (error) {
-    //   setError(" Failed to log in");
-    // }
     try {
-      await login(formData)
-        .then(() => {
-          navigate("/dashboard");
-        })
-        .catch(() => {
-          setError("Invalid Credentials");
-        });
+      const res = await axiosInstance.post("/auth/login", formData);
+      if (res.status === 200) {
+        localStorage.setItem("access_token", res.data.access_token);
+        navigate("/dashboard");
+      } else {
+        setError("Invalid credentials");
+      }
     } catch (error) {
-      setError("Failed to log in");
+      setError(" Failed to log in");
     }
   };
+  //   try {
+  //     await login(formData)
+  //       .then(
+
+  //         () => {
+  //         navigate("/dashboard");
+  //       })
+  //       .catch(() => {
+  //         setError("Invalid Credentials");
+  //       });
+  //   } catch (error) {
+  //     setError("Failed to log in");
+  //   }
+  // };
   const clickBack = () => {
     navigate("/");
   };
