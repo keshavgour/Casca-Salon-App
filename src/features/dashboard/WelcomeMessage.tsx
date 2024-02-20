@@ -19,13 +19,13 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Typography } from "@mui/material";
 import WavingHandIcon from "@mui/icons-material/WavingHand";
-import { axiosBaseURL } from "lib/axios";
+import axiosInstance from "lib/axios";
 
 export const WelcomeMessage = () => {
   const [nickName, setNickName] = useState("");
 
   useEffect(() => {
-    axiosBaseURL
+    axiosInstance
       .get("/users/me", {
         headers: {
           authorization:
