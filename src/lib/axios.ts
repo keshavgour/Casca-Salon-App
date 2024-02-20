@@ -1,5 +1,11 @@
 import axios from "axios";
 
-export const axiosBaseURL = axios.create({
+const axiosInstance = axios.create({
   baseURL: "https://756d-163-53-201-67.ngrok-free.app/api/",
 });
+
+axiosInstance.interceptors.request.use((config) => {
+  config.headers.Authorization = `Bearer`;
+  return config;
+});
+export default axiosInstance;

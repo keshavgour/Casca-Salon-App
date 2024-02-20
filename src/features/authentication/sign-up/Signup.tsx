@@ -3,7 +3,7 @@ import { Button, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import BackButtonComponent from "components/BackButtonComponent";
 import TextFieldComponent from "components/TextFieldComponent";
-import { axiosBaseURL } from "lib/axios";
+import axiosInstance from "lib/axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -28,8 +28,8 @@ export const Signup = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    axiosBaseURL
-      .post("/auth/createProfile", formData)
+    axiosInstance
+      .post("/auth/register", formData)
       .then((res) => {
         console.log(res);
         navigate("/login");

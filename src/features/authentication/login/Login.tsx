@@ -3,12 +3,13 @@ import { Button, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import BackButtonComponent from "components/BackButtonComponent";
 import TextFieldComponent from "components/TextFieldComponent";
-import { axiosBaseURL } from "lib/axios";
+// import { axiosBaseURL } from "lib/axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
-
+import login from "Services/loginService";
+// import { ConstructionOutlined } from "@mui/icons-material";
 export const Login = () => {
   const navigate = useNavigate();
   const { setInfo } = useActions();
@@ -24,23 +25,32 @@ export const Login = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    // try {
+    //   const res = await axiosBaseURL.post("/auth/login", formData);
+    //   if (res.status === 200) {
+    //     console.log(res.data.access_token);
+    //     navigate("/dashboard");
+    //   } else {
+    //     setError("Invalid credentials");
+    //   }
+    // } catch (error) {
+    //   setError(" Failed to log in");
+    // }
     try {
-      const res = await axiosBaseURL.post("/auth/login", formData);
-      if (res.status === 200) {
-        navigate("/dashboard");
-      } else {
-        setError("Invalid credentials");
-      }
+      await login(formData)
+        .then(() => {
+          navigate("/dashboard");
+        })
+        .catch(() => {
+          setError("Invalid Credentials");
+        });
     } catch (error) {
-      setError(" Failed to log in");
+      setError("Failed to log in");
     }
   };
-
   const clickBack = () => {
     navigate("/");
   };
-
   return (
     <Container maxWidth="sm">
       <form onSubmit={handleSubmit}>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AppBar, Avatar, Container, Grid, IconButton, Paper, Typography } from "@mui/material";
 import { Navbar } from "features/dashboard";
 import ShriRam from "assets/images/ShriRam.png";
@@ -13,8 +13,34 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Switch from "@mui/material/Switch";
+import ForwardArrowBtn from "components/ForwardArrowBtn";
+// import { useSelector } from "react-redux";
+// import { RootState } from "store/store";
+// import fetchProfileData from "Services/profileDataService";
+import axiosInstance from "lib/axios";
+import logout from "Services/logoutService";
+// import { useNavigate } from "react-router-dom";
+// import { error } from "console";
+// import { useQuery } from "@tanstack/react-query";
+
+const fetchProfileInfo = async () => {
+  const response = await axiosInstance.get(`profile/getProfile`);
+  console.log(response.status);
+  return response.data;
+};
 
 const Profile = () => {
+  // const navigate = useNavigate();
+  // const profileData = useSelector((state: RootState) => state.profile);
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      fetchProfileInfo();
+    }
+  }, []);
+  const handleLogout = async () => {
+    await logout();
+  };
   return (
     <Container>
       <Grid container spacing={4} direction={"column"} alignItems="center">
@@ -34,7 +60,7 @@ const Profile = () => {
               </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">jay@gmail.com</Typography>
+              <Typography variant="body1">jay@email.com</Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -60,9 +86,7 @@ const Profile = () => {
                   </Grid>
                   <Grid item>
                     <Grid container>
-                      <IconButton sx={{ ":hover": { backgroundColor: "#fff3e0" } }}>
-                        <ArrowForwardIosIcon sx={{ ":hover": { color: "#ff9800" } }} />
-                      </IconButton>
+                      <ForwardArrowBtn to="/editprofile" />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -240,7 +264,10 @@ const Profile = () => {
               <Grid item>
                 <Grid container alignItems="center" spacing={1} sx={{ color: "red" }}>
                   <Grid item>
-                    <IconButton sx={{ ":hover": { backgroundColor: "#fff3e0" } }}>
+                    <IconButton
+                      sx={{ ":hover": { backgroundColor: "#fff3e0" } }}
+                      onClick={handleLogout}
+                    >
                       <LogoutIcon fontSize="large" sx={{ color: "red" }} />
                     </IconButton>
                   </Grid>

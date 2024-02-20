@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import TextFieldComponent from "components/TextFieldComponent";
-import { axiosBaseURL } from "lib/axios";
+import axiosInstance from "lib/axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "store/store";
@@ -25,8 +25,8 @@ export const Register = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    axiosBaseURL
-      .post("/auth/register", formData)
+    axiosInstance
+      .post("/auth/signup", formData)
       .then((res) => {
         console.log(res);
         navigate("/signup");

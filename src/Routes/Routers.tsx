@@ -14,6 +14,7 @@ import { MyBookingPage } from "pages";
 import { ExplorePage } from "pages";
 import { SignupPage } from "pages";
 import { RegisterPage } from "pages";
+import { EditProfile } from "features/display/EditProfile";
 
 export const Routers = () => {
   return (
@@ -28,6 +29,7 @@ export const Routers = () => {
           <Route path="/notifications" element={<NotificationPage />} />
           <Route path="/nearbyLocation" element={<NearbyLocationPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/inbox" element={<InboxPage />} />
           <Route path="/myBooking" element={<MyBookingPage />} />
           <Route path="/explore" element={<ExplorePage />} />
