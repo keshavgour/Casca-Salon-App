@@ -1,5 +1,14 @@
 import React from "react";
-import { AppBar, Avatar, Container, Grid, IconButton, Paper, Typography } from "@mui/material";
+import {
+  AppBar,
+  Avatar,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Paper,
+  Typography,
+} from "@mui/material";
 import { Navbar } from "features/dashboard";
 import ShriRam from "assets/images/ShriRam.png";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
@@ -12,10 +21,10 @@ import LockIcon from "@mui/icons-material/Lock";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Switch from "@mui/material/Switch";
 import ForwardArrowBtn from "components/ForwardArrowBtn";
 import logout from "Services/logoutService";
 import { useNavigate } from "react-router-dom";
+import ToggleSwitch from "components/ToggleSwitch";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -93,9 +102,7 @@ const Profile = () => {
                   </Grid>
                   <Grid item>
                     <Grid container>
-                      <IconButton sx={{ ":hover": { backgroundColor: "#fff3e0" } }}>
-                        <ArrowForwardIosIcon sx={{ ":hover": { color: "#ff9800" } }} />
-                      </IconButton>
+                      <ForwardArrowBtn to="/notification" />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -139,9 +146,7 @@ const Profile = () => {
                   </Grid>
                   <Grid item>
                     <Grid container>
-                      <IconButton sx={{ ":hover": { backgroundColor: "#fff3e0" } }}>
-                        <ArrowForwardIosIcon sx={{ ":hover": { color: "#ff9800" } }} />
-                      </IconButton>
+                      <ForwardArrowBtn to="/security" />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -166,9 +171,7 @@ const Profile = () => {
                         <Typography variant="h6">English (India)</Typography>
                       </Grid>
                       <Grid item>
-                        <IconButton sx={{ ":hover": { backgroundColor: "#fff3e0" } }}>
-                          <ArrowForwardIosIcon sx={{ ":hover": { color: "#ff9800" } }} />
-                        </IconButton>
+                        <ForwardArrowBtn to="/language" />
                       </Grid>
                     </Grid>
                   </Grid>
@@ -190,7 +193,7 @@ const Profile = () => {
                   </Grid>
                   <Grid item>
                     <Grid container>
-                      <Switch />
+                      <ToggleSwitch />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -211,9 +214,7 @@ const Profile = () => {
                   </Grid>
                   <Grid item>
                     <Grid container>
-                      <IconButton sx={{ ":hover": { backgroundColor: "#fff3e0" } }}>
-                        <ArrowForwardIosIcon sx={{ ":hover": { color: "#ff9800" } }} />
-                      </IconButton>
+                      <ForwardArrowBtn to="/privacy_policy" />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -245,19 +246,15 @@ const Profile = () => {
                 </Grid>
               </Grid>
               <Grid item>
-                <Grid container alignItems="center" spacing={1} sx={{ color: "red" }}>
-                  <Grid item>
-                    <IconButton
-                      sx={{ ":hover": { backgroundColor: "#fff3e0" } }}
-                      onClick={handleLogout}
-                    >
-                      <LogoutIcon fontSize="large" sx={{ color: "red" }} />
-                    </IconButton>
-                  </Grid>
-                  <Grid item>
-                    <Typography variant="h6">Logout</Typography>
-                  </Grid>
-                </Grid>
+                <Button onClick={handleLogout}>
+                  <LogoutIcon fontSize="large" sx={{ color: "red" }} />
+                  <Typography
+                    variant="h6"
+                    sx={{ textTransform: "none", color: "red", marginLeft: 2 }}
+                  >
+                    Logout
+                  </Typography>
+                </Button>
               </Grid>
             </Grid>
           </Paper>

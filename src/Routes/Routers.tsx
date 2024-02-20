@@ -16,6 +16,10 @@ import { SignupPage } from "pages";
 import { RegisterPage } from "pages";
 import { EditProfile } from "features/display/EditProfile";
 import PrivateRoutes from "Routes/PrivateRoutes";
+import Notification from "features/display/Notification";
+import { Security } from "features/display/Security";
+import Language from "features/display/Language";
+import { PrivacyPolicy } from "features/display/PrivacyPolicy";
 
 export const Routers = () => {
   return (
@@ -38,6 +42,10 @@ export const Routers = () => {
           <Route element={<PrivateRoutes />}>
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/editprofile" element={<EditProfile />} />
+            <Route path="/notification" element={<Notification />} />
+            <Route path="/security" element={<Security />} />
+            <Route path="/language" element={<Language />} />
+            <Route path="/privacy_policy" element={<PrivacyPolicy />} />
           </Route>
         </Routes>
       </BrowserRouter>
