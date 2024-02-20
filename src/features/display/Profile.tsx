@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { AppBar, Avatar, Container, Grid, IconButton, Paper, Typography } from "@mui/material";
 import { Navbar } from "features/dashboard";
 import ShriRam from "assets/images/ShriRam.png";
@@ -14,32 +14,15 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Switch from "@mui/material/Switch";
 import ForwardArrowBtn from "components/ForwardArrowBtn";
-// import { useSelector } from "react-redux";
-// import { RootState } from "store/store";
-// import fetchProfileData from "Services/profileDataService";
-import axiosInstance from "lib/axios";
 import logout from "Services/logoutService";
-// import { useNavigate } from "react-router-dom";
-// import { error } from "console";
-// import { useQuery } from "@tanstack/react-query";
-
-const fetchProfileInfo = async () => {
-  const response = await axiosInstance.get(`profile/getProfile`);
-  console.log(response.status);
-  return response.data;
-};
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  // const navigate = useNavigate();
-  // const profileData = useSelector((state: RootState) => state.profile);
-  useEffect(() => {
-    const token = localStorage.getItem("access_token");
-    if (token) {
-      fetchProfileInfo();
-    }
-  }, []);
-  const handleLogout = async () => {
-    await logout();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
   };
   return (
     <Container>
