@@ -15,6 +15,7 @@ import { ExplorePage } from "pages";
 import { SignupPage } from "pages";
 import { RegisterPage } from "pages";
 import { EditProfile } from "features/display/EditProfile";
+import PrivateRoutes from "Routes/PrivateRoutes";
 
 export const Routers = () => {
   return (
@@ -27,8 +28,6 @@ export const Routers = () => {
           <Route path="/massage" element={<MassagePage />} />
           <Route path="/notifications" element={<NotificationPage />} />
           <Route path="/nearbyLocation" element={<NearbyLocationPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/inbox" element={<InboxPage />} />
           <Route path="/myBooking" element={<MyBookingPage />} />
           <Route path="/explore" element={<ExplorePage />} />
@@ -38,6 +37,10 @@ export const Routers = () => {
             <Route path="dashboard" element={<DashboardPage />} />
           </Route>
           <Route path="/" element={<RegisterPage />}></Route>
+          <Route element={<PrivateRoutes />}>
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/editprofile" element={<EditProfile />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Box>
