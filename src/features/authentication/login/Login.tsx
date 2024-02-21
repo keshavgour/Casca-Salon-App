@@ -31,7 +31,7 @@ export const Login = () => {
         setError("Invalid credentials");
       }
     } catch (error) {
-      setError(" Failed to log in");
+      setError("Failed to log in");
     }
   };
   //   try {
@@ -105,6 +105,11 @@ export const Login = () => {
             >
               Login
             </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Link to="/forgotPassword" style={{ color: "#ff9800", textDecoration: "none" }}>
+              Forgot the password?
+            </Link>
           </Grid>
           <Grid item>
             {error && (
