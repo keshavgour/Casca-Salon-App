@@ -34,7 +34,7 @@ export const Register = () => {
   };
 
   // const fetchData = async () => {
-  //   const res = await axiosBaseURL.post("/auth/signup", formData);
+  //   const res = await axiosInstance.post("/auth/signup", formData);
   //   return res.data;
   // };
 

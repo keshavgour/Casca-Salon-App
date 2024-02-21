@@ -12,4 +12,4 @@ export * from "pages/ExplorePage";
 export * from "pages/SignupPage";
 export * from "pages/LoginPage";
 export * from "pages/RegisterPage";
-export * from "pages/PrivateRoute";
+export * from "pages/ForgotPasswordPage";

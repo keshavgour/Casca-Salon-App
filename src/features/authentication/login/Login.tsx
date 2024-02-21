@@ -5,7 +5,7 @@ import BackButtonComponent from "components/BackButtonComponent";
 import TextFieldComponent from "components/TextFieldComponent";
 // import { axiosBaseURL } from "lib/axios";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
 // import login from "Services/loginService";
@@ -35,23 +35,10 @@ export const Login = () => {
         setError("Invalid credentials");
       }
     } catch (error) {
-      setError(" Failed to log in");
+      setError("Failed to log in");
     }
   };
-  //   try {
-  //     await login(formData)
-  //       .then(
 
-  //         () => {
-  //         navigate("/dashboard");
-  //       })
-  //       .catch(() => {
-  //         setError("Invalid Credentials");
-  //       });
-  //   } catch (error) {
-  //     setError("Failed to log in");
-  //   }
-  // };
   const clickBack = () => {
     navigate("/");
   };
@@ -104,6 +91,11 @@ export const Login = () => {
             >
               Sign in
             </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Link to="/forgotPassword" style={{ color: "#ff9800", textDecoration: "none" }}>
+              Forgot the password?
+            </Link>
           </Grid>
           <Grid item>
             {error && (
