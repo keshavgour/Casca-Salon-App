@@ -3,6 +3,7 @@ import { signupActions } from "./../store/slices/signupSlice";
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { registrationActions } from "store/slices/registrationSlice";
+import { userActions } from "store/slices/userSlice";
 
 export const useActions = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ export const useActions = () => {
       ...registrationActions,
       ...signupActions,
       ...loginActions,
+      ...userActions,
     },
     dispatch
   );

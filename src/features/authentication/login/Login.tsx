@@ -6,11 +6,11 @@ import { useSelector } from "react-redux";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
-//import axiosInstance from "lib/axios";
 import { loginService } from "Services/loginService";
+
 export const Login = () => {
   const navigate = useNavigate();
-  const { setInfo } = useActions();
+  const { setInfo, setUserName } = useActions();
   const formData = useSelector((state: RootState) => state.login);
   const [error, setError] = useState("");
 
@@ -25,42 +25,16 @@ export const Login = () => {
     event.preventDefault();
     try {
       const data = await loginService(formData);
+      console.log(data);
       localStorage.setItem("access_token", data.access_token);
+      setUserName(data.name);
       navigate("/dashboard");
     } catch (error) {
       const errorMessage = (error as Error).message || "Failed to log in";
       setError(errorMessage);
     }
-
-    // try {
-    //   const res = await axiosInstance.post("/auth/login", formData);
-    //   if (res.status === 200) {
-    //     localStorage.setItem("access_token", res.data.access_token);
-    //     navigate("/dashboard");
-    //   } else {
-    //     setError("Invalid credentials");
-    //   }
-    // } catch (error) {
-    //   setError("Failed to log in");
-    // }
   };
-  //   try {
-  //     await login(formData)
-  //       .then(
 
-  //         () => {
-  //         navigate("/dashboard");
-  //       })
-  //       .catch(() => {
-  //         setError("Invalid Credentials");
-  //       });
-  //   } catch (error) {
-  //     setError("Failed to log in");
-  //   }
-  // };
-  // const clickBack = () => {
-  //   navigate("/");
-  // };
   return (
     <Container
       maxWidth="sm"
