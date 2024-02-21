@@ -15,6 +15,7 @@ const BlockBtn: React.FC<ButtonProp> = ({ btnText, btnSubText }) => {
     fontWeight: "bold",
     marginY: 3,
     marginX: "auto",
+    textTransform: "none",
   };
   return (
     <>
