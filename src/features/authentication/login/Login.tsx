@@ -1,16 +1,12 @@
 import React, { useState } from "react";
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography, Link } from "@mui/material";
 import { Container } from "@mui/system";
-import BackButtonComponent from "components/BackButtonComponent";
 import TextFieldComponent from "components/TextFieldComponent";
-// import { axiosBaseURL } from "lib/axios";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
-// import login from "Services/loginService";
 import axiosInstance from "lib/axios";
-// import { ConstructionOutlined } from "@mui/icons-material";
 export const Login = () => {
   const navigate = useNavigate();
   const { setInfo } = useActions();
@@ -52,19 +48,25 @@ export const Login = () => {
   //     setError("Failed to log in");
   //   }
   // };
-  const clickBack = () => {
-    navigate("/");
-  };
+  // const clickBack = () => {
+  //   navigate("/");
+  // };
   return (
-    <Container maxWidth="sm">
+    <Container
+      maxWidth="sm"
+      sx={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Typography variant="h2" component="span" sx={{ marginY: 2 }}>
+        Login to your Account!
+      </Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
-          <Grid item mt={8}>
-            <BackButtonComponent onClick={clickBack} />
-          </Grid>
-          <Grid item mt={8}>
-            <Typography variant="h4">Login to your Account!</Typography>
-          </Grid>
           <Grid item xs={12}>
             <TextFieldComponent
               label="Email"
@@ -93,16 +95,15 @@ export const Login = () => {
               sx={{
                 "&:hover": {
                   backgroundColor: "#ff9800",
-                  color: "white",
-                  border: "1px solid #ff9800",
                 },
-                color: "white",
-                backgroundColor: "#ff9800",
-                border: "1px solid #ff9800",
+                backgroundColor: "primary.main",
                 borderRadius: "100px",
+                textTransform: "none",
+                fontSize: 18,
+                fontWeight: 600,
               }}
             >
-              Sign in
+              Login
             </Button>
           </Grid>
           <Grid item>
@@ -114,6 +115,12 @@ export const Login = () => {
           </Grid>
         </Grid>
       </form>
+      <Typography variant="subtitle2" component="span">
+        Not have an account ?{" "}
+        <Link component={RouterLink} underline="hover" to="/">
+          Click Here
+        </Link>
+      </Typography>
     </Container>
   );
 };
