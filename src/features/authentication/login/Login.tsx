@@ -3,14 +3,13 @@ import { Button, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import BackButtonComponent from "components/BackButtonComponent";
 import TextFieldComponent from "components/TextFieldComponent";
-// import { axiosBaseURL } from "lib/axios";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
-// import login from "Services/loginService";
-import axiosInstance from "lib/axios";
-// import { ConstructionOutlined } from "@mui/icons-material";
+//import axiosInstance from "lib/axios";
+import { loginService } from "Services/loginService";
+
 export const Login = () => {
   const navigate = useNavigate();
   const { setInfo } = useActions();
@@ -27,16 +26,25 @@ export const Login = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const res = await axiosInstance.post("/auth/login", formData);
-      if (res.status === 200) {
-        localStorage.setItem("access_token", res.data.access_token);
-        navigate("/dashboard");
-      } else {
-        setError("Invalid credentials");
-      }
+      const data = await loginService(formData);
+      localStorage.setItem("access_token", data.access_token);
+      navigate("/dashboard");
     } catch (error) {
-      setError("Failed to log in");
+      const errorMessage = (error as Error).message || "Failed to log in";
+      setError(errorMessage);
     }
+
+    // try {
+    //   const res = await axiosInstance.post("/auth/login", formData);
+    //   if (res.status === 200) {
+    //     localStorage.setItem("access_token", res.data.access_token);
+    //     navigate("/dashboard");
+    //   } else {
+    //     setError("Invalid credentials");
+    //   }
+    // } catch (error) {
+    //   setError("Failed to log in");
+    // }
   };
 
   const clickBack = () => {
