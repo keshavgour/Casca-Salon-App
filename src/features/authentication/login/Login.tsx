@@ -116,11 +116,7 @@ export const Login = () => {
               Login
             </Button>
           </Grid>
-          <Grid item xs={12}>
-            <Link to="/forgotPassword" style={{ color: "#ff9800", textDecoration: "none" }}>
-              Forgot the password?
-            </Link>
-          </Grid>
+
           <Grid item>
             {error && (
               <Typography variant="h6" sx={{ color: "red" }}>
@@ -130,7 +126,14 @@ export const Login = () => {
           </Grid>
         </Grid>
       </form>
-      <Typography variant="subtitle2" component="span">
+      <Link
+        to="/forgotPassword"
+        component={RouterLink}
+        style={{ color: "#ff9800", textDecoration: "none" }}
+      >
+        Forgot the password?
+      </Link>
+      <Typography variant="subtitle2" component="span" pt={2}>
         Not have an account ?{" "}
         <Link component={RouterLink} underline="hover" to="/">
           Click Here
