@@ -8,8 +8,6 @@ import { RootState } from "store/store";
 export const WelcomeMessage = () => {
   const username = useSelector((state: RootState) => state.user.userName);
 
-  // const access_token = localStorage.getItem("access_token");
-  // console.log(access_token);
   useEffect(() => {
     axiosInstance
       .get("/users/me")
@@ -30,6 +28,14 @@ export const WelcomeMessage = () => {
     </Grid>
   );
 };
+
+// const access_token = localStorage.getItem("access_token");
+//   console.log(access_token);
+
+// {
+//   headers: { Authorization: `Bearer ${access_token}`, "Content-Type": "application/json" },
+//   withCredentials: true,
+// }
 
 // const headers = {
 //   Authorization:
