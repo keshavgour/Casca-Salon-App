@@ -1,7 +1,7 @@
 import React from "react";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { StaticDateTimePicker } from "@mui/x-date-pickers/StaticDateTimePicker";
+// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+// import { StaticDateTimePicker } from "@mui/x-date-pickers/StaticDateTimePicker";
 import { Button, Container, Grid, Typography } from "@mui/material";
 import CardsSpecialists from "components/CardsSpecialists";
 import listSpecialist from "temp-object-file/specialist";
@@ -24,9 +24,9 @@ export const BookAppointment = () => {
           </Typography>
         </Grid>
         <Grid item xs={4} sx={{ border: 1 }}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
             <StaticDateTimePicker />
-          </LocalizationProvider>
+          </LocalizationProvider> */}
         </Grid>
         <Grid item xs={8}>
           <Grid container>
