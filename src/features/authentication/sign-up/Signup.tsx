@@ -3,15 +3,17 @@ import { Button, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import BackButtonComponent from "components/BackButtonComponent";
 import TextFieldComponent from "components/TextFieldComponent";
-import axiosInstance from "lib/axios";
+
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
+import { signupService } from "Services/signupService";
 
 export const Signup = () => {
   const navigate = useNavigate();
+
   const { setProfile } = useActions();
   const formData = useSelector((state: RootState) => state.signup);
 
@@ -26,17 +28,24 @@ export const Signup = () => {
     setProfile({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    axiosInstance
-      .post("/auth/register", formData)
-      .then((res) => {
-        console.log(res);
-        navigate("/login");
-      })
-      .catch((err) => console.log(err));
-  };
 
+    try {
+      const data = await signupService(formData);
+      console.log(data);
+      navigate("/login");
+    } catch (error) {
+      throw new Error("Failed to register");
+    }
+    // axiosInstance
+    //   .post("/auth/register", formData)
+    //   .then((res) => {
+    //     console.log(res);
+    //     navigate("/login");
+    //   })
+    //   .catch((err) => console.log(err));
+  };
   return (
     <Container maxWidth="sm">
       <form onSubmit={handleSubmit}>

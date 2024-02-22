@@ -46,7 +46,7 @@ export const Login = () => {
         justifyContent: "center",
       }}
     >
-      <Typography variant="h2" component="span" sx={{ marginY: 2 }}>
+      <Typography variant="h3" component="span" sx={{ marginY: 2 }}>
         Login to your Account!
       </Typography>
       <form onSubmit={handleSubmit}>
