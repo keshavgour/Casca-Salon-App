@@ -1,5 +1,4 @@
 import React from "react";
-import { Box } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { DashboardPage, ForgotPasswordPage, LoginPage } from "pages";
 import { HaircutPage } from "pages";
@@ -23,7 +22,7 @@ import { PrivacyPolicy } from "features/display/PrivacyPolicy";
 
 export const Routers = () => {
   return (
-    <Box>
+    <>
       <BrowserRouter>
         <Routes>
           <Route path="/haircuts" element={<HaircutPage />} />
@@ -40,9 +39,9 @@ export const Routers = () => {
           <Route path="/forgotPassword" element={<ForgotPasswordPage />}></Route>
           <Route path="/" element={<RegisterPage />}></Route>
           <Route element={<PrivateRoutes />}>
+            <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/notification" element={<Notification />} />
             <Route path="/security" element={<Security />} />
             <Route path="/language" element={<Language />} />
@@ -50,6 +49,6 @@ export const Routers = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    </Box>
+    </>
   );
 };

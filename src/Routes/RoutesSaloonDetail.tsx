@@ -8,6 +8,7 @@ import { GalleryPage } from "pages/GalleryPage";
 import { ReviewPage } from "pages/ReviewPage";
 import { SpecialistsPage } from "pages/SpecialistsPage";
 import PackageDetails from "features/display/PackageDetails";
+import { BookAppointment } from "features/display/BookAppointment";
 
 export default function RoutesSaloonDetail() {
   return (
@@ -21,6 +22,7 @@ export default function RoutesSaloonDetail() {
         <Route path="/allreviews" Component={ReviewPage} />
         <Route path="/haircut" Component={Haircut} />
         <Route path="/packagedetails" Component={PackageDetails} />
+        <Route path="/book_appointment" element={<BookAppointment />} />
       </Routes>
     </Router>
   );

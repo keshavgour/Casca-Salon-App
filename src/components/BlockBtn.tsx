@@ -8,7 +8,7 @@ const BlockBtn: React.FC<ButtonProp> = ({ btnText, btnSubText }) => {
   const BlockBtnStyle = {
     display: "block",
     width: "70%",
-    height: "70px",
+    // height: "70px",
     backgroundColor: "primary.main",
     borderRadius: 25,
     fontSize: "20px",

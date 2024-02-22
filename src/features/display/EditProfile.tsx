@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import TextFieldComponent from "components/TextFieldComponent";
 import BackBtn from "components/BackBtn";
 import { useSelector } from "react-redux";
 import { RootState } from "store/store";
 import BlockBtn from "components/BlockBtn";
+import axiosInstance from "lib/axios";
 
 export const EditProfile = () => {
   const formData = useSelector((state: RootState) => state.signup);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
+  useEffect(() => {
+    const getProfileData = async () => {
+      try {
+        const response = await axiosInstance.get(`/users/me`);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Errro fetcing data :", error);
+      }
+    };
+    getProfileData();
+  }, []);
   const handleChange = () => {};
   return (
     <Container

@@ -33,7 +33,7 @@ export default function PackageDetails() {
             alt="Haircut & HairStyling"
             style={{
               display: "block",
-              width: "400px",
+              width: "100%",
               height: "400px",
               margin: "auto",
               borderRadius: "25px",
@@ -66,7 +66,12 @@ export default function PackageDetails() {
                     similique maxime nemo?
                   </Typography>
                 )}
-                <Link variant="linkTypo" underline="none" onClick={handleExpand}>
+                <Link
+                  variant="linkTypo"
+                  underline="none"
+                  sx={{ cursor: "pointer" }}
+                  onClick={handleExpand}
+                >
                   {isExpand ? "" : " Read more..."}
                 </Link>
               </Typography>
