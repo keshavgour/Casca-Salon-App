@@ -1,13 +1,27 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://04a5-163-53-201-67.ngrok-free.app/api/",
+  baseURL: "https://6757-163-53-201-67.ngrok-free.app/api/",
 });
+
 const token = localStorage.getItem("access_token");
 axiosInstance.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${token}`;
   config.headers["Content-Type"] = "application/json";
+  config.headers.Authorization = `Bearer ${token}`;
   config.withCredentials = true;
   return config;
 });
+
+axiosInstance.interceptors.response.use(
+  (res) => {
+    if (res.status === 200) {
+      console.log("We are good to go");
+    }
+    return res;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
+
 export default axiosInstance;

@@ -12,19 +12,11 @@ export const loginService = async (formData: NewType) => {
   }
 };
 
-// const login = (formData: NewType) => {
-//   const navigate = useNavigate();
-//   return axiosInstance
-//     .post("/auth/login", formData)
-//     .then((response) => {
-//       if (response.data.access_token && response.status === 200) {
-//         localStorage.setItem("access_token", JSON.stringify(response.data.access_token));
-//         navigate("/dashboard");
-//       }
-//       return response.data;
-//     })
-//     .catch((error) => {
-//       return error;
-//     });
+// const fetchData = async (formData: NewType): Promise<LoginResponse> => {
+//   const res = await axiosInstance.post("/auth/signup", formData);
+//   return res.data;
 // };
-// export default login;
+
+// export const loginService = (formData: NewType) => {
+//   return useQuery({ queryKey: ["login", formData], queryFn: () => fetchData(formData) });
+// };
