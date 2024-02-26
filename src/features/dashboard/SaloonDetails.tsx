@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Container, Divider, Typography, Chip } from "@mui/material";
+import { Box, Button, Container, Divider, Typography, Chip, Grid } from "@mui/material";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import GradeIcon from "@mui/icons-material/Grade";
 import Carousel from "components/MyCarousel";
@@ -17,6 +17,7 @@ export default function SaloonDetails() {
   const handleChipClick = (chipName: string) => {
     setselectChip(chipName);
   };
+  const textVCenter = { display: "flex", alignItems: "center" };
   const btnOpen = {
     width: 150,
     height: 50,
@@ -34,10 +35,16 @@ export default function SaloonDetails() {
       height: 30,
       fontSize: 12,
     },
+    "@media (max-width:400px)": {
+      width: 80,
+      height: 25,
+      fontSize: 11,
+    },
     backgroundColor: "primary.main",
     borderRadius: 10,
     fontSize: 15,
     fontWeight: "bold",
+    textTransform: "none",
   };
   const chipStyle = {
     width: "150px",
@@ -70,31 +77,30 @@ export default function SaloonDetails() {
       >
         <Carousel />
         <Box sx={{ boxSizing: "border-box", marginY: 3, p: 2 }}>
-          <Box
-            sx={{
-              width: "inherit",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Typography variant="h2" component="span">
-              Galaxy Salon
-            </Typography>
-            <Button variant="contained" sx={btnOpen}>
-              Open
-            </Button>
-          </Box>
-          <Box sx={{ width: "inherit", display: "flex", flexDirection: "column" }}>
-            <Typography variant="infoTypo1" component="span">
-              <LocationOnRoundedIcon sx={{ color: "primary.main", marginRight: 2 }} />
-              0992 Novik Parkway
-            </Typography>
-            <Typography variant="infoTypo1" component="span">
-              <GradeIcon sx={{ color: "primary.main", marginRight: 2 }} />
-              4.9 (3,279 reviews)
-            </Typography>
-          </Box>
+          <Grid container rowSpacing={1}>
+            <Grid item xs={6} sx={textVCenter}>
+              <Typography variant="h2" component="span">
+                Galaxy Salon
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sx={{ display: "flex", alignItems: "center", justifyContent: "end" }}>
+              <Button variant="contained" sx={btnOpen}>
+                Open
+              </Button>
+            </Grid>
+            <Grid item xs={12} sx={textVCenter}>
+              <LocationOnRoundedIcon sx={{ color: "primary.main", marginRight: 1 }} />
+              <Typography variant="body1" component="span">
+                0992, Novik Parkway
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sx={textVCenter}>
+              <GradeIcon sx={{ color: "primary.main", marginRight: 1 }} />
+              <Typography variant="body1" component="span">
+                4.9 (3,279 reviews)
+              </Typography>
+            </Grid>
+          </Grid>
           <Box sx={{ marginY: 3 }}>
             <NavBtnGrp />
           </Box>
