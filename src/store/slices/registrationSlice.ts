@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-interface RegistrationState {
+export interface RegistrationState {
   email: string;
   password: string;
   passwordConfirm: string;

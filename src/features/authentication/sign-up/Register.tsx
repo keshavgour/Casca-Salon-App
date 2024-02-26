@@ -2,12 +2,13 @@ import React from "react";
 import { Button, Grid, Link, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import TextFieldComponent from "components/TextFieldComponent";
-import axiosInstance from "lib/axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
 import { Link as RouterLink } from "react-router-dom";
+import { registerService } from "Services/registerService";
+
 export const Register = () => {
   const navigate = useNavigate();
   const { setData } = useActions();
@@ -21,16 +22,15 @@ export const Register = () => {
     setData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    axiosInstance
-      .post("/auth/signup", formData)
-      .then((res) => {
-        console.log(res);
-        navigate("/signup");
-      })
-      .catch((err) => console.log(err));
+    try {
+      const data = await registerService(formData);
+      console.log(data);
+      navigate("/signup");
+    } catch (error) {
+      throw new Error("Failed to Signup");
+    }
   };
 
   // const fetchData = async () => {
