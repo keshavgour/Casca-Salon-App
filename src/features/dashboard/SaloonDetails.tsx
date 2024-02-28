@@ -14,6 +14,7 @@ import Packages from "features/display/Packages";
 import Review from "features/display/Review";
 export default function SaloonDetails() {
   const [selectChip, setselectChip] = useState("About us");
+  const chipLabels = ["About us", "Services", "Package", "Gallery", "Review"];
   const handleChipClick = (chipName: string) => {
     setselectChip(chipName);
   };
@@ -21,6 +22,11 @@ export default function SaloonDetails() {
   const btnOpen = {
     width: 150,
     height: 50,
+    backgroundColor: "primary.main",
+    borderRadius: 10,
+    fontSize: 15,
+    fontWeight: "bold",
+    textTransform: "none",
     "@media (max-width:900px)": {
       width: 140,
       height: 40,
@@ -35,34 +41,35 @@ export default function SaloonDetails() {
       height: 30,
       fontSize: 12,
     },
-    "@media (max-width:400px)": {
+    "@media (max-width:450px)": {
       width: 80,
       height: 25,
       fontSize: 11,
     },
-    backgroundColor: "primary.main",
-    borderRadius: 10,
-    fontSize: 15,
-    fontWeight: "bold",
-    textTransform: "none",
   };
   const chipStyle = {
-    width: "150px",
-    height: "50px",
-    "@media (max-width:900px)": {
-      width: 130,
-      height: 40,
-      fontSize: 15,
-    },
-    "@media (max-width:700px)": {
-      width: 90,
-      height: 30,
-      fontSize: 12,
-    },
+    width: 180,
+    height: 50,
+    marginY: 1,
     borderWidth: "2px",
     borderRadius: "25px",
-    fontSize: "17px",
-    fontWeight: "bold",
+    fontSize: 20,
+    fontWeight: 700,
+    "@media (max-width:900px)": {
+      width: 150,
+      height: 40,
+      fontSize: 18,
+    },
+    "@media (max-width:600px)": {
+      width: 100,
+      height: 35,
+      fontSize: 14,
+    },
+    // "@media (max-width:400px)": {
+    //   width: 60,
+    //   height: 25,
+    //   fontSize: 9,
+    // },
   };
 
   return (
@@ -117,6 +124,7 @@ export default function SaloonDetails() {
               width: "inherit",
               display: "flex",
               alignItems: "center",
+              justifyContent: "space-between",
               overflow: "hidden",
             }}
           >
@@ -137,10 +145,23 @@ export default function SaloonDetails() {
               my: 3,
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-between",
+              justifyContent: "space-evenly",
+              flexWrap: "wrap",
             }}
           >
-            <Chip
+            {chipLabels.map((chipLabel, index) => {
+              return (
+                <Chip
+                  key={index}
+                  label={chipLabel}
+                  variant={selectChip === chipLabel ? "filled" : "outlined"}
+                  color="primary"
+                  sx={chipStyle}
+                  onClick={() => handleChipClick(chipLabel)}
+                />
+              );
+            })}
+            {/* <Chip
               label="About us"
               variant={selectChip === "About us" ? "filled" : "outlined"}
               color="primary"
@@ -174,7 +195,7 @@ export default function SaloonDetails() {
               color="primary"
               sx={chipStyle}
               onClick={() => handleChipClick("Review")}
-            />
+            /> */}
           </Box>
           {selectChip === "About us" && <AboutUs />}
           {selectChip === "Services" && <Services isPage={false} />}

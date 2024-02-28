@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://3ce9-163-53-201-67.ngrok-free.app",
+  baseURL: "http://ec2-13-200-250-45.ap-south-1.compute.amazonaws.com:3000/api/",
 });
 
 const token = localStorage.getItem("access_token");
@@ -12,16 +12,16 @@ axiosInstance.interceptors.request.use((config) => {
   return config;
 });
 
-axiosInstance.interceptors.response.use(
-  (res) => {
-    if (res.status === 200) {
-      console.log("We are good to go");
-    }
-    return res;
-  },
-  (err) => {
-    return Promise.reject(err);
-  }
-);
+// axiosInstance.interceptors.response.use(
+//   (res) => {
+//     if (res.status === 200) {
+//       console.log("We are good to go");
+//     }
+//     return res;
+//   },
+//   (err) => {
+//     return Promise.reject(err);
+//   }
+// );
 
 export default axiosInstance;

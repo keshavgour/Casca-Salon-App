@@ -58,7 +58,7 @@ const theme = createTheme({
         fontSize: 30,
         fontWeight: "bold",
       },
-      "@media (max-width:400px)": {
+      "@media (max-width:450px)": {
         fontSize: 25,
         fontWeight: "bold",
       },
@@ -66,7 +66,7 @@ const theme = createTheme({
     h4: {
       fontSize: 25,
       fontWeight: "bold",
-      "@media (max-width:400px)": {
+      "@media (max-width:450px)": {
         fontSize: 20,
         fontWeight: "bold",
       },
@@ -81,7 +81,7 @@ const theme = createTheme({
     body1: {
       fontSize: 20,
       color: "#616161",
-      "@media (max-width:400px)": {
+      "@media (max-width:450px)": {
         fontSize: 16,
       },
     },
@@ -89,7 +89,7 @@ const theme = createTheme({
       fontSize: 20,
       color: "rgb(0,0,0)",
       fontWeight: 600,
-      "@media (max-width:400px)": {
+      "@media (max-width:450px)": {
         fontSize: 16,
       },
       linkTypo: {

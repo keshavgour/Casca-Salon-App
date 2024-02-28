@@ -4,85 +4,85 @@ import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import CallRoundedIcon from "@mui/icons-material/CallRounded";
 import TextsmsRoundedIcon from "@mui/icons-material/TextsmsRounded";
-import { Box, Button, Typography, styled } from "@mui/material";
+import { Grid, IconButton, Typography } from "@mui/material";
 
 export default function NavBtnGrp() {
   // btntheme.palette.primary.main
 
-  const NavButton = {
-    width: 70,
-    height: 70,
-    "@media (max-width:600px)": {
-      width: 60,
-      height: 60,
-    },
-    borderRadius: 10,
+  const IconBtnStyle = {
+    width: 65,
+    height: 65,
     backgroundColor: "primary.light",
+    color: "primary.main",
     "&:hover": {
       backgroundColor: "#FFCC80",
     },
-  };
-  const BtnContainer = {
-    width: "inherit",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  };
-  const BoxBtn = styled(Box)({
-    width: 100,
-    height: 100,
     "@media (max-width:600px)": {
-      width: 80,
-      height: 80,
+      width: 55,
+      height: 55,
     },
+    "@media (max-width:450px)": {
+      width: 45,
+      height: 45,
+    },
+  };
+  const IconStyle = {
+    fontSize: 30,
+    "@media (max-width:600px)": {
+      fontSize: 25,
+    },
+    "@media (max-width:400px)": {
+      fontSize: 20,
+    },
+  };
+  const IconBoxStyle = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
-  });
-
+  };
   return (
-    <Box sx={BtnContainer}>
-      <BoxBtn>
-        <Button sx={NavButton}>
-          <ExploreRoundedIcon fontSize="large" />
-        </Button>
+    <Grid container columnSpacing={1}>
+      <Grid item xs={2.4} sx={IconBoxStyle}>
+        <IconButton sx={IconBtnStyle}>
+          <ExploreRoundedIcon sx={IconStyle} />
+        </IconButton>
         <Typography variant="h6" component="span">
           Website
         </Typography>
-      </BoxBtn>
-      <BoxBtn>
-        <Button sx={NavButton}>
-          <TextsmsRoundedIcon fontSize="large" />
-        </Button>
+      </Grid>
+      <Grid item xs={2.4} sx={IconBoxStyle}>
+        <IconButton sx={IconBtnStyle}>
+          <TextsmsRoundedIcon sx={IconStyle} />
+        </IconButton>
         <Typography variant="h6" component="span">
           Message
         </Typography>
-      </BoxBtn>
-      <BoxBtn>
-        <Button sx={NavButton}>
-          <CallRoundedIcon fontSize="large" />
-        </Button>
+      </Grid>
+      <Grid item xs={2.4} sx={IconBoxStyle}>
+        <IconButton sx={IconBtnStyle}>
+          <CallRoundedIcon sx={IconStyle} />
+        </IconButton>
         <Typography variant="h6" component="span">
           Call
         </Typography>
-      </BoxBtn>
-      <BoxBtn>
-        <Button sx={NavButton}>
-          <LocationOnRoundedIcon fontSize="large" />
-        </Button>
+      </Grid>
+      <Grid item xs={2.4} sx={IconBoxStyle}>
+        <IconButton sx={IconBtnStyle}>
+          <LocationOnRoundedIcon sx={IconStyle} />
+        </IconButton>
         <Typography variant="h6" component="span">
           Direction
         </Typography>
-      </BoxBtn>
-      <BoxBtn>
-        <Button sx={NavButton}>
-          <SendRoundedIcon fontSize="large" />
-        </Button>
+      </Grid>
+      <Grid item xs={2.4} sx={IconBoxStyle}>
+        <IconButton sx={IconBtnStyle}>
+          <SendRoundedIcon sx={IconStyle} />
+        </IconButton>
         <Typography variant="h6" component="span">
           Share
         </Typography>
-      </BoxBtn>
-    </Box>
+      </Grid>
+    </Grid>
   );
 }

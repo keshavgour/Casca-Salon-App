@@ -1,31 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import TextFieldComponent from "components/TextFieldComponent";
 import BackBtn from "components/BackBtn";
 // import { useSelector } from "react-redux";
 // import { RootState } from "store/store";
 import BlockBtn from "components/BlockBtn";
-import { useQuery } from "@tanstack/react-query";
-import editProfile from "Services/editProfileService";
+import axiosInstance from "lib/axios";
 
 export const EditProfile = () => {
   // const formData = useSelector((state: RootState) => state.signup);
-  const { data: profileData } = useQuery({ queryKey: ["profile"], queryFn: editProfile });
-  console.log(profileData);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
-  // useEffect(() => {
-  //   const getProfileData = async () => {
-  //     try {
-  //       const response = await axiosInstance.get(`/profile/getProfile`);
-  //       return response.data.userprofile;
-  //     } catch (error) {
-  //       console.error("Errro fetcing data :", error);
-  //     }
-  //   };
-  //   getProfileData();
-  // }, []);
+  useEffect(() => {
+    const getProfileData = async () => {
+      try {
+        const response = await axiosInstance.get(`/profile/getProfile`);
+        console.log(response.data);
+        return response.data;
+      } catch (error) {
+        console.error("Errro fetcing data :", error);
+      }
+    };
+    getProfileData();
+  }, []);
   const handleChange = () => {};
   return (
     <Container

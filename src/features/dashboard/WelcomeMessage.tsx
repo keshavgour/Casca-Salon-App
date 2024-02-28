@@ -7,7 +7,6 @@ import { RootState } from "store/store";
 
 export const WelcomeMessage = () => {
   const username = useSelector((state: RootState) => state.user.userName);
-
   useEffect(() => {
     axiosInstance
       .get("/users/me")
