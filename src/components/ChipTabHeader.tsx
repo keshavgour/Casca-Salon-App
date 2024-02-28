@@ -14,7 +14,7 @@ const ChipTabHeader: React.FC<BarProp> = ({ isPage, heading, linktext, backward,
     <Grid container sx={{ py: 1 }}>
       <Grid xs={8}>
         {isPage && <BackBtn to={backward} />}
-        <Typography variant="titleTypo" component="span">
+        <Typography variant="h4" component="span">
           {heading}
         </Typography>
       </Grid>

@@ -44,15 +44,31 @@ const theme = createTheme({
     h2: {
       "@media (max-width:1280px)": {
         fontSize: 55,
+        fontWeight: "bold",
       },
       "@media (max-width:900px)": {
         fontSize: 50,
+        fontWeight: "bold",
       },
       "@media (max-width:600px)": {
         fontSize: 45,
+        fontWeight: "bold",
       },
       "@media (max-width:510px)": {
         fontSize: 30,
+        fontWeight: "bold",
+      },
+      "@media (max-width:400px)": {
+        fontSize: 25,
+        fontWeight: "bold",
+      },
+    },
+    h4: {
+      fontSize: 25,
+      fontWeight: "bold",
+      "@media (max-width:400px)": {
+        fontSize: 20,
+        fontWeight: "bold",
       },
     },
     h6: {
@@ -62,22 +78,33 @@ const theme = createTheme({
         fontSize: 15,
       },
     },
-    linkTypo: {
-      fontSize: 20,
-      fontWeight: "bold",
-    },
-    titleTypo: {
-      fontSize: 23,
-      fontWeight: "bold",
-    },
-    infoTypo1: {
+    body1: {
       fontSize: 20,
       color: "#616161",
+      "@media (max-width:400px)": {
+        fontSize: 16,
+      },
     },
-    infoTypo2: {
+    body2: {
       fontSize: 20,
       color: "rgb(0,0,0)",
       fontWeight: 600,
+      "@media (max-width:400px)": {
+        fontSize: 16,
+      },
+      linkTypo: {
+        fontSize: 20,
+        fontWeight: "bold",
+      },
+      infoTypo1: {
+        fontSize: 20,
+        color: "#616161",
+      },
+      infoTypo2: {
+        fontSize: 20,
+        color: "rgb(0,0,0)",
+        fontWeight: 600,
+      },
     },
   },
 });
