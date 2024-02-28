@@ -38,13 +38,7 @@ export const Signup = () => {
     } catch (error) {
       throw new Error("Failed to register");
     }
-    // axiosInstance
-    //   .post("/auth/register", formData)
-    //   .then((res) => {
-    //     console.log(res);
-    //     navigate("/login");
-    //   })
-    //   .catch((err) => console.log(err));
+    
   };
   return (
     <Container maxWidth="sm">
