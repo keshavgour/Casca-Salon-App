@@ -33,28 +33,7 @@ export const Register = () => {
     }
   };
 
-  // const fetchData = async () => {
-  //   const res = await axiosInstance.post("/auth/signup", formData);
-  //   return res.data;
-  // };
-
-  // const { isLoading, isError, data, error } = useQuery({
-  //   queryFn: fetchData,
-  //   queryKey: ["getData"],
-  // });
-
-  // if (isLoading) {
-  //   return <p>Loading.......</p>;
-  // }
-
-  // if (isError) {
-  //   return <p>Error: {error.message}</p>;
-  // }
-
-  // if (data) {
-  //   navigate("/signup");
-  // }
-
+  
   return (
     <Container
       maxWidth="sm"

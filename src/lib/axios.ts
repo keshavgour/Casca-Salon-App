@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://6757-163-53-201-67.ngrok-free.app/api/",
+  baseURL: "http://ec2-13-200-250-45.ap-south-1.compute.amazonaws.com:3000/api/",
 });
 
 const token = localStorage.getItem("access_token");
