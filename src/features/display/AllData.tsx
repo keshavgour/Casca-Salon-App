@@ -1,7 +1,7 @@
-import React from "react";
-import { Grid } from "@mui/material";
-import allSalon from "temp-object-file/AllSalon";
-import SalonDataDisplay from "features/display/SalonDataDisplay";
+// import React from "react";
+// import { Grid } from "@mui/material";
+// import allSalon from "temp-object-file/AllSalon";
+// import SalonDataDisplay from "features/display/SalonDataDisplay";
 
 const AllData = () => {
   //   const allSalon = [
@@ -49,12 +49,11 @@ const AllData = () => {
   //       imageURL: "https://imgmedia.lbb.in/media/2023/06/64880efb156ecf24a1e150bb_1686638331890.jpg",
   //     },
   //   ];
-
-  return (
-    <Grid>
-      <SalonDataDisplay dataTODisplay={allSalon} />
-    </Grid>
-  );
+  //   return (
+  //     <Grid>
+  //       <SalonDataDisplay dataTODisplay={allSalon} />
+  //     </Grid>
+  //   );
 };
 
 export default AllData;

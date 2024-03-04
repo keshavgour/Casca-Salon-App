@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Typography } from "@mui/material";
 import ButtonComponent from "components/ButtonComponent";
-import AllData from "features/display/AllData";
+//import AllData from "features/display/AllData";
 import NearByHaircuts from "features/display/NearbyHaircuts";
 import NearByMakeup from "features/display/NearbyMakeup";
 import NearByManicure from "features/display/NearbyManicure";
@@ -75,7 +75,7 @@ export const Nearby: React.FC<iprops> = ({ typographyData }) => {
         </Grid>
       </Grid>
       <Grid item>
-        {selectedTab === "all" && <AllData />}
+        {/* {selectedTab === "all" && <AllData />} */}
         {selectedTab === "haircuts" && <NearByHaircuts />}
         {selectedTab === "makeup" && <NearByMakeup />}
         {selectedTab === "manicure" && <NearByManicure />}

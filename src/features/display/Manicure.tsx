@@ -11,7 +11,7 @@ export const Manicure = () => {
   const manicureData = [
     {
       id: 1,
-      shopName: "Barbarella",
+      name: "Barbarella",
       address: "88 Commercial Plaza",
       distance: 4.2,
       rating: 4.0,
@@ -20,7 +20,7 @@ export const Manicure = () => {
     },
     {
       id: 2,
-      shopName: "The Goodbarber",
+      name: "The Goodbarber",
       address: "813 Village Drive",
       distance: 3.4,
       rating: 4.6,
@@ -29,7 +29,7 @@ export const Manicure = () => {
     },
     {
       id: 3,
-      shopName: "By the Blade",
+      name: "By the Blade",
       address: "883 Jackson Hill",
       distance: 8.4,
       rating: 4.1,
@@ -38,7 +38,7 @@ export const Manicure = () => {
     },
     {
       id: 4,
-      shopName: "Amnesia",
+      name: "Amnesia",
       address: "0093 Novick Parkway",
       distance: 1.2,
       rating: 4.8,
@@ -47,7 +47,7 @@ export const Manicure = () => {
     },
     {
       id: 5,
-      shopName: "Flo Cutters",
+      name: "Flo Cutters",
       address: "42 Fordem Avenue",
       distance: 1.4,
       rating: 4.9,

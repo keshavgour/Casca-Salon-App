@@ -7,7 +7,7 @@ const NearByMakeup = () => {
   const nearbyMakeupData = [
     {
       id: 1,
-      shopName: "Addictive Beauty",
+      name: "Addictive Beauty",
       address: "813 Village Drive",
       distance: 3.4,
       rating: 4.6,
@@ -16,7 +16,7 @@ const NearByMakeup = () => {
     },
     {
       id: 2,
-      shopName: "Beauty Unleashed",
+      name: "Beauty Unleashed",
       address: "88 Commercial Plaza",
       distance: 4.2,
       rating: 4.0,
@@ -25,7 +25,7 @@ const NearByMakeup = () => {
     },
     {
       id: 3,
-      shopName: "Bangs on Target",
+      name: "Bangs on Target",
       address: "883 Jackson Hill",
       distance: 8.4,
       rating: 4.1,
@@ -34,7 +34,7 @@ const NearByMakeup = () => {
     },
     {
       id: 4,
-      shopName: "Choppers",
+      name: "Choppers",
       address: "0093 Novick Parkway",
       distance: 1.2,
       rating: 4.8,
@@ -43,7 +43,7 @@ const NearByMakeup = () => {
     },
     {
       id: 5,
-      shopName: "Beauty Salon",
+      name: "Beauty Salon",
       address: "42 Fordem Avenue",
       distance: 1.4,
       rating: 4.9,
