@@ -38,7 +38,7 @@ const Profile = () => {
       <Grid container spacing={4} direction={"column"} alignItems="center">
         <Grid item>
           <AppBar position="fixed" sx={{ backgroundColor: "white" }}>
-            <Navbar pageHeading="Profile" />
+            <Navbar />
           </AppBar>
         </Grid>
         <Grid item sx={{ mt: "64px" }}>

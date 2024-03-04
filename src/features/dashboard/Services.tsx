@@ -25,34 +25,34 @@ export const Services = () => {
   };
 
   return (
-    <Grid container spacing={24}>
-      <Grid item>
-        <IconButton sx={{ backgroundColor: "#fff3e0" }} onClick={clickHaircuts}>
-          <ContentCutIcon fontSize="large" sx={{ color: "#ff9800" }} />
+    <Grid container>
+      <Grid item xs={3} sx={{ textAlign: "center" }}>
+        <IconButton sx={{ backgroundColor: "primary.light" }} onClick={clickHaircuts}>
+          <ContentCutIcon fontSize="large" sx={{ color: "primary.main" }} />
         </IconButton>
         <Typography variant="body1" sx={{ fontWeight: "bold" }}>
           Haircuts
         </Typography>
       </Grid>
-      <Grid item>
-        <IconButton sx={{ backgroundColor: "#fff3e0" }} onClick={clickMakeup}>
-          <BrushIcon fontSize="large" sx={{ color: "#ff9800" }} />
+      <Grid item xs={3} sx={{ textAlign: "center" }}>
+        <IconButton sx={{ backgroundColor: "primary.light" }} onClick={clickMakeup}>
+          <BrushIcon fontSize="large" sx={{ color: "primary.main" }} />
         </IconButton>
         <Typography variant="body1" sx={{ fontWeight: "bold" }}>
           Make up
         </Typography>
       </Grid>
-      <Grid item>
-        <IconButton sx={{ backgroundColor: "#fff3e0" }} onClick={clickManicure}>
-          <SpaIcon fontSize="large" sx={{ color: "#ff9800" }} />
+      <Grid item xs={3} sx={{ textAlign: "center" }}>
+        <IconButton sx={{ backgroundColor: "primary.light" }} onClick={clickManicure}>
+          <SpaIcon fontSize="large" sx={{ color: "primary.main" }} />
         </IconButton>
         <Typography variant="body1" sx={{ fontWeight: "bold" }}>
           Manicure
         </Typography>
       </Grid>
-      <Grid item>
-        <IconButton sx={{ backgroundColor: "#fff3e0" }} onClick={clickMassage}>
-          <FaceRetouchingNaturalIcon fontSize="large" sx={{ color: "#ff9800" }} />
+      <Grid item xs={3} sx={{ textAlign: "center" }}>
+        <IconButton sx={{ backgroundColor: "primary.light" }} onClick={clickMassage}>
+          <FaceRetouchingNaturalIcon fontSize="large" sx={{ color: "primary.main" }} />
         </IconButton>
         <Typography variant="body1" sx={{ fontWeight: "bold" }}>
           Massage

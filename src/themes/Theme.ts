@@ -32,11 +32,13 @@ declare module "@mui/material/Typography" {
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#EF6C00",
+      main: "#FFA726",
       light: "#FFE0B2",
+      dark: "#EF6C00",
+      contrastText: "#fff",
     },
     secondary: {
-      main: "rgb(0,0,0)",
+      main: "#000",
       light: "#616161",
     },
   },
@@ -80,31 +82,28 @@ const theme = createTheme({
     },
     body1: {
       fontSize: 20,
-      color: "#616161",
       "@media (max-width:450px)": {
         fontSize: 16,
       },
     },
     body2: {
       fontSize: 20,
-      color: "rgb(0,0,0)",
       fontWeight: 600,
       "@media (max-width:450px)": {
-        fontSize: 16,
+        fontSize: 14,
+        fontWeight: 500,
       },
-      linkTypo: {
-        fontSize: 20,
-        fontWeight: "bold",
-      },
-      infoTypo1: {
-        fontSize: 20,
-        color: "#616161",
-      },
-      infoTypo2: {
-        fontSize: 20,
-        color: "rgb(0,0,0)",
-        fontWeight: 600,
-      },
+    },
+    linkTypo: {
+      fontSize: 20,
+      fontWeight: "bold",
+    },
+    infoTypo1: {
+      fontSize: 20,
+    },
+    infoTypo2: {
+      fontSize: 20,
+      fontWeight: 600,
     },
   },
 });

@@ -24,7 +24,7 @@ const ChipTabHeader: React.FC<BarProp> = ({ isPage, heading, linktext, backward,
             <PendingOutlined fontSize="large" />
           </IconButton>
         ) : (
-          <Link href={forward} underline="none" variant="body2" color="primary.main">
+          <Link href={forward} underline="none" variant="body1" color="primary.main">
             {linktext}
           </Link>
         )}

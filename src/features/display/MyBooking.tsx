@@ -9,7 +9,7 @@ const MyBooking = () => {
       <Grid container>
         <Grid item>
           <AppBar position="fixed" sx={{ backgroundColor: "white" }}>
-            <Navbar pageHeading="My Booking" />
+            <Navbar />
           </AppBar>
         </Grid>
       </Grid>

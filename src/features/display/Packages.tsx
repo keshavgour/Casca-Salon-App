@@ -1,7 +1,7 @@
 import React from "react";
 import packagelist from "../../temp-object-file/Packages";
 import { Box, Button, Container, Divider, Grid, Paper, Typography } from "@mui/material";
-import ChipTabHeader from "../../components/ChipTabHeader";
+import ChipTabHeader from "../../components/TabHeader";
 import { Link as RouterLink } from "react-router-dom";
 interface PackageProps {
   isPage: boolean;

@@ -16,7 +16,7 @@ const Inbox = () => {
       <Grid container direction={"column"} spacing={4}>
         <Grid item>
           <AppBar position="fixed" sx={{ backgroundColor: "white" }}>
-            <Navbar pageHeading="Inbox" />
+            <Navbar />
           </AppBar>
         </Grid>
         <Grid item sx={{ mt: "64px" }}>

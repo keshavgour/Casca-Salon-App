@@ -8,7 +8,7 @@ export const Explore = () => {
       <Grid container>
         <Grid item>
           <AppBar position="fixed" sx={{ backgroundColor: "white" }}>
-            <Navbar pageHeading="Explore" />
+            <Navbar />
           </AppBar>
         </Grid>
       </Grid>

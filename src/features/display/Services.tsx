@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Divider, Stack } from "@mui/material";
-import ChipTabHeader from "../../components/ChipTabHeader";
+import ChipTabHeader from "../../components/TabHeader";
 import servicelist from "../../temp-object-file/Services";
 import BlockBtn from "../../components/BlockBtn";
 import ServiceBox from "../../components/ServiceBox";

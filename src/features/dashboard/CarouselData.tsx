@@ -1,5 +1,4 @@
 import React from "react";
-import { Grid } from "@mui/material";
 import Carousels from "features/Carousels";
 
 const CarouselData = () => {
@@ -24,9 +23,9 @@ const CarouselData = () => {
     },
   ];
   return (
-    <Grid>
+    <>
       <Carousels items={items} />
-    </Grid>
+    </>
   );
 };
 
