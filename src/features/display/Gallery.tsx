@@ -2,7 +2,7 @@ import React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { Container, Divider } from "@mui/material";
-import ChipTabHeader from "../../components/ChipTabHeader";
+import ChipTabHeader from "../../components/TabHeader";
 interface GalleryProps {
   isPage: boolean;
 }

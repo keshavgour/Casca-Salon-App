@@ -1,17 +1,17 @@
 import React from "react";
-import { BaseTextFieldProps, Grid, IconButton, InputAdornment, TextField } from "@mui/material";
+import { BaseTextFieldProps, IconButton, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import SortIcon from "@mui/icons-material/Sort";
 
 const InputComponent: React.FC<BaseTextFieldProps> = ({ type, placeholder }) => {
   return (
-    <Grid>
+    <>
       <TextField
         fullWidth
         type={type}
         placeholder={placeholder}
         variant="outlined"
-        sx={{ width: "850px", backgroundColor: "#fafafa" }}
+        sx={{ width: "80%", backgroundColor: "#fafafa" }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -29,7 +29,7 @@ const InputComponent: React.FC<BaseTextFieldProps> = ({ type, placeholder }) => 
           ),
         }}
       ></TextField>
-    </Grid>
+    </>
   );
 };
 

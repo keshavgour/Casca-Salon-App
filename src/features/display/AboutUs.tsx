@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Typography, Link, Grid } from "@mui/material";
-import ChipTabHeader from "../../components/ChipTabHeader";
+import ChipTabHeader from "../../components/TabHeader";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import BlockBtn from "../../components/BlockBtn";
 export default function AboutUs() {

@@ -8,7 +8,7 @@ import userReducer from "store/slices/userSlice";
 // import FilterReviewSlice from "./slices/FilterReviewSlice";
 import reviewSlice from "./slices/reviewSlice";
 import profileSlice from "./slices/profileSlice";
-
+import selectLabelSlice from "./slices/selectLabelSlice";
 export const store = configureStore({
   reducer: {
     registration: registrationReducer,
@@ -18,6 +18,7 @@ export const store = configureStore({
     // like: likeSlice,
     filterReview: reviewSlice,
     profile: profileSlice,
+    selectedLabel: selectLabelSlice,
   },
 });
 

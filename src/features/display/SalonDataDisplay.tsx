@@ -18,7 +18,7 @@ interface salonProps {
 
 const SalonDataDisplay: React.FC<salonProps> = ({ dataTODisplay }) => {
   return (
-    <Grid pt={2}>
+    <>
       {dataTODisplay.map((data) => (
         <Paper key={data.id}>
           <Grid container spacing={4} justifyContent="space-between">
@@ -70,7 +70,7 @@ const SalonDataDisplay: React.FC<salonProps> = ({ dataTODisplay }) => {
           </Grid>
         </Paper>
       ))}
-    </Grid>
+    </>
   );
 };
 

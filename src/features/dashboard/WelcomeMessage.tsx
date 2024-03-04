@@ -17,13 +17,9 @@ export const WelcomeMessage = () => {
   }, []);
 
   return (
-    <Grid container>
-      <Grid item>
-        <Typography variant="h4">Morning, {username}</Typography>
-      </Grid>
-      <Grid item pl={1.6}>
-        <WavingHandIcon sx={{ color: "#ff9800" }} fontSize="large" />
-      </Grid>
+    <Grid container alignItems="center" justifyContent="center">
+      <Typography variant="h4">Morning, {username}</Typography>
+      <WavingHandIcon sx={{ color: "primary.main", marginX: 2 }} fontSize="large" />
     </Grid>
   );
 };

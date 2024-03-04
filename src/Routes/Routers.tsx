@@ -38,9 +38,9 @@ export const Routers = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/forgotPassword" element={<ForgotPasswordPage />}></Route>
           <Route path="/" element={<RegisterPage />}></Route>
+          <Route path="/dashboard" element={<DashboardPage />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/editprofile" element={<EditProfile />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/notification" element={<Notification />} />
             <Route path="/security" element={<Security />} />
