@@ -1,30 +1,37 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import TextFieldComponent from "components/TextFieldComponent";
 import BackBtn from "components/BackBtn";
-// import { useSelector } from "react-redux";
-// import { RootState } from "store/store";
 import BlockBtn from "components/BlockBtn";
-import axiosInstance from "lib/axios";
+import editProfile from "Services/editProfileService";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "components/Loading";
 
 export const EditProfile = () => {
-  // const formData = useSelector((state: RootState) => state.signup);
+  const { isLoading, error, data: profileData } = useQuery({ queryKey: ["profile"], queryFn: editProfile });
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
-  useEffect(() => {
-    const getProfileData = async () => {
-      try {
-        const response = await axiosInstance.get(`/profile/getProfile`);
-        console.log(response.data);
-        return response.data;
-      } catch (error) {
-        console.error("Errro fetcing data :", error);
-      }
-    };
-    getProfileData();
-  }, []);
+
   const handleChange = () => {};
+
+  if (isLoading) {
+    return (
+      <>
+        <Loading />
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <h1>Error</h1>
+      </>
+    );
+  }
+
   return (
     <Container
       sx={{
@@ -41,7 +48,7 @@ export const EditProfile = () => {
           <BackBtn to="/profile" />
         </Grid>
         <Grid item xs={11} sx={{ display: "flex", alignItems: "center" }}>
-          <Typography variant="titleTypo" component="span">
+          <Typography variant="body2" component="span">
             Edit Profile
           </Typography>
         </Grid>
@@ -51,58 +58,29 @@ export const EditProfile = () => {
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <TextFieldComponent
-                label="Email"
-                name="email"
-                type="email"
-                onChange={handleChange}
-                fullWidth
-              />
+              <TextFieldComponent label="Email" name="email" type="email" value={profileData?.email} onChange={handleChange} fullWidth />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <TextFieldComponent
-                label="Full Name"
-                type="text"
-                name="fullName"
-                onChange={handleChange}
-                fullWidth
-              />
+              <TextFieldComponent label="Full Name" type="text" name="fullName" value={profileData?.fullName} onChange={handleChange} fullWidth />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <TextFieldComponent
-                label="Nickname"
-                type="text"
-                name="nickname"
-                onChange={handleChange}
-                fullWidth
-              />
+              <TextFieldComponent label="Nickname" type="text" name="nickname" value={profileData?.nickname} onChange={handleChange} fullWidth />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <TextFieldComponent
-                label=""
-                name="dateOfBirth"
-                type="date"
-                onChange={handleChange}
-                fullWidth
-              />
+              <TextFieldComponent label="" name="dateOfBirth" type="date" value={profileData?.dateOfBirth} onChange={handleChange} fullWidth />
             </Grid>
             <Grid item xs={12} sm={12}>
               <TextFieldComponent
                 label="Mobile Number"
                 name="mobileNumber"
                 type="number"
+                value={profileData?.mobileNumber}
                 onChange={handleChange}
                 fullWidth
               />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <TextFieldComponent
-                label="Gender"
-                name="gender"
-                type="text"
-                onChange={handleChange}
-                fullWidth
-              />
+              <TextFieldComponent label="Gender" name="gender" type="text" value={profileData?.gender} onChange={handleChange} fullWidth />
             </Grid>
             <Grid item xs={12}>
               <BlockBtn btnText="Update" btnSubText="" />

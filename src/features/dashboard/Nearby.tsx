@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Grid } from "@mui/material";
-// import ButtonComponent from "components/ButtonComponent";
 import AllData from "features/display/AllData";
 import NearByHaircuts from "features/display/NearbyHaircuts";
 import NearByMakeup from "features/display/NearbyMakeup";

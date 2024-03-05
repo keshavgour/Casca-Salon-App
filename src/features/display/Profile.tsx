@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  AppBar,
-  Avatar,
-  Button,
-  Container,
-  Grid,
-  IconButton,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { AppBar, Avatar, Button, Container, Grid, IconButton, Paper, Typography } from "@mui/material";
 import { Navbar } from "features/dashboard";
 import ShriRam from "assets/images/ShriRam.png";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
@@ -25,14 +16,32 @@ import ForwardArrowBtn from "components/ForwardArrowBtn";
 import logout from "Services/logoutService";
 import { useNavigate } from "react-router-dom";
 import ToggleSwitch from "components/ToggleSwitch";
+import { useQuery } from "@tanstack/react-query";
+import getProfileData from "Services/profileDataService";
+import Loading from "components/Loading";
 
 const Profile = () => {
+  const { isLoading, error, data: userDetails } = useQuery({ queryKey: ["profile"], queryFn: getProfileData });
   const navigate = useNavigate();
-
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
+
+  if (isLoading) {
+    return (
+      <>
+        <Loading />
+      </>
+    );
+  }
+  if (error) {
+    return (
+      <>
+        <h1>Error</h1>
+      </>
+    );
+  }
   return (
     <Container>
       <Grid container spacing={4} direction={"column"} alignItems="center">
@@ -48,11 +57,11 @@ const Profile = () => {
             </Grid>
             <Grid item>
               <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                Jay
+                {userDetails?.name}
               </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">jay@email.com</Typography>
+              <Typography variant="body1">{userDetails?.email}</Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -65,10 +74,7 @@ const Profile = () => {
                     <Grid container alignItems="center">
                       <Grid item>
                         <IconButton sx={{ ":hover": { backgroundColor: "#fff3e0" } }}>
-                          <PermIdentityIcon
-                            fontSize="large"
-                            sx={{ ":hover": { color: "#ff9800" } }}
-                          />
+                          <PermIdentityIcon fontSize="large" sx={{ ":hover": { color: "#ff9800" } }} />
                         </IconButton>
                       </Grid>
                       <Grid item pl={1}>
@@ -89,10 +95,7 @@ const Profile = () => {
                     <Grid container alignItems="center">
                       <Grid item>
                         <IconButton sx={{ ":hover": { backgroundColor: "#fff3e0" } }}>
-                          <NotificationsNoneIcon
-                            fontSize="large"
-                            sx={{ ":hover": { color: "#ff9800" } }}
-                          />
+                          <NotificationsNoneIcon fontSize="large" sx={{ ":hover": { color: "#ff9800" } }} />
                         </IconButton>
                       </Grid>
                       <Grid item pl={1}>
@@ -225,10 +228,7 @@ const Profile = () => {
                     <Grid container alignItems="center">
                       <Grid item>
                         <IconButton sx={{ ":hover": { backgroundColor: "#fff3e0" } }}>
-                          <PeopleOutlineIcon
-                            fontSize="large"
-                            sx={{ ":hover": { color: "#ff9800" } }}
-                          />
+                          <PeopleOutlineIcon fontSize="large" sx={{ ":hover": { color: "#ff9800" } }} />
                         </IconButton>
                       </Grid>
                       <Grid item pl={1}>
@@ -248,10 +248,7 @@ const Profile = () => {
               <Grid item>
                 <Button onClick={handleLogout}>
                   <LogoutIcon fontSize="large" sx={{ color: "red" }} />
-                  <Typography
-                    variant="h6"
-                    sx={{ textTransform: "none", color: "red", marginLeft: 2 }}
-                  >
+                  <Typography variant="h6" sx={{ textTransform: "none", color: "red", marginLeft: 2 }}>
                     Logout
                   </Typography>
                 </Button>
@@ -263,5 +260,4 @@ const Profile = () => {
     </Container>
   );
 };
-
 export default Profile;
