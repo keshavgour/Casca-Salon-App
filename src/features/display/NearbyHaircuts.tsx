@@ -7,7 +7,7 @@ const NearByHaircuts = () => {
   const nearbyHaircutData = [
     {
       id: 1,
-      shopName: "That's Cut",
+      name: "That's Cut",
       address: "883 Jackson Hill",
       distance: 8.4,
       rating: 4.1,
@@ -16,7 +16,7 @@ const NearByHaircuts = () => {
     },
     {
       id: 2,
-      shopName: "Belle Curls",
+      name: "Belle Curls",
       address: "0093 Novick Parkway",
       distance: 1.2,
       rating: 4.8,
@@ -25,7 +25,7 @@ const NearByHaircuts = () => {
     },
     {
       id: 3,
-      shopName: "Pretty Parlor",
+      name: "Pretty Parlor",
       address: "42 Fordem Avenue",
       distance: 1.4,
       rating: 4.9,
@@ -34,7 +34,7 @@ const NearByHaircuts = () => {
     },
     {
       id: 4,
-      shopName: "Hair Force",
+      name: "Hair Force",
       address: "813 Village Drive",
       distance: 3.4,
       rating: 4.6,
@@ -42,7 +42,7 @@ const NearByHaircuts = () => {
     },
     {
       id: 5,
-      shopName: "Serenity Salon",
+      name: "Serenity Salon",
       address: "88 Commercial Plaza",
       distance: 4.2,
       rating: 4.0,

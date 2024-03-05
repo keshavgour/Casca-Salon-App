@@ -7,7 +7,7 @@ const NearByMassage = () => {
   const nearbyMassageData = [
     {
       id: 1,
-      shopName: "Comb Together",
+      name: "Comb Together",
       address: "883 Jackson Hill",
       distance: 8.4,
       rating: 4.1,
@@ -16,7 +16,7 @@ const NearByMassage = () => {
     },
     {
       id: 2,
-      shopName: "Hairbreak",
+      name: "Hairbreak",
       address: "0093 Novick Parkway",
       distance: 1.2,
       rating: 4.8,
@@ -25,7 +25,7 @@ const NearByMassage = () => {
     },
     {
       id: 3,
-      shopName: "Massage Parlor",
+      name: "Massage Parlor",
       address: "42 Fordem Avenue",
       distance: 1.4,
       rating: 4.9,
@@ -33,7 +33,7 @@ const NearByMassage = () => {
     },
     {
       id: 4,
-      shopName: "Dreadlocks",
+      name: "Dreadlocks",
       address: "813 Village Drive",
       distance: 3.4,
       rating: 4.6,
@@ -42,7 +42,7 @@ const NearByMassage = () => {
     },
     {
       id: 5,
-      shopName: "Massage Salon",
+      name: "Massage Salon",
       address: "88 Commercial Plaza",
       distance: 4.2,
       rating: 4.0,

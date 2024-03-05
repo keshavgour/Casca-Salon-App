@@ -5,11 +5,11 @@ import StarHalfIcon from "@mui/icons-material/StarHalf";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 interface salonItem {
   id: number;
-  shopName: string;
   address: string;
   distance: number;
   rating: number;
   imageURL: string;
+  name: string;
 }
 
 interface salonProps {
@@ -35,11 +35,14 @@ const SalonDataDisplay: React.FC<salonProps> = ({ dataTODisplay }) => {
                   <Grid container direction={"column"} spacing={3} pl={2}>
                     <Grid item>
                       <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                        {data.shopName}
+                        {data.name}
                       </Typography>
                     </Grid>
                     <Grid item>
-                      <Typography variant="h6">{data.address}</Typography>
+                      <Typography variant="h6">
+                        {data.address}
+                        {data.name}
+                      </Typography>
                     </Grid>
                     <Grid item>
                       <Grid container>
@@ -47,7 +50,10 @@ const SalonDataDisplay: React.FC<salonProps> = ({ dataTODisplay }) => {
                           <LocationOnIcon fontSize="medium" sx={{ color: "#ff9800" }} />
                         </Grid>
                         <Grid item>
-                          <Typography variant="h6">{data.distance} km</Typography>
+                          <Typography variant="h6">
+                            {data.distance}
+                            km
+                          </Typography>
                         </Grid>
 
                         <Grid item pl={4} pt={0.3}>

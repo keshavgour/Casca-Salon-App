@@ -6,7 +6,7 @@ const MostPopularData = () => {
   const mostPopularSalon = [
     {
       id: 1,
-      shopName: "Hair Force",
+      name: "Hair Force",
       address: "813 Village Drive",
       distance: 3.4,
       rating: 4.6,
@@ -14,7 +14,7 @@ const MostPopularData = () => {
     },
     {
       id: 2,
-      shopName: "Serenity Salon",
+      name: "Serenity Salon",
       address: "88 Commercial Plaza",
       distance: 4.2,
       rating: 4.0,
@@ -23,7 +23,7 @@ const MostPopularData = () => {
     },
     {
       id: 3,
-      shopName: "The Razor's Edge",
+      name: "The Razor's Edge",
       address: "54 Artisan Avenue",
       distance: 4.5,
       rating: 4.6,
