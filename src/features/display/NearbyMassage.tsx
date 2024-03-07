@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-
-import SalonDataDisplay from "features/display/SalonDataDisplay";
+import CardsSaloonData from "components/CardsSaloonData";
 
 const NearByMassage = () => {
   const nearbyMassageData = [
@@ -37,8 +36,7 @@ const NearByMassage = () => {
       address: "813 Village Drive",
       distance: 3.4,
       rating: 4.6,
-      imageURL:
-        "https://www.heaventherapy.co.uk/files/2019/05/x22.jpg.pagespeed.gp+jp+pj+ws+js+rj+rp+ri+rm+cp+md+im=20.ic._V5xbe9rOT.jpg",
+      imageURL: "https://www.heaventherapy.co.uk/files/2019/05/x22.jpg.pagespeed.gp+jp+pj+ws+js+rj+rp+ri+rm+cp+md+im=20.ic._V5xbe9rOT.jpg",
     },
     {
       id: 5,
@@ -46,16 +44,19 @@ const NearByMassage = () => {
       address: "88 Commercial Plaza",
       distance: 4.2,
       rating: 4.0,
-      imageURL:
-        "https://naomisheadmasters.com/wp-content/uploads/2023/07/Beauty-Salons-For-Men-In-Panchkula.jpg",
+      imageURL: "https://naomisheadmasters.com/wp-content/uploads/2023/07/Beauty-Salons-For-Men-In-Panchkula.jpg",
     },
   ];
 
   return (
-    <Grid>
-      <SalonDataDisplay dataTODisplay={nearbyMassageData} />
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <CardsSaloonData dataTODisplay={nearbyMassageData} />
+      </Grid>
     </Grid>
   );
 };
-
 export default NearByMassage;
+{
+  /* <SalonDataDisplay dataTODisplay={nearbyMassageData} /> */
+}

@@ -67,30 +67,16 @@ export const Login = () => {
         justifyContent: "center",
       }}
     >
-      <Typography variant="h3" component="span" sx={{ marginY: 2 }}>
+      <Typography variant="h1" component="span" sx={{ marginY: 2 }}>
         Login to your Account!
       </Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <TextFieldComponent
-              label="Email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextFieldComponent label="Email" name="email" type="email" value={formData.email} onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12}>
-            <TextFieldComponent
-              label="Password"
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextFieldComponent label="Password" name="password" type="password" value={formData.password} onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12}>
             <Button
@@ -121,14 +107,10 @@ export const Login = () => {
           </Grid>
         </Grid>
       </form>
-      <Link
-        to="/forgotPassword"
-        component={RouterLink}
-        style={{ color: "#ff9800", textDecoration: "none" }}
-      >
+      <Link to="/forgotPassword" component={RouterLink} variant="caption" underline="hover">
         Forgot the password?
       </Link>
-      <Typography variant="subtitle2" component="span" pt={2}>
+      <Typography variant="caption" component="span" pt={2}>
         Not have an account ?{" "}
         <Link component={RouterLink} underline="hover" to="/">
           Click Here

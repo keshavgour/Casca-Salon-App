@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Container, Divider, Typography, Grid } from "@mui/material";
+import { Button, Container, Divider, Typography, Grid } from "@mui/material";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import GradeIcon from "@mui/icons-material/Grade";
 import Carousel from "components/MyCarousel";
@@ -13,20 +13,20 @@ import Gallery from "features/display/Gallery";
 import Packages from "features/display/Packages";
 import Review from "features/display/Review";
 import ChipTab from "components/ChipTab";
-import { FlexBoxRow } from "components/FlexBox";
+import { flexRowEnd, flexRowStart } from "sx/FlexStyles";
+
 export default function SaloonDetails() {
   const [selectChip, setselectChip] = useState("About us");
   const chipLabels = ["About us", "Services", "Package", "Gallery", "Review"];
   const handleChipClick = (chipName: string) => {
     setselectChip(chipName);
   };
-  const textVCenter = { display: "flex", alignItems: "center" };
   const btnOpen = {
     width: 150,
     height: 50,
     backgroundColor: "primary.main",
     borderRadius: 10,
-    fontSize: 15,
+    fontSize: 20,
     fontWeight: "bold",
     textTransform: "none",
     "@media (max-width:900px)": {
@@ -52,81 +52,58 @@ export default function SaloonDetails() {
   return (
     <Container>
       <Carousel />
-      <Box sx={{ boxSizing: "border-box", marginY: 3, p: 2 }}>
-        <Grid container rowSpacing={1}>
-          <Grid item xs={6} sx={textVCenter}>
-            <Typography variant="h2" component="span">
-              Galaxy Salon
-            </Typography>
-          </Grid>
-          <Grid item xs={6} sx={{ display: "flex", alignItems: "center", justifyContent: "end" }}>
-            <Button variant="contained" sx={btnOpen}>
-              Open
-            </Button>
-          </Grid>
-          <Grid item xs={12} sx={textVCenter}>
-            <LocationOnRoundedIcon sx={{ color: "primary.main", marginRight: 1 }} />
-            <Typography variant="body1" component="span">
-              0992, Novik Parkway
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sx={textVCenter}>
-            <GradeIcon sx={{ color: "primary.main", marginRight: 1 }} />
-            <Typography variant="body1" component="span">
-              4.9 (3,279 reviews)
-            </Typography>
-          </Grid>
+      <Grid container alignItems="center" rowSpacing={1}>
+        <Grid item xs={8}>
+          <Typography variant="h2" component="span">
+            Galaxy Salon
+          </Typography>
         </Grid>
-        <Box sx={{ marginY: 3 }}>
+        <Grid item xs={4} sx={flexRowEnd}>
+          <Button variant="contained" sx={btnOpen}>
+            Open
+          </Button>
+        </Grid>
+        <Grid item xs={12} sx={flexRowStart}>
+          <LocationOnRoundedIcon color="primary" sx={{ marginRight: 1 }} />
+          <Typography variant="h5" component="span" sx={{ color: "secondary.light" }}>
+            0992, Novik Parkway
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sx={flexRowStart}>
+          <GradeIcon color="primary" sx={{ marginRight: 1 }} />
+          <Typography variant="h5" component="span" sx={{ color: "secondary.light" }}>
+            4.9 (3,279 reviews)
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
           <NavBtnGrp />
-        </Box>
-        <Divider />
-        <ChipTabHeader
-          isPage={false}
-          heading="Our Specialists"
-          linktext="See All"
-          forward="/allspecialists"
-          backward=""
-        />
-        <FlexBoxRow sx={{ overflow: "hidden" }}>
-          {listSpecialist.map((card, index) => {
-            return (
-              <CardsSpecialists
-                key={index}
-                image={card.image}
-                title={card.title}
-                subtitle={card.subtitle}
-              />
-            );
-          })}
-        </FlexBoxRow>
-        <Box
-          sx={{
-            width: "inherit",
-            my: 3,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-evenly",
-            flexWrap: "wrap",
-          }}
-        >
-          {chipLabels.map((chiplabel, index) => {
-            return (
-              <ChipTab
-                key={index}
-                chipLabel={chiplabel}
-                selectedChip={selectChip}
-                clickFunction={() => handleChipClick(chiplabel)}
-              />
-            );
-          })}
-        </Box>
-        {selectChip === "About us" && <AboutUs />}
-        {selectChip === "Services" && <Services isPage={false} />}
-        {selectChip === "Package" && <Packages isPage={false} />}
-        {selectChip === "Gallery" && <Gallery isPage={false} />}
-        {selectChip === "Review" && <Review isPage={false} />}
-      </Box>
+        </Grid>
+      </Grid>
+      <Divider sx={{ marginY: 2 }} />
+      <ChipTabHeader isPage={false} heading="Our Specialists" linktext="See All" forward="/allspecialists" backward="" />
+      <Grid container wrap="nowrap" sx={{ overflow: "hidden" }}>
+        {listSpecialist.map((card, index) => {
+          return (
+            <Grid item key={index}>
+              <CardsSpecialists image={card.image} title={card.title} subtitle={card.subtitle} />
+            </Grid>
+          );
+        })}
+      </Grid>
+      <Grid container justifyContent="space-evenly" marginY={1}>
+        {chipLabels.map((chiplabel, index) => {
+          return (
+            <Grid item key={index}>
+              <ChipTab key={index} chipLabel={chiplabel} selectedChip={selectChip} clickFunction={() => handleChipClick(chiplabel)} />
+            </Grid>
+          );
+        })}
+      </Grid>
+      {selectChip === "About us" && <AboutUs />}
+      {selectChip === "Services" && <Services isPage={false} />}
+      {selectChip === "Package" && <Packages isPage={false} />}
+      {selectChip === "Gallery" && <Gallery isPage={false} />}
+      {selectChip === "Review" && <Review isPage={false} />}
     </Container>
   );
 }

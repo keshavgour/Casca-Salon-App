@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-
-import SalonDataDisplay from "features/display/SalonDataDisplay";
+import CardsSaloonData from "components/CardsSaloonData";
 
 const NearByManicure = () => {
   const nearbyManicureData = [
@@ -20,8 +19,7 @@ const NearByManicure = () => {
       address: "813 Village Drive",
       distance: 3.4,
       rating: 4.6,
-      imageURL:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbia6RVzBMILx79777-bksBo5dKazrG_uKmQ&usqp=CAU",
+      imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbia6RVzBMILx79777-bksBo5dKazrG_uKmQ&usqp=CAU",
     },
     {
       id: 3,
@@ -29,8 +27,7 @@ const NearByManicure = () => {
       address: "883 Jackson Hill",
       distance: 8.4,
       rating: 4.1,
-      imageURL:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx-Br7r24jEHVRwxvv0Y0pTG34jc1cf4GSbw&usqp=CAU",
+      imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx-Br7r24jEHVRwxvv0Y0pTG34jc1cf4GSbw&usqp=CAU",
     },
     {
       id: 4,
@@ -38,8 +35,7 @@ const NearByManicure = () => {
       address: "0093 Novick Parkway",
       distance: 1.2,
       rating: 4.8,
-      imageURL:
-        "https://img.favpng.com/0/19/11/pedicure-manicure-nail-salon-beauty-parlour-png-favpng-m7cTeGwQiEWL7MngGbTMyhkPL.jpg",
+      imageURL: "https://img.favpng.com/0/19/11/pedicure-manicure-nail-salon-beauty-parlour-png-favpng-m7cTeGwQiEWL7MngGbTMyhkPL.jpg",
     },
     {
       id: 5,
@@ -47,14 +43,15 @@ const NearByManicure = () => {
       address: "42 Fordem Avenue",
       distance: 1.4,
       rating: 4.9,
-      imageURL:
-        "https://img.freepik.com/free-photo/client-doing-hair-cut-barber-shop-salon_1303-20710.jpg",
+      imageURL: "https://img.freepik.com/free-photo/client-doing-hair-cut-barber-shop-salon_1303-20710.jpg",
     },
   ];
 
   return (
-    <Grid>
-      <SalonDataDisplay dataTODisplay={nearbyManicureData} />
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <CardsSaloonData dataTODisplay={nearbyManicureData} />
+      </Grid>
     </Grid>
   );
 };

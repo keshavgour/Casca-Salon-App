@@ -29,10 +29,10 @@ const CardsSpecialists: React.FC<CardProps> = ({ image, title, subtitle }) => {
       <Card sx={cardStyle}>
         <CardMedia sx={mediaStyle} image={image} title={title} />
         <CardContent sx={{ textAlign: "center" }}>
-          <Typography gutterBottom variant="body2" component="div">
+          <Typography gutterBottom variant="h6" component="div">
             {title}
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="caption" color="text.secondary">
             {subtitle}
           </Typography>
         </CardContent>

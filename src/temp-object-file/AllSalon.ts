@@ -1,16 +1,15 @@
 const allSalon = [
   {
     id: 1,
-    shopName: "Galaxy Salon",
+    name: "Galaxy Salon",
     address: "0993 Novic Parkway",
     distance: 3.4,
     rating: 4.8,
-    imageURL:
-      "https://naomisheadmasters.com/wp-content/uploads/2023/07/Beauty-Salons-For-Men-In-Panchkula.jpg",
+    imageURL: "https://naomisheadmasters.com/wp-content/uploads/2023/07/Beauty-Salons-For-Men-In-Panchkula.jpg",
   },
   {
     id: 2,
-    shopName: "Massage Parlor",
+    name: "Massage Parlor",
     address: "42 Fordem Avenue",
     distance: 1.4,
     rating: 4.9,
@@ -18,16 +17,15 @@ const allSalon = [
   },
   {
     id: 3,
-    shopName: "Amnesia",
+    name: "Amnesia",
     address: "0093 Novick Parkway",
     distance: 1.2,
     rating: 4.8,
-    imageURL:
-      "https://img.favpng.com/0/19/11/pedicure-manicure-nail-salon-beauty-parlour-png-favpng-m7cTeGwQiEWL7MngGbTMyhkPL.jpg",
+    imageURL: "https://img.favpng.com/0/19/11/pedicure-manicure-nail-salon-beauty-parlour-png-favpng-m7cTeGwQiEWL7MngGbTMyhkPL.jpg",
   },
   {
     id: 4,
-    shopName: "Bangs on Target",
+    name: "Bangs on Target",
     address: "883 Jackson Hill",
     distance: 8.4,
     rating: 4.1,
@@ -36,7 +34,7 @@ const allSalon = [
   },
   {
     id: 5,
-    shopName: "Hair Force",
+    name: "Hair Force",
     address: "813 Village Drive",
     distance: 3.4,
     rating: 4.6,

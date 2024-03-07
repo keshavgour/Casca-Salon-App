@@ -18,7 +18,7 @@ export const WelcomeMessage = () => {
 
   return (
     <Grid container alignItems="center" justifyContent="center">
-      <Typography variant="h4">Morning, {username}</Typography>
+      <Typography variant="h3">Morning, {username}</Typography>
       <WavingHandIcon sx={{ color: "primary.main", marginX: 2 }} fontSize="large" />
     </Grid>
   );

@@ -33,7 +33,6 @@ export const Register = () => {
     }
   };
 
-  
   return (
     <Container
       maxWidth="sm"
@@ -45,30 +44,16 @@ export const Register = () => {
         justifyContent: "center",
       }}
     >
-      <Typography variant="h2" component="span" sx={{ marginY: 2 }}>
+      <Typography variant="h1" component="span" sx={{ marginY: 2 }}>
         Create your Account
       </Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <TextFieldComponent
-              label="Email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextFieldComponent label="Email" name="email" type="email" value={formData.email} onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12}>
-            <TextFieldComponent
-              label="Password"
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextFieldComponent label="Password" name="password" type="password" value={formData.password} onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12}>
             <TextFieldComponent
@@ -101,7 +86,7 @@ export const Register = () => {
           </Grid>
         </Grid>
       </form>
-      <Typography variant="subtitle2" component="span" sx={{ marginY: 2 }}>
+      <Typography variant="caption" component="span" sx={{ marginY: 2 }}>
         Already have an account ?{" "}
         <Link component={RouterLink} underline="hover" to="/login">
           Click Here

@@ -24,9 +24,7 @@ interface ReviewObj {
 const Review: React.FC<ReviewProps> = ({ isPage }) => {
   const rating = ["All", "5", "4", "3", "2", "1"];
   const dispatch = useDispatch();
-  const { status, count, selectedChip, filteredreview } = useSelector(
-    (state: RootState) => state.filterReview
-  );
+  const { status, count, selectedChip, filteredreview } = useSelector((state: RootState) => state.filterReview);
 
   useEffect(() => {
     dispatch(setFilteredReviews(listReviews));
@@ -45,7 +43,7 @@ const Review: React.FC<ReviewProps> = ({ isPage }) => {
       <Grid container spacing={3} sx={{ my: 1 }}>
         <Grid item xs={8}>
           {isPage && <BackBtn to="/saloondetails" />}
-          <Typography variant="titleTypo" component="span">
+          <Typography variant="body1" component="span">
             {isPage ? (
               "Review"
             ) : (

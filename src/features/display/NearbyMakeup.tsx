@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-
-import SalonDataDisplay from "features/display/SalonDataDisplay";
+import CardsSaloonData from "components/CardsSaloonData";
 
 const NearByMakeup = () => {
   const nearbyMakeupData = [
@@ -11,8 +10,7 @@ const NearByMakeup = () => {
       address: "813 Village Drive",
       distance: 3.4,
       rating: 4.6,
-      imageURL:
-        "https://content.jdmagicbox.com/comp/def_content/beauty-parlours-for-facial/screenshot-85-beauty-parlours-for-facial-8-k7gdh.jpg",
+      imageURL: "https://content.jdmagicbox.com/comp/def_content/beauty-parlours-for-facial/screenshot-85-beauty-parlours-for-facial-8-k7gdh.jpg",
     },
     {
       id: 2,
@@ -38,8 +36,7 @@ const NearByMakeup = () => {
       address: "0093 Novick Parkway",
       distance: 1.2,
       rating: 4.8,
-      imageURL:
-        "https://img.favpng.com/6/13/23/beauty-parlour-cosmetics-permanent-makeup-hair-png-favpng-TBcjBkBGhwDnctrS3nnH2Yde9.jpg",
+      imageURL: "https://img.favpng.com/6/13/23/beauty-parlour-cosmetics-permanent-makeup-hair-png-favpng-TBcjBkBGhwDnctrS3nnH2Yde9.jpg",
     },
     {
       id: 5,
@@ -47,16 +44,19 @@ const NearByMakeup = () => {
       address: "42 Fordem Avenue",
       distance: 1.4,
       rating: 4.9,
-      imageURL:
-        "https://img.freepik.com/free-photo/client-doing-hair-cut-barber-shop-salon_1303-20710.jpg",
+      imageURL: "https://img.freepik.com/free-photo/client-doing-hair-cut-barber-shop-salon_1303-20710.jpg",
     },
   ];
 
   return (
-    <Grid>
-      <SalonDataDisplay dataTODisplay={nearbyMakeupData} />
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <CardsSaloonData dataTODisplay={nearbyMakeupData} />
+      </Grid>
     </Grid>
   );
 };
-
 export default NearByMakeup;
+{
+  /* <SalonDataDisplay dataTODisplay={nearbyMakeupData} /> */
+}

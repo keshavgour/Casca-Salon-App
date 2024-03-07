@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Divider, Stack } from "@mui/material";
+import { Container, Divider, Grid } from "@mui/material";
 import ChipTabHeader from "../../components/TabHeader";
 import servicelist from "../../temp-object-file/Services";
 import BlockBtn from "../../components/BlockBtn";
@@ -10,19 +10,17 @@ interface ServiceProps {
 const Services: React.FC<ServiceProps> = ({ isPage }) => {
   return (
     <Container>
-      <ChipTabHeader
-        isPage={isPage}
-        heading="Our Services"
-        linktext="See All"
-        forward="/allservices"
-        backward="/saloondetails"
-      />
+      <ChipTabHeader isPage={isPage} heading="Our Services" linktext="See All" forward="/allservices" backward="/saloondetails" />
       <Divider />
-      <Stack direction="column" spacing={3} sx={{ width: "98%", marginX: "auto", marginY: 2 }}>
+      <Grid container spacing={1} marginY={2}>
         {servicelist.map((list, index) => {
-          return <ServiceBox title={list.title} types={list.types} to="/haircut" key={index} />;
+          return (
+            <Grid item xs={12} key={index}>
+              <ServiceBox title={list.title} types={list.types} to="/haircut" key={index} />
+            </Grid>
+          );
         })}
-      </Stack>
+      </Grid>
       <BlockBtn btnText="Book Now" btnSubText="" />
     </Container>
   );

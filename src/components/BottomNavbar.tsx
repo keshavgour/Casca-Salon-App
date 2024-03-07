@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectedLabel } from "store/slices/selectLabelSlice";
 import { RootState } from "store/store";
 import { useNavigate } from "react-router-dom";
+import { flexColCenter } from "sx/FlexStyles";
 
 const BottomNavbar = () => {
   const navigate = useNavigate();
@@ -20,81 +21,61 @@ const BottomNavbar = () => {
   };
   return (
     <Grid container justifyContent="space-around" spacing={2}>
-      <Grid item xs={2.3} sx={{ textAlign: "center" }}>
+      <Grid item xs={2.3} sx={flexColCenter}>
         <IconButton
           onClick={() => handleIconClick("dashboard")}
-          sx={{ ":hover": { backgroundColor: "#fff3e0" } }}
+          sx={{ ":hover": { backgroundColor: "primary.light" }, fontSize: { xs: "30px", sm: "30px", md: "35px", lg: "35px" } }}
         >
-          <HomeIcon
-            sx={
-              selected === "dashboard" ? { color: "#ff9800" } : { "&:hover": { color: "#ff9800" } }
-            }
-            fontSize="large"
-          />
+          <HomeIcon sx={selected === "dashboard" ? { color: "primary.dark" } : { "&:hover": { color: "primary.dark" } }} fontSize="inherit" />
         </IconButton>
-        <Typography variant="body2" sx={{ color: "black" }}>
+        <Typography variant="button" component="span" color="secondary">
           Home
         </Typography>
       </Grid>
-      <Grid item xs={2.3} sx={{ textAlign: "center" }}>
+      <Grid item xs={2.3} sx={flexColCenter}>
         <IconButton
           onClick={() => handleIconClick("explore")}
-          sx={{ ":hover": { backgroundColor: "#fff3e0" } }}
+          sx={{ ":hover": { backgroundColor: "primary.light" }, fontSize: { xs: "30px", sm: "30px", md: "35px", lg: "35px" } }}
         >
-          <RoomIcon
-            sx={selected === "explore" ? { color: "#ff9800" } : { "&:hover": { color: "#ff9800" } }}
-            fontSize="large"
-          />
+          <RoomIcon sx={selected === "explore" ? { color: "primary.dark" } : { "&:hover": { color: "primary.dark" } }} fontSize="inherit" />
         </IconButton>
-        <Typography variant="body2" sx={{ color: "black" }}>
+        <Typography variant="button" component="span" color="secondary">
           Explore
         </Typography>
       </Grid>
-      <Grid item xs={2.3} sx={{ textAlign: "center" }}>
+      <Grid item xs={2.3} sx={flexColCenter}>
         <IconButton
           onClick={() => handleIconClick("myBooking")}
-          sx={{ ":hover": { backgroundColor: "#fff3e0" } }}
+          sx={{ ":hover": { backgroundColor: "primary.light" }, fontSize: { xs: "30px", sm: "30px", md: "35px", lg: "35px" } }}
         >
-          <ListAltIcon
-            sx={
-              selected === "myBooking" ? { color: "#ff9800" } : { "&:hover": { color: "#ff9800" } }
-            }
-            fontSize="large"
-          />
+          <ListAltIcon sx={selected === "myBooking" ? { color: "primary.dark" } : { "&:hover": { color: "primary.dark" } }} fontSize="inherit" />
         </IconButton>
-        <Typography variant="body2" sx={{ color: "black" }}>
-          My Booking
+        <Typography variant="button" component="span" color="secondary">
+          Booking
         </Typography>
       </Grid>
-      <Grid item xs={2.3} sx={{ textAlign: "center" }}>
+      <Grid item xs={2.3} sx={flexColCenter}>
         <IconButton
           onClick={() => handleIconClick("inbox")}
-          sx={{ ":hover": { backgroundColor: "#fff3e0" } }}
+          sx={{ ":hover": { backgroundColor: "primary.light" }, fontSize: { xs: "30px", sm: "30px", md: "35px", lg: "35px" } }}
         >
-          <ChatBubbleIcon
-            sx={selected === "inbox" ? { color: "#ff9800" } : { "&:hover": { color: "#ff9800" } }}
-            fontSize="large"
-          />
+          <ChatBubbleIcon sx={selected === "inbox" ? { color: "primary.dark" } : { "&:hover": { color: "primary.dark" } }} fontSize="inherit" />
         </IconButton>
-        <Typography variant="body2" sx={{ color: "black" }}>
+        <Typography variant="button" component="span" color="secondary">
           Inbox
         </Typography>
       </Grid>
-      <Grid item xs={2.3} sx={{ textAlign: "center" }}>
+      <Grid item xs={2.3} sx={flexColCenter}>
         <IconButton
           onClick={() => handleIconClick("notifications")}
-          sx={{ ":hover": { backgroundColor: "#fff3e0" } }}
+          sx={{ ":hover": { backgroundColor: "primary.light" }, fontSize: { xs: "30px", sm: "30px", md: "35px", lg: "35px" } }}
         >
           <NotificationsIcon
-            sx={
-              selected === "notifications"
-                ? { color: "#ff9800" }
-                : { "&:hover": { color: "#ff9800" } }
-            }
-            fontSize="large"
+            sx={selected === "notifications" ? { color: "primary.dark" } : { "&:hover": { color: "primary.dark" } }}
+            fontSize="inherit"
           />
         </IconButton>
-        <Typography variant="body2" sx={{ color: "black" }}>
+        <Typography variant="button" component="span" color="secondary">
           Notifications
         </Typography>
       </Grid>

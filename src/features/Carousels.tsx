@@ -15,19 +15,24 @@ interface CarouselProps {
 
 const Carousels: React.FC<CarouselProps> = ({ items }) => {
   return (
-    <Carousel
-      sx={{
-        backgroundColor: "primary.main",
-        borderRadius: "30px",
-        width: "850px",
-        height: "200px",
-        boxSizing: "border-box",
-      }}
-    >
-      {items.map((item, index) => (
-        <Item key={index} item={item} />
-      ))}
-    </Carousel>
+    <Grid container justifyContent="center">
+      <Grid item xs={12} sm={10} md={10} lg={10}>
+        <Carousel
+          sx={{
+            width: "inherit",
+            height: "180px",
+            boxSizing: "border-box",
+            backgroundColor: "primary.main",
+            borderRadius: "30px",
+            padding: 1,
+          }}
+        >
+          {items.map((item, index) => (
+            <Item key={index} item={item} />
+          ))}
+        </Carousel>
+      </Grid>
+    </Grid>
   );
 };
 
@@ -39,10 +44,10 @@ const Item: React.FC<ItemProps> = ({ item }) => {
   const { name, description, discount, validity } = item;
 
   return (
-    <Grid container borderRadius={8} width={800}>
+    <Grid container>
       <Grid item xs={12}>
         <Grid container margin="1rem 0 0 1rem" justifyContent="space-between">
-          <Grid item xs={10}>
+          <Grid item lg={10} xs={9}>
             <Typography variant="body1" color="white">
               {discount} OFF
             </Typography>
@@ -50,7 +55,7 @@ const Item: React.FC<ItemProps> = ({ item }) => {
               {name}
             </Typography>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item lg={2} xs={3} sx={{ textAlign: "center" }}>
             <Typography variant="h2" color="white">
               {discount}
             </Typography>

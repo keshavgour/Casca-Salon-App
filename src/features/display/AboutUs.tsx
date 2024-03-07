@@ -3,6 +3,7 @@ import { Box, Typography, Link, Grid } from "@mui/material";
 import ChipTabHeader from "../../components/TabHeader";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import BlockBtn from "../../components/BlockBtn";
+import { flexRowStart } from "sx/FlexStyles";
 export default function AboutUs() {
   const [isExpand, setIsExpand] = useState(false);
   const handleExpand = () => {
@@ -12,20 +13,18 @@ export default function AboutUs() {
     <Box sx={{ width: "inherit", boxSizing: "border-box" }}>
       <Grid container rowSpacing={2}>
         <Grid item xs={12}>
-          <Typography variant="body1" component="span">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero nulla rem illo error
-            eaque, sit sequi unde perspiciatis quae, est provident consequatur ipsam! Cupiditate,
-            omnis! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut consectetur enim,
-            obcaecati omnis pariatur quos.
+          <Typography variant="body2" component="span" color="secondary.light">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero nulla rem illo error eaque, sit sequi unde perspiciatis quae, est
+            provident consequatur ipsam! Cupiditate, omnis! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut consectetur enim, obcaecati
+            omnis pariatur quos.
             {isExpand && (
-              <Typography variant="body1" component="span">
+              <Typography variant="body2" component="span" color="secondary.light">
                 {" "}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, quo! Lorem ipsum
-                dolor sit amet consectetur adipisicing elit. Quod unde repudiandae sint similique
-                maxime nemo?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, quo! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+                unde repudiandae sint similique maxime nemo?
               </Typography>
             )}
-            <Link variant="linkTypo" underline="none" onClick={handleExpand}>
+            <Link variant="body1" color="primary.main" underline="none" onClick={handleExpand}>
               {isExpand ? "" : " Read more..."}
             </Link>
           </Typography>
@@ -38,18 +37,18 @@ export default function AboutUs() {
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="body1" component="span">
+              <Typography variant="body2" component="span" color="secondary.light">
                 Monday - Friday
               </Typography>
-              <Typography variant="body2" component="span" sx={{ marginLeft: "24px" }}>
+              <Typography variant="body1" component="span" sx={{ marginLeft: "24px" }}>
                 : 08:00 AM - 21:00 PM
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="body1" component="span">
+              <Typography variant="body2" component="span" color="secondary.light">
                 Saturday - Sunday
               </Typography>
-              <Typography variant="body2" component="span" sx={{ marginLeft: "9px" }}>
+              <Typography variant="body1" component="span" sx={{ marginLeft: "9px" }}>
                 : 10:00 AM - 20:00 PM
               </Typography>
             </Grid>
@@ -74,17 +73,11 @@ export default function AboutUs() {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <ChipTabHeader
-            isPage={false}
-            heading="Our Address"
-            linktext="See on Maps"
-            forward="/"
-            backward=""
-          />
+          <ChipTabHeader isPage={false} heading="Our Address" linktext="See on Maps" forward="/" backward="" />
         </Grid>
-        <Grid item xs={12} sx={{ display: "flex", alignItems: "center" }}>
+        <Grid item xs={12} sx={flexRowStart}>
           <LocationOnRoundedIcon sx={{ color: "primary.main", marginRight: 2 }} />
-          <Typography variant="body1" component="span">
+          <Typography variant="body2" component="span" color="secondary.light">
             0992, Novik Parkway
           </Typography>
         </Grid>

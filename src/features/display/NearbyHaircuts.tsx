@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-
-import SalonDataDisplay from "features/display/SalonDataDisplay";
+import CardsSaloonData from "components/CardsSaloonData";
 
 const NearByHaircuts = () => {
   const nearbyHaircutData = [
@@ -11,8 +10,7 @@ const NearByHaircuts = () => {
       address: "883 Jackson Hill",
       distance: 8.4,
       rating: 4.1,
-      imageURL:
-        "https://img.freepik.com/free-photo/female-hairdresser-using-hairbrush-hair-dryer_329181-1929.jpg",
+      imageURL: "https://img.freepik.com/free-photo/female-hairdresser-using-hairbrush-hair-dryer_329181-1929.jpg",
     },
     {
       id: 2,
@@ -20,8 +18,7 @@ const NearByHaircuts = () => {
       address: "0093 Novick Parkway",
       distance: 1.2,
       rating: 4.8,
-      imageURL:
-        "https://img.freepik.com/premium-photo/shooting-beauty-salon-barber-cuts-hair-little-boy-with-machine_137321-1649.jpg",
+      imageURL: "https://img.freepik.com/premium-photo/shooting-beauty-salon-barber-cuts-hair-little-boy-with-machine_137321-1649.jpg",
     },
     {
       id: 3,
@@ -29,8 +26,7 @@ const NearByHaircuts = () => {
       address: "42 Fordem Avenue",
       distance: 1.4,
       rating: 4.9,
-      imageURL:
-        "https://img.freepik.com/free-photo/client-doing-hair-cut-barber-shop-salon_1303-20710.jpg",
+      imageURL: "https://img.freepik.com/free-photo/client-doing-hair-cut-barber-shop-salon_1303-20710.jpg",
     },
     {
       id: 4,
@@ -46,16 +42,19 @@ const NearByHaircuts = () => {
       address: "88 Commercial Plaza",
       distance: 4.2,
       rating: 4.0,
-      imageURL:
-        "https://naomisheadmasters.com/wp-content/uploads/2023/07/Beauty-Salons-For-Men-In-Panchkula.jpg",
+      imageURL: "https://naomisheadmasters.com/wp-content/uploads/2023/07/Beauty-Salons-For-Men-In-Panchkula.jpg",
     },
   ];
 
   return (
-    <Grid>
-      <SalonDataDisplay dataTODisplay={nearbyHaircutData} />
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <CardsSaloonData dataTODisplay={nearbyHaircutData} />
+      </Grid>
     </Grid>
   );
 };
-
 export default NearByHaircuts;
+{
+  /* <SalonDataDisplay dataTODisplay={nearbyHaircutData} /> */
+}

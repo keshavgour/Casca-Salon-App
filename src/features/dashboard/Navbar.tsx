@@ -5,6 +5,7 @@ import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import { useLocation, useNavigate } from "react-router-dom";
 import BottomNavbar from "components/BottomNavbar";
 import { Box } from "@mui/system";
+import { flexColCenter } from "sx/FlexStyles";
 
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export const Navbar: React.FC = () => {
   };
   return (
     <Grid container justifyContent="space-between">
-      <Grid item lg={2} md={2} sm={2} xs={6} sx={{ display: "flex", alignItems: "center" }}>
+      <Grid item lg={1} md={1} sm={2} xs={6} sx={{ display: "flex", alignItems: "center" }}>
         <img src={logo} alt="logo" width="55px" style={{ marginRight: 5 }} />
         <Typography variant="h4" component="span" color="black">
           Casca
@@ -40,21 +41,11 @@ export const Navbar: React.FC = () => {
         <BottomNavbar />
       </Grid>
       <Grid item lg={1} md={1} sm={1} xs={6} sx={{ textAlign: "end" }}>
-        <Box sx={{ textAlign: "center" }}>
-          <IconButton
-            onClick={() => handleIconClick("profile")}
-            sx={{ ":hover": { backgroundColor: "#fff3e0" } }}
-          >
-            <PermIdentityIcon
-              sx={
-                selectedIcon === "profile"
-                  ? { color: "#ff9800" }
-                  : { "&:hover": { color: "#ff9800" } }
-              }
-              fontSize="large"
-            />
+        <Box sx={flexColCenter}>
+          <IconButton onClick={() => handleIconClick("profile")} sx={{ ":hover": { backgroundColor: "#fff3e0" } }}>
+            <PermIdentityIcon sx={selectedIcon === "profile" ? { color: "#ff9800" } : { "&:hover": { color: "#ff9800" } }} fontSize="large" />
           </IconButton>
-          <Typography variant="body2" sx={{ color: "black" }}>
+          <Typography variant="button" sx={{ color: "black" }}>
             Profile
           </Typography>
         </Box>
