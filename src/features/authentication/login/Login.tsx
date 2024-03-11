@@ -74,10 +74,24 @@ export const Login = () => {
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <TextFieldComponent label="Email" name="email" type="email" value={formData.email} onChange={handleChange} fullWidth />
+            <TextFieldComponent
+              label="Email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              fullWidth
+            />
           </Grid>
           <Grid item xs={12}>
-            <TextFieldComponent label="Password" name="password" type="password" value={formData.password} onChange={handleChange} fullWidth />
+            <TextFieldComponent
+              label="Password"
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+              fullWidth
+            />
           </Grid>
           <Grid item xs={12}>
             <Button

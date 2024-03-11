@@ -38,7 +38,6 @@ export const Signup = () => {
     } catch (error) {
       throw new Error("Failed to register");
     }
-    
   };
   return (
     <Container maxWidth="sm">
@@ -51,44 +50,16 @@ export const Signup = () => {
             <Typography variant="h4">Fill Your Profile</Typography>
           </Grid>
           <Grid item xs={12}>
-            <TextFieldComponent
-              label="Email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextFieldComponent label="Email" name="email" type="email" value={formData.email} onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12} sm={12}>
-            <TextFieldComponent
-              label="Full Name"
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextFieldComponent label="Full Name" type="text" name="fullName" value={formData.fullName} onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12} sm={12}>
-            <TextFieldComponent
-              label="Nickname"
-              type="text"
-              name="nickname"
-              value={formData.nickname}
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextFieldComponent label="Nickname" type="text" name="nickname" value={formData.nickname} onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12} sm={12}>
-            <TextFieldComponent
-              label=""
-              name="dateOfBirth"
-              type="date"
-              value={formData.dateOfBirth}
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextFieldComponent label="" name="dateOfBirth" type="date" value={formData.dateOfBirth} onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12} sm={12}>
             <TextFieldComponent
@@ -101,14 +72,7 @@ export const Signup = () => {
             />
           </Grid>
           <Grid item xs={12} sm={12}>
-            <TextFieldComponent
-              label="Gender"
-              name="gender"
-              type="text"
-              value={formData.gender}
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextFieldComponent label="Gender" name="gender" type="text" value={formData.gender} onChange={handleChange} fullWidth />
             {/* <FormControl fullWidth variant="outlined">
               <InputLabel id="gender-label">Gender</InputLabel>
               <Select

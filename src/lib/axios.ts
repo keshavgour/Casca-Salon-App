@@ -1,3 +1,4 @@
+import { validateToken } from "Services/validateToken";
 import axios from "axios";
 
 const axiosInstance = axios.create({
@@ -19,24 +20,9 @@ axiosInstance.interceptors.response.use(
     }
     return res;
   },
-  async (err) => {
-    const originalRequest = err.config;
-    if (err.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-
-      try {
-        const refresh_token = localStorage.getItem("refresh_token");
-        const response = await axiosInstance.post("/auth/refresh", { refresh_token });
-        console.log(response);
-        const access_token = response.data;
-
-        localStorage.setItem("access_token", access_token);
-
-        originalRequest.headers.Authorization = `Bearer ${access_token}`;
-        return axios(originalRequest);
-      } catch (error) {
-        console.log(error);
-      }
+  (err) => {
+    if (err.response.status === 401) {
+      validateToken();
     }
     return Promise.reject(err);
   }

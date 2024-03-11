@@ -40,7 +40,7 @@ export default function AboutUs() {
               <Typography variant="body2" component="span" color="secondary.light">
                 Monday - Friday
               </Typography>
-              <Typography variant="body1" component="span" sx={{ marginLeft: "24px" }}>
+              <Typography variant="body1" component="span" sx={{ marginLeft: "24px", fontWeight: "bold" }}>
                 : 08:00 AM - 21:00 PM
               </Typography>
             </Grid>
@@ -48,7 +48,7 @@ export default function AboutUs() {
               <Typography variant="body2" component="span" color="secondary.light">
                 Saturday - Sunday
               </Typography>
-              <Typography variant="body1" component="span" sx={{ marginLeft: "9px" }}>
+              <Typography variant="body1" component="span" sx={{ marginLeft: "9px", fontWeight: "bold" }}>
                 : 10:00 AM - 20:00 PM
               </Typography>
             </Grid>

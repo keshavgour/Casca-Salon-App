@@ -36,11 +36,10 @@ const Profile = () => {
     );
   }
   if (error) {
-    return (
-      <>
-        <h1>Error</h1>
-      </>
-    );
+    console.log(error.message);
+    <>
+      <h1>Error</h1>
+    </>;
   }
   return (
     <Container>

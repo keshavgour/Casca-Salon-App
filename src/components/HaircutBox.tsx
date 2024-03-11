@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Paper, Radio, Typography } from "@mui/material";
+import { Grid, Paper, Radio, Typography } from "@mui/material";
+import { flexColStart, flexRowCenter } from "sx/FlexStyles";
 interface HaircutBoxProps {
   hid: number;
   image: string;
@@ -9,51 +10,26 @@ interface HaircutBoxProps {
 }
 const HaircutBox: React.FC<HaircutBoxProps> = ({ hid, image, haircut, booking, price }) => {
   return (
-    <Paper
-      elevation={2}
-      sx={{
-        width: "90%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        borderRadius: 5,
-        mx: "auto",
-        my: 3,
-        p: 3,
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box>
-          <img
-            src={image}
-            alt={haircut}
-            style={{ width: 100, height: 100, borderRadius: 15, marginRight: 10 }}
-          />
-        </Box>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <Typography variant="infoTypo2" component="span">
+    <Paper elevation={2} sx={{ p: 2 }}>
+      <Grid container>
+        <Grid item xs={2} sx={flexRowCenter}>
+          <img src={image} alt={haircut} style={{ width: 100, height: 100, borderRadius: 15, marginRight: 10 }} />
+        </Grid>
+        <Grid item xs={9} sx={flexColStart}>
+          <Typography variant="h5" component="span" sx={{ fontWeight: "bold" }}>
             {haircut}
           </Typography>
-          <Typography variant="infoTypo1" component="span">
+          <Typography variant="h6" component="span" sx={{ color: "secondary.light" }}>
             {booking} booked
           </Typography>
-          <Typography variant="linkTypo" component="span" color="primary.main">
+          <Typography variant="h5" component="span" sx={{ fontWeight: "bold", color: "primary.main" }}>
             ${price}
           </Typography>
-        </Box>
-      </Box>
-      <Radio
-        value={hid}
-        name="radio-buttons"
-        inputProps={{ "aria-label": "A" }}
-        sx={{ color: "primary.main" }}
-      />
+        </Grid>
+        <Grid item xs={1} sx={flexRowCenter}>
+          <Radio value={hid} name="radio-buttons" inputProps={{ "aria-label": "A" }} sx={{ color: "primary.main" }} />
+        </Grid>
+      </Grid>
     </Paper>
   );
 };

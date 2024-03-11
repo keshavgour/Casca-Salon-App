@@ -1,34 +1,4 @@
 import { createTheme } from "@mui/material";
-declare module "@mui/material/styles" {
-  interface TypographyVariants {
-    heading: React.CSSProperties;
-    linkTypo: React.CSSProperties;
-    titleTypo: React.CSSProperties;
-    infoTypo1: React.CSSProperties;
-    infoTypo2: React.CSSProperties;
-  }
-
-  // allow configuration using `createTheme`
-  interface TypographyVariantsOptions {
-    heading?: React.CSSProperties;
-    linkTypo?: React.CSSProperties;
-    titleTypo?: React.CSSProperties;
-    infoTypo1?: React.CSSProperties;
-    infoTypo2?: React.CSSProperties;
-  }
-}
-
-// Update the Typography's variant prop options
-declare module "@mui/material/Typography" {
-  interface TypographyPropsVariantOverrides {
-    heading: true;
-    linkTypo: true;
-    titleTypo: true;
-    infoTypo1: true;
-    infoTypo2: true;
-  }
-}
-
 const theme = createTheme({
   palette: {
     primary: {
@@ -91,10 +61,14 @@ const theme = createTheme({
     },
     h5: {
       fontSize: 23,
-      fontWeight: 500,
+      fontWeight: 800,
       "@media (max-width:600px)": {
+        fontSize: 20,
+        fontWeight: 600,
+      },
+      "@media (max-width:450px)": {
         fontSize: 18,
-        fontWeight: 500,
+        fontWeight: 600,
       },
     },
     h6: {
@@ -107,23 +81,26 @@ const theme = createTheme({
     },
     body1: {
       fontSize: 20,
-      fontWeight: "bolder",
+      fontWeight: "bold",
       "@media (max-width:600px)": {
         fontSize: 18,
-        fontWeight: 800,
+        fontWeight: "bold",
       },
       "@media (max-width:450px)": {
         fontSize: 16,
-        fontWeight: 600,
+        fontWeight: "bold",
       },
     },
     body2: {
-      fontSize: 20,
+      fontSize: 18,
+      color: "secondary.light",
       "@media (max-width:600px)": {
-        fontSize: 18,
+        fontSize: 16,
+        color: "secondary.light",
       },
       "@media (max-width:450px)": {
-        fontSize: 16,
+        fontSize: 14,
+        color: "secondary.light",
       },
     },
     button: {
@@ -146,17 +123,6 @@ const theme = createTheme({
         fontSize: 13,
         fontWeight: 300,
       },
-    },
-    linkTypo: {
-      fontSize: 20,
-      fontWeight: "bold",
-    },
-    infoTypo1: {
-      fontSize: 20,
-    },
-    infoTypo2: {
-      fontSize: 20,
-      fontWeight: 600,
     },
   },
 });
