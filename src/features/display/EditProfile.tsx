@@ -1,37 +1,45 @@
-import React from "react";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import React, { useEffect } from "react";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import TextFieldComponent from "components/TextFieldComponent";
 import BackBtn from "components/BackBtn";
-import BlockBtn from "components/BlockBtn";
-import editProfile from "Services/editProfileService";
-import { useQuery } from "@tanstack/react-query";
-import Loading from "components/Loading";
+import { useActions } from "hooks/useActions";
+import { useSelector } from "react-redux";
+import { RootState } from "store/store";
+import { flexRowStart } from "sx/FlexStyles";
+import getProfileDetails from "Services/getProfileDetailsService";
+import updateProfileDetails from "Services/updateProfileDetailsService";
 
 export const EditProfile = () => {
-  const { isLoading, error, data: profileData } = useQuery({ queryKey: ["profile"], queryFn: editProfile });
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const profileData = useSelector((state: RootState) => state.editprofile);
+  const { setProfileDetails } = useActions();
+  useEffect(() => {
+    try {
+      getProfileDetails().then((response) => {
+        if (response) {
+          setProfileDetails(response);
+          console.log(profileData);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { name, value },
+    } = event;
+    setProfileDetails({ ...profileData, [name]: value });
   };
-
-  const handleChange = () => {};
-
-  if (isLoading) {
-    return (
-      <>
-        <Loading />
-      </>
-    );
-  }
-
-  if (error) {
-    return (
-      <>
-        <h1>Error</h1>
-      </>
-    );
-  }
-
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      const res = updateProfileDetails(profileData.id, profileData);
+      console.log(res);
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Container
       sx={{
@@ -44,30 +52,55 @@ export const EditProfile = () => {
       }}
     >
       <Grid container sx={{ marginY: 1 }}>
-        <Grid item xs={1} sx={{ textAlign: "end" }}>
+        <Grid item xs={12} sx={flexRowStart}>
           <BackBtn to="/profile" />
-        </Grid>
-        <Grid item xs={11} sx={{ display: "flex", alignItems: "center" }}>
-          <Typography variant="body2" component="span">
+          <Typography variant="h4" component="span">
             Edit Profile
           </Typography>
         </Grid>
       </Grid>
-      {/* </Grid> */}
       <Box sx={{ width: "80%", marginX: "auto" }}>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <TextFieldComponent label="Email" name="email" type="email" value={profileData?.email} onChange={handleChange} fullWidth />
+              <TextFieldComponent
+                label="Email"
+                name="email"
+                type="email"
+                value={profileData?.email}
+                onChange={handleChange}
+                fullWidth
+              />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <TextFieldComponent label="Full Name" type="text" name="fullName" value={profileData?.fullName} onChange={handleChange} fullWidth />
+              <TextFieldComponent
+                label="Full Name"
+                type="text"
+                name="fullName"
+                value={profileData?.fullName}
+                onChange={handleChange}
+                fullWidth
+              />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <TextFieldComponent label="Nickname" type="text" name="nickname" value={profileData?.nickname} onChange={handleChange} fullWidth />
+              <TextFieldComponent
+                label="Nickname"
+                type="text"
+                name="nickname"
+                value={profileData?.nickname}
+                onChange={handleChange}
+                fullWidth
+              />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <TextFieldComponent label="" name="dateOfBirth" type="date" value={profileData?.dateOfBirth} onChange={handleChange} fullWidth />
+              <TextFieldComponent
+                label=""
+                name="dateOfBirth"
+                type="date"
+                value={profileData?.dateOfBirth}
+                onChange={handleChange}
+                fullWidth
+              />
             </Grid>
             <Grid item xs={12} sm={12}>
               <TextFieldComponent
@@ -80,10 +113,19 @@ export const EditProfile = () => {
               />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <TextFieldComponent label="Gender" name="gender" type="text" value={profileData?.gender} onChange={handleChange} fullWidth />
+              <TextFieldComponent
+                label="Gender"
+                name="gender"
+                type="text"
+                value={profileData?.gender}
+                onChange={handleChange}
+                fullWidth
+              />
             </Grid>
             <Grid item xs={12}>
-              <BlockBtn btnText="Update" btnSubText="" />
+              <Button fullWidth variant="contained" color="primary" type="submit">
+                Update
+              </Button>
             </Grid>
           </Grid>
         </form>

@@ -14,40 +14,13 @@ import Packages from "features/display/Packages";
 import Review from "features/display/Review";
 import ChipTab from "components/ChipTab";
 import { flexRowEnd, flexRowStart } from "sx/FlexStyles";
+import { buttonStyle } from "sx/SmallButton";
 
 export default function SaloonDetails() {
   const [selectChip, setselectChip] = useState("About us");
   const chipLabels = ["About us", "Services", "Package", "Gallery", "Review"];
   const handleChipClick = (chipName: string) => {
     setselectChip(chipName);
-  };
-  const btnOpen = {
-    width: 150,
-    height: 50,
-    backgroundColor: "primary.main",
-    borderRadius: 10,
-    fontSize: 20,
-    fontWeight: "bold",
-    textTransform: "none",
-    "@media (max-width:900px)": {
-      width: 140,
-      height: 40,
-    },
-    "@media (max-width:600px)": {
-      width: 120,
-      height: 38,
-      fontSize: 13,
-    },
-    "@media (max-width:510px)": {
-      width: 100,
-      height: 30,
-      fontSize: 12,
-    },
-    "@media (max-width:450px)": {
-      width: 80,
-      height: 25,
-      fontSize: 11,
-    },
   };
   return (
     <Container>
@@ -59,7 +32,7 @@ export default function SaloonDetails() {
           </Typography>
         </Grid>
         <Grid item xs={4} sx={flexRowEnd}>
-          <Button variant="contained" sx={btnOpen}>
+          <Button variant="contained" sx={buttonStyle}>
             Open
           </Button>
         </Grid>

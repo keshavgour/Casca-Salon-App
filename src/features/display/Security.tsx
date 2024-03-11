@@ -17,15 +17,15 @@ export const Security = () => {
     >
       <Grid container rowSpacing={3}>
         <Grid item xs={12}>
-          <Typography variant="titleTypo" component="span">
-            <BackBtn to="/profile" />
+          <BackBtn to="/profile" />
+          <Typography variant="h4" component="span">
             Security
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Grid container>
             <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
+              <Typography variant="body2" component="span" sx={{ color: "secondary.light" }}>
                 Remember me
               </Typography>
             </Grid>
@@ -37,7 +37,7 @@ export const Security = () => {
         <Grid item xs={12}>
           <Grid container>
             <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
+              <Typography variant="body2" component="span" sx={{ color: "secondary.light" }}>
                 Face ID
               </Typography>
             </Grid>
@@ -49,7 +49,7 @@ export const Security = () => {
         <Grid item xs={12}>
           <Grid container>
             <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
+              <Typography variant="body2" component="span" sx={{ color: "secondary.light" }}>
                 Biometric ID
               </Typography>
             </Grid>
@@ -61,7 +61,7 @@ export const Security = () => {
         <Grid item xs={12}>
           <Grid container>
             <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
+              <Typography variant="body2" component="span" sx={{ color: "secondary.light" }}>
                 Google Authenticator
               </Typography>
             </Grid>

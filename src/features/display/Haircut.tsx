@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Container, Box, IconButton, Typography, styled, Button, ButtonProps } from "@mui/material";
+import { Container, IconButton, Typography, styled, Button, ButtonProps, Grid } from "@mui/material";
 import { PendingOutlined } from "@mui/icons-material";
 import HaircutBox from "../../components/HaircutBox";
 import { menhaircutlist, womenhaircutlist } from "../../temp-object-file/Haircuts";
 import BackBtn from "../../components/BackBtn";
 import BlockBtn from "../../components/BlockBtn";
+import { flexRowEnd, flexRowSpaceAround, flexRowStart } from "sx/FlexStyles";
 interface TabBtnProps extends ButtonProps {
   variant?: "contained" | "outlined";
 }
@@ -13,9 +14,7 @@ export default function Haircut() {
   const handleClick = (btnvalue: string) => {
     setSelectedTab(btnvalue);
   };
-  const TabBtn = styled(({ variant, ...other }: TabBtnProps) => (
-    <Button {...other} variant={variant || "contained"} />
-  ))({
+  const TabBtn = styled(({ variant, ...other }: TabBtnProps) => <Button {...other} variant={variant || "contained"} />)({
     width: "40%",
     height: 45,
     borderRadius: 25,
@@ -32,75 +31,49 @@ export default function Haircut() {
         marginX: "auto",
       }}
     >
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Grid container rowSpacing={2}>
+        <Grid item xs={6} sx={flexRowStart}>
           <BackBtn to="/allservices" />
-          <Typography variant="titleTypo" component="span">
+          <Typography variant="h4" component="span">
             Haircut
           </Typography>
-        </Box>
-        <Box>
+        </Grid>
+        <Grid item xs={6} sx={flexRowEnd}>
           <IconButton aria-label="search">
             <PendingOutlined fontSize="large" />
           </IconButton>
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-evenly",
-          my: 2,
-        }}
-      >
-        <TabBtn
-          variant={selectedTab === "menhaircuts" ? "contained" : "outlined"}
-          value="menhaircuts"
-          onClick={() => handleClick("menhaircuts")}
-        >
-          Men
-        </TabBtn>
-        <TabBtn
-          variant={selectedTab === "womenhaircuts" ? "contained" : "outlined"}
-          value="womenhaircuts"
-          onClick={() => handleClick("womenhaircuts")}
-        >
-          Women
-        </TabBtn>
-      </Box>
-      {selectedTab === "menhaircuts" &&
-        menhaircutlist.map((list, index) => {
-          return (
-            <HaircutBox
-              hid={list.id}
-              image={list.image}
-              haircut={list.haircut}
-              booking={list.booking}
-              price={list.price}
-              key={index}
-            />
-          );
-        })}
-      {selectedTab === "womenhaircuts" &&
-        womenhaircutlist.map((list, index) => {
-          return (
-            <HaircutBox
-              hid={list.id}
-              image={list.image}
-              haircut={list.haircut}
-              booking={list.booking}
-              price={list.price}
-              key={index}
-            />
-          );
-        })}
+        </Grid>
+        <Grid item xs={12} sx={flexRowSpaceAround}>
+          <TabBtn variant={selectedTab === "menhaircuts" ? "contained" : "outlined"} value="menhaircuts" onClick={() => handleClick("menhaircuts")}>
+            Men
+          </TabBtn>
+          <TabBtn
+            variant={selectedTab === "womenhaircuts" ? "contained" : "outlined"}
+            value="womenhaircuts"
+            onClick={() => handleClick("womenhaircuts")}
+          >
+            Women
+          </TabBtn>
+        </Grid>
+      </Grid>
+      <Grid container spacing={2} marginY="auto">
+        {selectedTab === "menhaircuts" &&
+          menhaircutlist.map((list, index) => {
+            return (
+              <Grid item xs={12} key={index}>
+                <HaircutBox hid={list.id} image={list.image} haircut={list.haircut} booking={list.booking} price={list.price} />
+              </Grid>
+            );
+          })}
+        {selectedTab === "womenhaircuts" &&
+          womenhaircutlist.map((list, index) => {
+            return (
+              <Grid item xs={12} key={index}>
+                <HaircutBox hid={list.id} image={list.image} haircut={list.haircut} booking={list.booking} price={list.price} />
+              </Grid>
+            );
+          })}
+      </Grid>
       <BlockBtn btnText="Apply" btnSubText="" />
     </Container>
   );

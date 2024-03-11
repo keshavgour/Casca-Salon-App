@@ -8,6 +8,7 @@ import ReviewBox from "components/ReviewBox";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/store";
 import { setSelectedChip, setFilteredReviews } from "store/slices/reviewSlice";
+import { flexRowStart } from "sx/FlexStyles";
 interface ReviewProps {
   isPage: boolean;
 }
@@ -41,9 +42,9 @@ const Review: React.FC<ReviewProps> = ({ isPage }) => {
   return (
     <Container>
       <Grid container spacing={3} sx={{ my: 1 }}>
-        <Grid item xs={8}>
+        <Grid item xs={8} sx={flexRowStart}>
           {isPage && <BackBtn to="/saloondetails" />}
-          <Typography variant="body1" component="span">
+          <Typography variant="h4" component="span">
             {isPage ? (
               "Review"
             ) : (
@@ -59,7 +60,7 @@ const Review: React.FC<ReviewProps> = ({ isPage }) => {
               <PendingOutlined fontSize="large" />
             </IconButton>
           ) : (
-            <Link component={RouterLink} to="/allreviews" underline="none" variant="linkTypo">
+            <Link component={RouterLink} to="/allreviews" underline="none" variant="body1" sx={{ color: "primary.main" }}>
               See all
             </Link>
           )}
@@ -82,9 +83,10 @@ const Review: React.FC<ReviewProps> = ({ isPage }) => {
               </Grid>
             );
           })}
-          <Grid item xs={12}>
-            <Typography variant="titleTypo" component="span">
-              <Grade color="primary" /> 4.8 (3,279 reviews)
+          <Grid item xs={12} sx={flexRowStart}>
+            <Grade color="primary" sx={{ marginRight: 2 }} />
+            <Typography variant="h6" component="span" sx={{ fontWeight: "bold" }}>
+              4.8 (3,279 reviews)
             </Typography>
           </Grid>
         </Grid>

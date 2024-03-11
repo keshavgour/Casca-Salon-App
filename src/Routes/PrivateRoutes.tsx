@@ -1,5 +1,5 @@
 import React from "react";
-import getAccessToken from "Services/getAccessToken";
+import { getAccessToken } from "Services/getTokens";
 import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRoutes = () => {

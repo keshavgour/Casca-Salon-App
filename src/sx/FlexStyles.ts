@@ -6,6 +6,14 @@ export const flexColCenter = {
   alignItems: "center",
   justifyContent: "center",
 };
+export const flexColStart = {
+  width: "inherit",
+  height: "inherit",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "start",
+  justifyContent: "center",
+};
 export const flexRowCenter = {
   width: "inherit",
   height: "inherit",

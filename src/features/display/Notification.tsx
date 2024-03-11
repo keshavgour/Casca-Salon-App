@@ -1,9 +1,22 @@
 import React from "react";
 import { Container, Grid, Typography } from "@mui/material";
-import BackBtn from "components/BackBtn";
 import ToggleSwitch from "components/ToggleSwitch";
+import BackBtn from "components/BackBtn";
+import { flexRowStart } from "sx/FlexStyles";
 
 const Notification = () => {
+  const notificationlist = [
+    "General Notification",
+    "Sound",
+    "Vibrate",
+    "Special Offers",
+    "Promo & Discount",
+    "Payments",
+    "Cashbacks",
+    "App Updates",
+    "New Service Available",
+    "New Tips Available",
+  ];
   return (
     <Container
       sx={{
@@ -14,132 +27,28 @@ const Notification = () => {
       }}
     >
       <Grid container rowSpacing={3}>
-        <Grid item xs={12}>
-          <Typography variant="titleTypo" component="span">
-            <BackBtn to="/profile" />
-            Notification
+        <Grid item xs={12} sx={flexRowStart}>
+          <BackBtn to="/profile" />
+          <Typography variant="h4" component="span">
+            Notifications
           </Typography>
         </Grid>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
-                General Notification
-              </Typography>
+        {notificationlist.map((item, index) => {
+          return (
+            <Grid item xs={12} key={index} sx={{ marginX: "auto" }}>
+              <Grid container spacing={3}>
+                <Grid item xs={11}>
+                  <Typography variant="body2" component="span" sx={{ color: "secondary.light" }}>
+                    {item}
+                  </Typography>
+                </Grid>
+                <Grid item xs={1}>
+                  <ToggleSwitch />
+                </Grid>
+              </Grid>
             </Grid>
-            <Grid item xs={1}>
-              <ToggleSwitch />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
-                Sound
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <ToggleSwitch />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
-                Vibrate
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <ToggleSwitch />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
-                Special Offers
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <ToggleSwitch />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
-                Promo & Discount
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <ToggleSwitch />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
-                Payments
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <ToggleSwitch />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
-                Cashbacks
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <ToggleSwitch />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
-                App Updates
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <ToggleSwitch />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
-                New Service Available
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <ToggleSwitch />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={11}>
-              <Typography variant="infoTypo1" component="span">
-                New Tips Available
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <ToggleSwitch />
-            </Grid>
-          </Grid>
-        </Grid>
+          );
+        })}
       </Grid>
     </Container>
   );

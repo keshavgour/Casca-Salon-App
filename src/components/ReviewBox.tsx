@@ -16,16 +16,7 @@ interface ReviewBoxProps {
   // handleLike: (param: number) => {};
 }
 
-const ReviewBox: React.FC<ReviewBoxProps> = ({
-  id,
-  image,
-  customer,
-  comment,
-  rating,
-  time,
-  likeStatus,
-  likeCount,
-}) => {
+const ReviewBox: React.FC<ReviewBoxProps> = ({ id, image, customer, comment, rating, time, likeStatus, likeCount }) => {
   const dispatch = useDispatch();
   // const { liked } = useSelector((state: RootState) => state.like);
   const handleClick = (id: number) => {
@@ -34,49 +25,35 @@ const ReviewBox: React.FC<ReviewBoxProps> = ({
   };
 
   return (
-    <Grid
-      container
-      rowSpacing={1}
-      justifyItems={"center"}
-      alignItems={"center"}
-      key={id}
-      sx={{ marginY: 2 }}
-    >
+    <Grid container rowSpacing={1} justifyItems={"center"} alignItems={"center"} key={id} sx={{ marginY: 2 }}>
       <Grid item xs={8}>
         <Grid container justifyContent={"flex-start"} alignItems={"center"}>
-          <Avatar alt="Remy Sharp" src={image} sx={{ marginRight: 2 }} />
-          <Typography variant="infoTypo2" component="span">
+          <Avatar src={image} alt={customer} sx={{ marginRight: 2 }} />
+          <Typography variant="body1" component="span" sx={{ fontWeight: "bold" }}>
             {customer}
           </Typography>
         </Grid>
       </Grid>
       <Grid item xs={4}>
         <Grid container justifyContent={"flex-end"} alignItems={"center"}>
-          <Chip
-            icon={<Grade color="primary" />}
-            label={rating}
-            variant="outlined"
-            color="primary"
-          />
+          <Chip icon={<Grade color="primary" />} label={rating} variant="outlined" color="primary" />
           <IconButton aria-label="delete" color="secondary">
             <PendingOutlined />
           </IconButton>
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="infoTypo1" component="span">
+        <Typography variant="body2" component="span" sx={{ color: "secondary.light" }}>
           {comment}
         </Typography>
       </Grid>
       <Grid item xs={12}>
         <Grid container justifyContent={"flex-start"} alignItems={"center"}>
-          <IconButton onClick={() => handleClick}>
-            {likeStatus ? <Favorite color="error" /> : <FavoriteBorder />}
-          </IconButton>
-          <Typography variant="infoTypo2" component="span">
+          <IconButton onClick={() => handleClick}>{likeStatus ? <Favorite color="error" /> : <FavoriteBorder />}</IconButton>
+          <Typography variant="body2" component="span" sx={{ color: "secondary.light" }}>
             {likeCount}
           </Typography>
-          <Typography variant="infoTypo1" component="span" sx={{ marginLeft: 5 }}>
+          <Typography variant="body2" component="span" sx={{ marginLeft: 5, color: "secondary.light" }}>
             {time} months ago
           </Typography>
         </Grid>

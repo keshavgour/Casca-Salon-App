@@ -6,6 +6,7 @@ import { Button, Container, Grid, Typography } from "@mui/material";
 import CardsSpecialists from "components/CardsSpecialists";
 import listSpecialist from "temp-object-file/specialist";
 import BackBtn from "components/BackBtn";
+import { flexRowStart } from "sx/FlexStyles";
 export const BookAppointment = () => {
   return (
     <Container
@@ -17,9 +18,9 @@ export const BookAppointment = () => {
       }}
     >
       <Grid container spacing={2}>
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={flexRowStart}>
           <BackBtn to="/allpackages" />
-          <Typography variant="titleTypo" component="span">
+          <Typography variant="h4" component="span">
             Book Appointment
           </Typography>
         </Grid>
@@ -33,11 +34,7 @@ export const BookAppointment = () => {
             {listSpecialist.map((card, index) => {
               return (
                 <Grid xs={12} md={6} lg={3} key={index}>
-                  <CardsSpecialists
-                    image={card.image}
-                    title={card.title}
-                    subtitle={card.subtitle}
-                  />
+                  <CardsSpecialists image={card.image} title={card.title} subtitle={card.subtitle} />
                 </Grid>
               );
             })}
