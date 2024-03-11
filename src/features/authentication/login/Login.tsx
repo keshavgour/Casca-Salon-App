@@ -27,6 +27,7 @@ export const Login = () => {
       const data = await loginService(formData);
       console.log(data);
       localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("refresh_token", data.refresh_token);
       setUserName(data.name);
       navigate("/dashboard");
     } catch (error) {
