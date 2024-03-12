@@ -1,21 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Grid, Typography } from "@mui/material";
 import WavingHandIcon from "@mui/icons-material/WavingHand";
-import axiosInstance from "lib/axios";
 import { useSelector } from "react-redux";
 import { RootState } from "store/store";
 
 export const WelcomeMessage = () => {
   const username = useSelector((state: RootState) => state.user.userName);
-  useEffect(() => {
-    axiosInstance
-      .get("/users/me")
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
   return (
     <Grid container alignItems="center" justifyContent="center">
       <Typography variant="h3">Morning, {username}</Typography>
