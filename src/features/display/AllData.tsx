@@ -1,18 +1,33 @@
-import React from "react";
-import { Grid } from "@mui/material";
-//import allSalon from "temp-object-file/AllSalon";
-//import CardsSaloonData from "components/CardsSaloonData";
+import React, { useEffect, useState } from "react";
+import { Container, Grid } from "@mui/material";
+import SalonDataDisplay from "./SalonDataDisplay";
+import axiosInstance from "lib/axios";
 
 const AllData = () => {
+  const [allData, setAllData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axiosInstance.get("/salon/All");
+        console.log(response.data.salons);
+        setAllData(response.data.salons);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        {/* <CardsSaloonData dataTODisplay={allSalon} /> */}
+    <Container>
+      <Grid container direction="column" spacing={4} alignItems="center">
+        <Grid item>
+          <SalonDataDisplay dataTODisplay={allData} />
+        </Grid>
       </Grid>
-    </Grid>
+    </Container>
   );
 };
+
 export default AllData;
-{
-  /* <SalonDataDisplay dataTODisplay={allSalon} /> */
-}

@@ -1,41 +1,54 @@
-import React from "react";
-import { Grid } from "@mui/material";
-import SalonDataDisplay from "features/display/SalonDataDisplay";
+import React, { useEffect, useState } from "react";
+import { Container, Grid, Typography } from "@mui/material";
+import SalonDataDisplay from "./SalonDataDisplay";
+import { useNavigate } from "react-router-dom";
+import Search from "features/Search";
+import BackButtonComponent from "components/BackButtonComponent";
+import axiosInstance from "lib/axios";
 
-const MostPopularData = () => {
-  const mostPopularSalon = [
-    {
-      id: 1,
-      name: "Hair Force",
-      address: "813 Village Drive",
-      distance: 3.4,
-      rating: 4.6,
-      imageURL: "https://imgmedia.lbb.in/media/2023/06/64880efb156ecf24a1e150bb_1686638331890.jpg",
-    },
-    {
-      id: 2,
-      name: "Serenity Salon",
-      address: "88 Commercial Plaza",
-      distance: 4.2,
-      rating: 4.0,
-      imageURL:
-        "https://naomisheadmasters.com/wp-content/uploads/2023/07/Beauty-Salons-For-Men-In-Panchkula.jpg",
-    },
-    {
-      id: 3,
-      name: "The Razor's Edge",
-      address: "54 Artisan Avenue",
-      distance: 4.5,
-      rating: 4.6,
-      imageURL: "https://www.anitasmakeover.com/images/salon.JPG",
-    },
-  ];
+export const MostPopularData = () => {
+  const navigate = useNavigate();
+  const [mostPopularData, setMostPopularData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axiosInstance.get("/salon/Haircuts");
+        console.log(response.data.salons);
+        setMostPopularData(response.data.salons);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const clickBack = () => {
+    return navigate("/dashboard");
+  };
 
   return (
-    <Grid>
-      <SalonDataDisplay dataTODisplay={mostPopularSalon} />
-    </Grid>
+    <Container>
+      <Grid container direction="column" spacing={4} alignItems="center">
+        <Grid item>
+          <Grid container>
+            <Grid item>
+              <BackButtonComponent onClick={clickBack} />
+            </Grid>
+            <Grid item pt={0.4} pl={1}>
+              <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                Most Popular Data
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item>
+          <Search />
+        </Grid>
+        <Grid item>
+          <SalonDataDisplay dataTODisplay={mostPopularData} />
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
-
-export default MostPopularData;

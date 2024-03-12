@@ -13,7 +13,7 @@ export const Haircuts = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosInstance.get("/salon/All");
+        const response = await axiosInstance.get("/salon/Haircuts");
         console.log(response.data.salons);
         setHaircutData(response.data.salons);
       } catch (error) {
