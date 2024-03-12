@@ -33,9 +33,7 @@ export const EditProfile = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const res = updateProfileDetails(profileData.id, profileData);
-      console.log(res);
-      return res;
+      await updateProfileDetails(profileData.id, profileData);
     } catch (error) {
       console.log(error);
     }
@@ -123,7 +121,7 @@ export const EditProfile = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button fullWidth variant="contained" color="primary" type="submit">
+              <Button fullWidth variant="contained" color="primary" type="submit" sx={{ borderRadius: 25 }}>
                 Update
               </Button>
             </Grid>
