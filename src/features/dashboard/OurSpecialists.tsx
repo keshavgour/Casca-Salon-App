@@ -1,9 +1,8 @@
 import React from "react";
-import { Avatar, Button, Container, Divider, Typography, IconButton, Grid } from "@mui/material";
+import { Avatar, Box, Button, Container, Divider, Typography, IconButton, Grid } from "@mui/material";
 import { SearchOutlined } from "@mui/icons-material/";
 import listSpecialist from "../../temp-object-file/specialist";
 import BackBtn from "../../components/BackBtn";
-import { flexColStart, flexRowCenter, flexRowStart } from "sx/FlexStyles";
 export default function OurSpecialists() {
   return (
     <Container
@@ -15,9 +14,9 @@ export default function OurSpecialists() {
       }}
     >
       <Grid container sx={{ py: 1 }}>
-        <Grid xs={8} sx={flexRowStart}>
+        <Grid xs={8}>
           <BackBtn to="/saloondetails" />
-          <Typography variant="h4" component="span">
+          <Typography variant="body1" component="span">
             Our Specialists
           </Typography>
         </Grid>
@@ -27,33 +26,39 @@ export default function OurSpecialists() {
           </IconButton>
         </Grid>
       </Grid>
-      <Grid container spacing={2}>
-        {listSpecialist.map((card, index) => {
-          return (
-            <Grid item xs={12} key={index}>
-              <Grid container>
-                <Grid item xs={1} sx={flexRowCenter}>
-                  <Avatar src={card.image} alt={card.title} sx={{ width: 50, height: 50, marginRight: 3 }} />
-                </Grid>
-                <Grid item xs={9} sx={flexColStart}>
-                  <Typography variant="body1" component="span" sx={{ fontWeight: "bold" }}>
+      {listSpecialist.map((card) => {
+        return (
+          <>
+            <Box
+              sx={{
+                width: "inherit",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginX: "auto",
+                marginY: 2,
+                paddingX: 2,
+              }}
+            >
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Avatar src={card.image} alt={card.title} sx={{ width: 50, height: 50, marginRight: 3 }} />
+                <Box sx={{ display: "flex", flexDirection: "column" }}>
+                  <Typography variant="body1" component="span">
                     {card.title}
                   </Typography>
-                  <Typography variant="caption" component="span">
+                  <Typography variant="body1" component="span">
                     {card.subtitle}
                   </Typography>
-                </Grid>
-                <Grid item xs={2} sx={flexRowCenter}>
-                  <Button variant="contained" sx={{ borderRadius: 5 }}>
-                    Message
-                  </Button>
-                </Grid>
-              </Grid>
-              <Divider sx={{ marginY: 1 }} />
-            </Grid>
-          );
-        })}
-      </Grid>
+                </Box>
+              </Box>
+              <Button variant="contained" sx={{ borderRadius: 5 }}>
+                Message
+              </Button>
+            </Box>
+            <Divider />
+          </>
+        );
+      })}
     </Container>
   );
 }
