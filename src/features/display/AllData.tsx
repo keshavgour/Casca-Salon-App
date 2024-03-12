@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Container, Grid } from "@mui/material";
 import SalonDataDisplay from "./SalonDataDisplay";
-import axiosInstance from "lib/axios";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "components/Loading";
+import { getAllDataService } from "Services/getAllDataService";
 
 const AllData = () => {
-  const [allData, setAllData] = useState([]);
+  const { isLoading, error, data: allData } = useQuery({ queryKey: ["allData"], queryFn: getAllDataService });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosInstance.get("/salon/All");
-        console.log(response.data.salons);
-        setAllData(response.data.salons);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    console.log(error);
+  }
 
   return (
     <Container>

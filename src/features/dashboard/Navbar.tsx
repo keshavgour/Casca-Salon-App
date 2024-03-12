@@ -43,7 +43,10 @@ export const Navbar: React.FC = () => {
       <Grid item lg={1} md={1} sm={1} xs={6} sx={{ textAlign: "end" }}>
         <Box sx={flexColCenter}>
           <IconButton onClick={() => handleIconClick("profile")} sx={{ ":hover": { backgroundColor: "#fff3e0" } }}>
-            <PermIdentityIcon sx={selectedIcon === "profile" ? { color: "#ff9800" } : { "&:hover": { color: "#ff9800" } }} fontSize="large" />
+            <PermIdentityIcon
+              sx={selectedIcon === "profile" ? { color: "#ff9800" } : { "&:hover": { color: "#ff9800" } }}
+              fontSize="large"
+            />
           </IconButton>
           <Typography variant="button" sx={{ color: "black" }}>
             Profile

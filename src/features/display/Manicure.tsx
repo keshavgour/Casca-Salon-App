@@ -1,27 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Container, Grid, Typography } from "@mui/material";
 import SalonDataDisplay from "./SalonDataDisplay";
 import { useNavigate } from "react-router-dom";
 import Search from "features/Search";
 import BackButtonComponent from "components/BackButtonComponent";
 import axiosInstance from "lib/axios";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "components/Loading";
+
+export const getManicureData = async () => {
+  const response = await axiosInstance.get("/salon/Manicure");
+  return response.data.salons;
+};
 
 export const Manicure = () => {
   const navigate = useNavigate();
-  const [manicureData, setManicureData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosInstance.get("/salon/Manicure");
-        console.log(response.data.salons);
-        setManicureData(response.data.salons);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  const { isLoading, error, data: manicureData } = useQuery({ queryKey: ["manicureData"], queryFn: getManicureData });
+
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (error) {
+    console.log(error.message);
+  }
 
   const clickBack = () => {
     return navigate("/dashboard");

@@ -1,27 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Container, Grid, Typography } from "@mui/material";
 import SalonDataDisplay from "./SalonDataDisplay";
 import { useNavigate } from "react-router-dom";
 import Search from "features/Search";
 import BackButtonComponent from "components/BackButtonComponent";
 import axiosInstance from "lib/axios";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "components/Loading";
+
+export const getMakeupData = async () => {
+  const response = await axiosInstance.get("/salon/Makeup");
+  return response.data.salons;
+};
 
 export const Makeup = () => {
   const navigate = useNavigate();
-  const [makeupData, setMakeupData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosInstance.get("/salon/Makeup");
-        console.log(response.data.salons);
-        setMakeupData(response.data.salons);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  const { isLoading, error, data: makeupData } = useQuery({ queryKey: ["makeupData"], queryFn: getMakeupData });
+
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (error) {
+    console.log(error.message);
+  }
 
   const clickBack = () => {
     return navigate("/dashboard");
