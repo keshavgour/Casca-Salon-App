@@ -1,4 +1,5 @@
 import React from "react";
+import React from "react";
 import { Container, Grid } from "@mui/material";
 import SalonDataDisplay from "./SalonDataDisplay";
 import Loading from "components/Loading";
