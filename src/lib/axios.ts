@@ -1,4 +1,5 @@
-import { getRefreshToken } from "Services/getTokens";
+import { getAccessToken, getRefreshToken } from "Services/getTokens";
+import logout from "Services/logoutService";
 import { validateToken } from "Services/validateToken";
 import axios from "axios";
 
@@ -22,14 +23,28 @@ axiosInstance.interceptors.response.use(
     return res;
   },
   (err) => {
-    if (err.response.status === 401) {
-      const rtoken = getRefreshToken();
-      if (rtoken) {
-        validateToken(rtoken);
+    if (err.response) {
+      const originalReq = err.config;
+      if (err.response.status === 401) {
+        const refresh_token = getRefreshToken();
+        if (refresh_token) {
+          try {
+            validateToken(refresh_token);
+            const access_token = getAccessToken();
+            originalReq.headers.Authorization = `Bearer ${access_token}`;
+            return axios(originalReq);
+          } catch (error) {
+            logout();
+            window.location.reload();
+            return Promise.reject(error);
+          }
+        } else {
+          logout();
+          window.location.reload();
+          return Promise.reject(err);
+        }
       }
     }
-    return Promise.reject(err);
   }
 );
-
 export default axiosInstance;
