@@ -1,3 +1,4 @@
+import { getRefreshToken } from "Services/getTokens";
 import { validateToken } from "Services/validateToken";
 import axios from "axios";
 
@@ -22,7 +23,10 @@ axiosInstance.interceptors.response.use(
   },
   (err) => {
     if (err.response.status === 401) {
-      validateToken();
+      const rtoken = getRefreshToken();
+      if (rtoken) {
+        validateToken(rtoken);
+      }
     }
     return Promise.reject(err);
   }

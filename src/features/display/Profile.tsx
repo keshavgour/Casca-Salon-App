@@ -19,6 +19,7 @@ import ToggleSwitch from "components/ToggleSwitch";
 import { useQuery } from "@tanstack/react-query";
 import getProfileData from "Services/profileDataService";
 import Loading from "components/Loading";
+import { Error } from "./Error";
 
 const Profile = () => {
   const { isLoading, error, data: userDetails } = useQuery({ queryKey: ["profile"], queryFn: getProfileData });
@@ -37,9 +38,11 @@ const Profile = () => {
   }
   if (error) {
     console.log(error.message);
-    <>
-      <h1>Error</h1>
-    </>;
+    return (
+      <>
+        <Error />
+      </>
+    );
   }
   return (
     <Container>
