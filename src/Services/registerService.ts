@@ -7,3 +7,4 @@ export const registerService = (formData: NewType) => {
   const response = axiosInstance.post("/auth/signup", formData);
   return response;
 };
+

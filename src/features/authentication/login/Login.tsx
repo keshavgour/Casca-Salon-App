@@ -18,6 +18,7 @@ export const Login = () => {
     const {
       target: { name, value },
     } = event;
+
     setInfo({ ...formData, [name]: value });
   };
 

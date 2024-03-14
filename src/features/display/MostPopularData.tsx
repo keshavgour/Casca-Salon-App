@@ -1,27 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Container, Grid, Typography } from "@mui/material";
 import SalonDataDisplay from "./SalonDataDisplay";
 import { useNavigate } from "react-router-dom";
 import Search from "features/Search";
 import BackButtonComponent from "components/BackButtonComponent";
-import axiosInstance from "lib/axios";
+import { useQuery } from "@tanstack/react-query";
+import { salonDataService } from "Services/salonDataService";
+import Loading from "components/Loading";
 
 export const MostPopularData = () => {
   const navigate = useNavigate();
-  const [mostPopularData, setMostPopularData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosInstance.get("/salon/Haircuts");
-        console.log(response.data.salons);
-        setMostPopularData(response.data.salons);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["mostPopularData"],
+    queryFn: () => salonDataService("Haircuts"),
+  });
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    console.log(error);
+  }
 
   const clickBack = () => {
     return navigate("/dashboard");
@@ -46,7 +47,7 @@ export const MostPopularData = () => {
           <Search />
         </Grid>
         <Grid item>
-          <SalonDataDisplay dataTODisplay={mostPopularData} />
+          <SalonDataDisplay dataTODisplay={data} />
         </Grid>
       </Grid>
     </Container>

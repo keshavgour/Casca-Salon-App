@@ -4,7 +4,10 @@ import { Signup } from "features/authentication/sign-up";
 export const SignupPage = () => {
   return (
     <Grid>
-      <Signup />
+      <Signup />        
     </Grid>
   );
 };
+                    
+
+                 

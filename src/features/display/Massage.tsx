@@ -4,19 +4,17 @@ import SalonDataDisplay from "./SalonDataDisplay";
 import { useNavigate } from "react-router-dom";
 import Search from "features/Search";
 import BackButtonComponent from "components/BackButtonComponent";
-import axiosInstance from "lib/axios";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "components/Loading";
-
-export const getMassageData = async () => {
-  const response = await axiosInstance.get("/salon/Massage");
-  return response.data.salons;
-};
+import { salonDataService } from "Services/salonDataService";
 
 export const Massage = () => {
   const navigate = useNavigate();
 
-  const { isLoading, error, data: massageData } = useQuery({ queryKey: ["massageData"], queryFn: getMassageData });
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["massageData"],
+    queryFn: () => salonDataService("Massage"),
+  });
 
   if (isLoading) {
     return <Loading />;
@@ -48,7 +46,7 @@ export const Massage = () => {
           <Search />
         </Grid>
         <Grid item>
-          <SalonDataDisplay dataTODisplay={massageData} />
+          <SalonDataDisplay dataTODisplay={data} />
         </Grid>
       </Grid>
     </Container>

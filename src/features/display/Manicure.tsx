@@ -4,19 +4,17 @@ import SalonDataDisplay from "./SalonDataDisplay";
 import { useNavigate } from "react-router-dom";
 import Search from "features/Search";
 import BackButtonComponent from "components/BackButtonComponent";
-import axiosInstance from "lib/axios";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "components/Loading";
-
-export const getManicureData = async () => {
-  const response = await axiosInstance.get("/salon/Manicure");
-  return response.data.salons;
-};
+import { salonDataService } from "Services/salonDataService";
 
 export const Manicure = () => {
   const navigate = useNavigate();
 
-  const { isLoading, error, data: manicureData } = useQuery({ queryKey: ["manicureData"], queryFn: getManicureData });
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["manicureData"],
+    queryFn: () => salonDataService("Manicure"),
+  });
 
   if (isLoading) {
     return <Loading />;
@@ -48,7 +46,7 @@ export const Manicure = () => {
           <Search />
         </Grid>
         <Grid item>
-          <SalonDataDisplay dataTODisplay={manicureData} />
+          <SalonDataDisplay dataTODisplay={data} />
         </Grid>
       </Grid>
     </Container>

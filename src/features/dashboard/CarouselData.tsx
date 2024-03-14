@@ -4,7 +4,7 @@ import Carousels from "features/Carousels";
 const CarouselData = () => {
   const items = [
     {
-      name: "Shree Ram Mandir Pran Pratishta Mahotsav",
+      name: "Shree Ram Mandir Pran Pratishtha Mahotsav",
       description: "Get flat discount on every order!",
       validity: "Only valid for today!",
       discount: "90%",
@@ -18,7 +18,7 @@ const CarouselData = () => {
     {
       name: "Deepawali Special",
       description: "Please use the coupon to avail discount!",
-      validity: "Only valid for today!",
+      validity: "",
       discount: "60%",
     },
   ];
