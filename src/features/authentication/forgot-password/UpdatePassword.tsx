@@ -5,18 +5,18 @@ import axiosInstance from "lib/axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
+const UpdatePassword = () => {
   const navigate = useNavigate();
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     try {
-      const response = await axiosInstance.post("/auth/sendOTPByEmail", { email });
-      console.log(response);
+      const resetToken = localStorage.getItem("resetToken");
+      const response = await axiosInstance.patch(`/auth/resetPassword/${resetToken}`, { password, passwordConfirm });
       if (response.status === 200) {
-        navigate("/verifyOtp");
+        navigate("/login");
       }
     } catch (error) {
       console.log(error);
@@ -27,7 +27,7 @@ const ForgotPassword = () => {
     <Container
       maxWidth="sm"
       sx={{
-        height: "50vh",
+        height: "70vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -38,17 +38,27 @@ const ForgotPassword = () => {
         <Grid container>
           <Grid item xs={12} pl={5} pb={3}>
             <TextFieldComponent
-              label="Email"
-              name="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              label="Password"
+              name="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} pl={5} pb={3}>
+            <TextFieldComponent
+              label="Confirm Password"
+              name="passwordConfirm"
+              type="password"
+              value={passwordConfirm}
+              onChange={(e) => setPasswordConfirm(e.target.value)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} pl={5}>
             <Button type="submit" variant="contained" fullWidth>
-              Continue
+              Update Password
             </Button>
           </Grid>
         </Grid>
@@ -57,4 +67,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default UpdatePassword;

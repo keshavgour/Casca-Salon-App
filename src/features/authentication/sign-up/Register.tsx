@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Grid, Link, Typography } from "@mui/material";
+import { Button, Grid, IconButton, Link, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import TextFieldComponent from "components/TextFieldComponent";
 import { useSelector } from "react-redux";
@@ -8,6 +8,8 @@ import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
 import { Link as RouterLink } from "react-router-dom";
 import { registerService } from "Services/registerService";
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -33,6 +35,14 @@ export const Register = () => {
     }
   };
 
+  // useEffect(() => {
+  //     const token =
+  // })
+
+  const clickGoogle = () => {
+    window.open("http://ec2-13-232-214-55.ap-south-1.compute.amazonaws.com:3000/api/auth/google");
+  };
+
   return (
     <Container
       maxWidth="sm"
@@ -50,10 +60,24 @@ export const Register = () => {
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <TextFieldComponent label="Email" name="email" type="email" value={formData.email} onChange={handleChange} fullWidth />
+            <TextFieldComponent
+              label="Email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              fullWidth
+            />
           </Grid>
           <Grid item xs={12}>
-            <TextFieldComponent label="Password" name="password" type="password" value={formData.password} onChange={handleChange} fullWidth />
+            <TextFieldComponent
+              label="Password"
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+              fullWidth
+            />
           </Grid>
           <Grid item xs={12}>
             <TextFieldComponent
@@ -92,6 +116,19 @@ export const Register = () => {
           Click Here
         </Link>
       </Typography>
+      <Typography variant="h6">or continue with</Typography>
+      <Grid container justifyContent={"center"}>
+        <Grid item>
+          <IconButton onClick={clickGoogle}>
+            <GoogleIcon sx={{ color: "#f44336" }} fontSize="large" />
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <IconButton>
+            <FacebookIcon sx={{ color: "#1565c0" }} fontSize="large" />
+          </IconButton>
+        </Grid>
+      </Grid>
     </Container>
   );
 };

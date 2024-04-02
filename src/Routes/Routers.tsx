@@ -19,6 +19,8 @@ import Notification from "features/display/Notification";
 import { Security } from "features/display/Security";
 import Language from "features/display/Language";
 import { PrivacyPolicy } from "features/display/PrivacyPolicy";
+import VerifyOtpPage from "pages/VerifyOtpPage";
+import UpdatePasswordPage from "pages/UpdatePasswordPage";
 
 export const Routers = () => {
   return (
@@ -37,6 +39,8 @@ export const Routers = () => {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/forgotPassword" element={<ForgotPasswordPage />}></Route>
+          <Route path="/verifyOtp" element={<VerifyOtpPage />} />
+          <Route path="/updatePassword" element={<UpdatePasswordPage />} />
           <Route path="/" element={<RegisterPage />}></Route>
           <Route path="/dashboard" element={<DashboardPage />} />
           {/* <Route element={<PrivateRoutes />}> */}

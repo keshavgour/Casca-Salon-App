@@ -37,27 +37,6 @@ export const Login = () => {
     }
   };
 
-  // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   try {
-  //     // console.log(data);
-  //     if (isLoading) {
-  //       return <div>Loading.........</div>;
-  //     }
-  //     if (isError) {
-  //       return <div>Error occured while logging in.</div>;
-  //     }
-  //     if (data) {
-  //       localStorage.setItem("access_token", data.access_token);
-  //       setUserName(data.name);
-  //       navigate("/dashboard");
-  //     }
-  //   } catch (error) {
-  //     const errorMessage = (error as Error).message || "Failed to log in";
-  //     setError(errorMessage);
-  //   }
-  // };
-
   return (
     <Container
       maxWidth="sm"

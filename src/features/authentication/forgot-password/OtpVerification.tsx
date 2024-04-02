@@ -5,29 +5,29 @@ import axiosInstance from "lib/axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
+const OtpVerification = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     try {
-      const response = await axiosInstance.post("/auth/sendOTPByEmail", { email });
+      const response = await axiosInstance.post("/auth/verifyOTPSendByEmail", { email, otp });
+      localStorage.setItem("resetToken", response.data.resetToken);
       console.log(response);
       if (response.status === 200) {
-        navigate("/verifyOtp");
+        navigate("/updatePassword");
       }
     } catch (error) {
       console.log(error);
     }
   };
-
   return (
     <Container
       maxWidth="sm"
       sx={{
-        height: "50vh",
+        height: "70vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -46,9 +46,19 @@ const ForgotPassword = () => {
               fullWidth
             />
           </Grid>
+          <Grid item xs={12} pl={5} pb={3}>
+            <TextFieldComponent
+              label="OTP"
+              name="otp"
+              type="number"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              fullWidth
+            />
+          </Grid>
           <Grid item xs={12} pl={5}>
             <Button type="submit" variant="contained" fullWidth>
-              Continue
+              Verify
             </Button>
           </Grid>
         </Grid>
@@ -57,4 +67,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default OtpVerification;
