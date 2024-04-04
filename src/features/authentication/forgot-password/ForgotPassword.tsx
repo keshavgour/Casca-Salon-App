@@ -1,7 +1,7 @@
 import { Button, Grid } from "@mui/material";
 import { Container } from "@mui/system";
+import forgotPasswordService from "Services/forgotPasswordService";
 import TextFieldComponent from "components/TextFieldComponent";
-import axiosInstance from "lib/axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const ForgotPassword = () => {
     event.preventDefault();
 
     try {
-      const response = await axiosInstance.post("/auth/sendOTPByEmail", { email });
+      const response = await forgotPasswordService(email);
       console.log(response);
       if (response.status === 200) {
         navigate("/verifyOtp");
@@ -21,6 +21,16 @@ const ForgotPassword = () => {
     } catch (error) {
       console.log(error);
     }
+
+    // try {
+    //   const response = await axiosInstance.post("/auth/sendOTPByEmail", { email });
+    //   console.log(response);
+    //   if (response.status === 200) {
+    //     navigate("/verifyOtp");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (

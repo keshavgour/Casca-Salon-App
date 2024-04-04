@@ -1,7 +1,7 @@
 import { Button, Grid } from "@mui/material";
 import { Container } from "@mui/system";
+import updatePasswordService from "Services/updatePasswordService";
 import TextFieldComponent from "components/TextFieldComponent";
-import axiosInstance from "lib/axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,15 +12,25 @@ const UpdatePassword = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     try {
-      const resetToken = localStorage.getItem("resetToken");
-      const response = await axiosInstance.patch(`/auth/resetPassword/${resetToken}`, { password, passwordConfirm });
+      const response = await updatePasswordService(password, passwordConfirm);
       if (response.status === 200) {
         navigate("/login");
       }
     } catch (error) {
       console.log(error);
     }
+
+    // try {
+    //   const resetToken = localStorage.getItem("resetToken");
+    //   const response = await axiosInstance.patch(`/auth/resetPassword/${resetToken}`, { password, passwordConfirm });
+    //   if (response.status === 200) {
+    //     navigate("/login");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (

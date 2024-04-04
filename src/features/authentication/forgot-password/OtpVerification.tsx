@@ -1,7 +1,7 @@
 import { Button, Grid } from "@mui/material";
 import { Container } from "@mui/system";
+import otpVerificationService from "Services/otpVerificationService";
 import TextFieldComponent from "components/TextFieldComponent";
-import axiosInstance from "lib/axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,8 +12,9 @@ const OtpVerification = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     try {
-      const response = await axiosInstance.post("/auth/verifyOTPSendByEmail", { email, otp });
+      const response = await otpVerificationService(email, otp);
       localStorage.setItem("resetToken", response.data.resetToken);
       console.log(response);
       if (response.status === 200) {
@@ -22,6 +23,17 @@ const OtpVerification = () => {
     } catch (error) {
       console.log(error);
     }
+
+    // try {
+    //   const response = await axiosInstance.post("/auth/verifyOTPSendByEmail", { email, otp });
+    //   localStorage.setItem("resetToken", response.data.resetToken);
+    //   console.log(response);
+    //   if (response.status === 200) {
+    //     navigate("/updatePassword");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
   return (
     <Container
