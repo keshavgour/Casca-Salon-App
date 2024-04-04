@@ -7,12 +7,27 @@ import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
 import { loginService } from "Services/loginService";
+import { useMutation } from "@tanstack/react-query";
 
 export const Login = () => {
   const navigate = useNavigate();
   const { setInfo, setUserName } = useActions();
   const formData = useSelector((state: RootState) => state.login);
   const [error, setError] = useState("");
+
+  const mutation = useMutation({
+    mutationFn: loginService,
+    onSuccess: (data) => {
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("refresh_token", data.refresh_token);
+      setUserName(data.name);
+      navigate("/dashboard");
+    },
+    onError: (error) => {
+      const errorMessage = (error as Error).message || "Failed to log in";
+      setError(errorMessage);
+    },
+  });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -24,17 +39,20 @@ export const Login = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    try {
-      const data = await loginService(formData);
-      console.log(data);
-      localStorage.setItem("access_token", data.access_token);
-      localStorage.setItem("refresh_token", data.refresh_token);
-      setUserName(data.name);
-      navigate("/dashboard");
-    } catch (error) {
-      const errorMessage = (error as Error).message || "Failed to log in";
-      setError(errorMessage);
-    }
+
+    mutation.mutate(formData);
+
+    // try {
+    //   const data = await loginService(formData);
+    //   console.log(data);
+    //   localStorage.setItem("access_token", data.access_token);
+    //   localStorage.setItem("refresh_token", data.refresh_token);
+    //   setUserName(data.name);
+    //   navigate("/dashboard");
+    // } catch (error) {
+    //   const errorMessage = (error as Error).message || "Failed to log in";
+    //   setError(errorMessage);
+    // }
   };
 
   return (

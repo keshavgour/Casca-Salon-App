@@ -10,9 +10,21 @@ import { useNavigate } from "react-router-dom";
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
 import { signupService } from "Services/signupService";
+import { useMutation } from "@tanstack/react-query";
 
 export const Signup = () => {
   const navigate = useNavigate();
+
+  const mutation = useMutation({
+    mutationFn: signupService,
+    onSuccess: (data) => {
+      console.log(data);
+      navigate("/login");
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
 
   const { setProfile } = useActions();
   const formData = useSelector((state: RootState) => state.signup);
@@ -31,13 +43,15 @@ export const Signup = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    try {
-      const data = await signupService(formData);
-      console.log(data);
-      navigate("/login");
-    } catch (error) {
-      throw new Error("Failed to register");
-    }
+    mutation.mutate(formData);
+
+    // try {
+    //   const data = await signupService(formData);
+    //   console.log(data);
+    //   navigate("/login");
+    // } catch (error) {
+    //   throw new Error("Failed to register");
+    // }
   };
   return (
     <Container maxWidth="sm">

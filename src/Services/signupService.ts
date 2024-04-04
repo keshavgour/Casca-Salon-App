@@ -1,9 +1,7 @@
 import axiosInstance from "lib/axios";
 import { SignupState } from "store/slices/signupSlice";
 
-type NewType = SignupState;
-
-export const signupService = async (formData: NewType) => {
+export const signupService = async (formData: SignupState) => {
   try {
     const res = await axiosInstance.post("/auth/register", formData);
     return res.data;

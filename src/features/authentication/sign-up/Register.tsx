@@ -10,10 +10,22 @@ import { Link as RouterLink } from "react-router-dom";
 import { registerService } from "Services/registerService";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import { useMutation } from "@tanstack/react-query";
 
 export const Register = () => {
   const navigate = useNavigate();
   const { setData } = useActions();
+
+  const mutation = useMutation({
+    mutationFn: registerService,
+    onSuccess: (data) => {
+      console.log(data);
+      navigate("/signup");
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
 
   const formData = useSelector((state: RootState) => state.registration);
 
@@ -26,18 +38,16 @@ export const Register = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    try {
-      const data = await registerService(formData);
-      console.log(data);
-      navigate("/signup");
-    } catch (error) {
-      throw new Error("Failed to Signup");
-    }
-  };
+    mutation.mutate(formData);
 
-  // useEffect(() => {
-  //     const token =
-  // })
+    //   try {
+    //     const data = await registerService(formData);
+    //     console.log(data);
+    //     navigate("/signup");
+    //   } catch (error) {
+    //     throw new Error("Failed to Signup");
+    //   }
+  };
 
   const clickGoogle = () => {
     window.open("http://ec2-13-232-214-55.ap-south-1.compute.amazonaws.com:3000/api/auth/google");

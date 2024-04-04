@@ -1,9 +1,7 @@
 import axiosInstance from "lib/axios";
 import { LoginState } from "interfaces/auth_state";
 
-type NewType = LoginState;
-
-export const loginService = async (formData: NewType) => {
+export const loginService = async (formData: LoginState) => {
   try {
     const res = await axiosInstance.post("/auth/login", formData);
     return res.data;
