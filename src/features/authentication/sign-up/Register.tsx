@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Grid, IconButton, Link, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import TextFieldComponent from "components/TextFieldComponent";
@@ -11,10 +11,37 @@ import { registerService } from "Services/registerService";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { useMutation } from "@tanstack/react-query";
+//import axiosInstance from "lib/axios";
 
-export const Register = () => {
+export const Register: React.FC = () => {
   const navigate = useNavigate();
   const { setData } = useActions();
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("access_token");
+
+    if (token) {
+      window.location.href = "/dashboard";
+    }
+  }, []);
+
+  const clickGoogle = async () => {
+    try {
+      window.location.href = "http://ec2-13-232-214-55.ap-south-1.compute.amazonaws.com:3000/api/auth/google";
+
+      //   const response = await axiosInstance.get("/auth/google");
+      //   if (response.status === 200) {
+      //     console.log("Google Clicked");
+      //     const data = response.data;
+      //     window.location.href = data.redirectUrl;
+      //   } else {
+      //     console.log("Failed to fetch Google login URL");
+      //   }
+    } catch (error) {
+      console.log("Error fetching Google login URL: ", error);
+    }
+  };
 
   const mutation = useMutation({
     mutationFn: registerService,
@@ -47,10 +74,6 @@ export const Register = () => {
     //   } catch (error) {
     //     throw new Error("Failed to Signup");
     //   }
-  };
-
-  const clickGoogle = () => {
-    window.open("http://ec2-13-232-214-55.ap-south-1.compute.amazonaws.com:3000/api/auth/google");
   };
 
   return (
