@@ -7,5 +7,5 @@ export const signupService = async (formData: SignupState) => {
     return res.data;
   } catch (error) {
     throw new Error("Failed to register");
-  }
+  } 
 };

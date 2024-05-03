@@ -1,12 +1,11 @@
 import React from "react";
 import { AppBar, Container, Grid } from "@mui/material";
-import { Navbar } from "./Navbar";
 import Search from "features/Search";
 import { Services } from "features/dashboard/Services";
 import CarouselData from "features/dashboard/CarouselData";
 import { Nearby } from "features/dashboard/Nearby";
 import { WelcomeMessage } from "features/dashboard/WelcomeMessage";
-import BottomNavbar from "components/BottomNavbar";
+import { Navbar } from "./Navbar";
 
 export const Dashboard = () => {
   return (
@@ -37,7 +36,7 @@ export const Dashboard = () => {
         <MostPopularData />
         </Grid> */}
       </Grid>
-      <AppBar
+      {/* <AppBar
         position="fixed"
         sx={{
           display: { xs: "block", sm: "none", md: "none", lg: "none" },
@@ -47,7 +46,7 @@ export const Dashboard = () => {
         }}
       >
         <BottomNavbar />
-      </AppBar>
+      </AppBar> */}
     </Container>
   );
 };

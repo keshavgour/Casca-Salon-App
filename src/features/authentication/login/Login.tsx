@@ -3,31 +3,17 @@ import { Button, Grid, Typography, Link } from "@mui/material";
 import { Container } from "@mui/system";
 import TextFieldComponent from "components/TextFieldComponent";
 import { useSelector } from "react-redux";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
-import { loginService } from "Services/loginService";
-import { useMutation } from "@tanstack/react-query";
+import { useLoginService } from "hooks/useLoginService";
 
 export const Login = () => {
-  const navigate = useNavigate();
-  const { setInfo, setUserName } = useActions();
+  const { setInfo } = useActions();
   const formData = useSelector((state: RootState) => state.login);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | Error>();
 
-  const mutation = useMutation({
-    mutationFn: loginService,
-    onSuccess: (data) => {
-      localStorage.setItem("access_token", data.access_token);
-      localStorage.setItem("refresh_token", data.refresh_token);
-      setUserName(data.name);
-      navigate("/dashboard");
-    },
-    onError: (error) => {
-      const errorMessage = (error as Error).message || "Failed to log in";
-      setError(errorMessage);
-    },
-  });
+  const mutation = useLoginService();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -39,20 +25,12 @@ export const Login = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    mutation.mutate(formData);
-
-    // try {
-    //   const data = await loginService(formData);
-    //   console.log(data);
-    //   localStorage.setItem("access_token", data.access_token);
-    //   localStorage.setItem("refresh_token", data.refresh_token);
-    //   setUserName(data.name);
-    //   navigate("/dashboard");
-    // } catch (error) {
-    //   const errorMessage = (error as Error).message || "Failed to log in";
-    //   setError(errorMessage);
-    // }
+    try {
+      await mutation.mutateAsync(formData);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      setError(error);
+    }
   };
 
   return (
@@ -60,6 +38,7 @@ export const Login = () => {
       maxWidth="sm"
       sx={{
         height: "100vh",
+
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -114,7 +93,7 @@ export const Login = () => {
           <Grid item>
             {error && (
               <Typography variant="h6" sx={{ color: "red" }}>
-                {error}
+                {error.toString()}
               </Typography>
             )}
           </Grid>
@@ -132,6 +111,40 @@ export const Login = () => {
     </Container>
   );
 };
+
+//setError(error instanceof Error ? error : new Error(String(error)));
+
+// const mutation = useMutation({
+//   mutationFn: loginService,
+//   onSuccess: (data) => {
+//     localStorage.setItem("access_token", data.access_token);
+//     localStorage.setItem("refresh_token", data.refresh_token);
+//     setUserName(data.name);
+//     navigate("/dashboard");
+//   },
+//   onError: (error) => {
+//     // console.log("error", error);
+//     if (error) {
+//       setError(error);
+//     } else {
+//       setError("Failed to log in");
+//     }
+//   },
+// });
+
+//-------------------- without using useMutation----------------------
+
+// try {
+//   const data = await loginService(formData);
+//   console.log(data);
+//   localStorage.setItem("access_token", data.access_token);
+//   localStorage.setItem("refresh_token", data.refresh_token);
+//   setUserName(data.name);
+//   navigate("/dashboard");
+// } catch (error) {
+//   const errorMessage = (error as Error).message || "Failed to log in";
+//   setError(errorMessage);
+// }
 
 // using ---------------------------UseState------------------------
 // import { Button, Grid, Typography } from "@mui/material";

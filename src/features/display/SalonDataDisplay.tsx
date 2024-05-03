@@ -21,10 +21,11 @@ interface salonProps {
 }
 
 const SalonDataDisplay: React.FC<salonProps> = ({ dataTODisplay }) => {
+  // const navigate = useNavigate();
   return (
     <>
       {dataTODisplay.map((data) => (
-        <Grid container key={data.id} spacing={4} justifyContent="space-between">
+        <Grid container spacing={4} key={data.id} justifyContent="space-between">
           <Grid item mb={2} ml={2}>
             <Grid container>
               <Grid item>

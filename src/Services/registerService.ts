@@ -5,3 +5,5 @@ export const registerService = (formData: RegistrationState) => {
   const response = axiosInstance.post("/auth/signup", formData);
   return response;
 };
+
+
