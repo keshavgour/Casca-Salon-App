@@ -2,11 +2,10 @@ import React from "react";
 import { Container, Grid } from "@mui/material";
 import SalonDataDisplay from "./SalonDataDisplay";
 import Loading from "components/Loading";
-import { useQuery } from "@tanstack/react-query";
-import getSalonData from "Services/getSalonData";
+import { useAllDataService } from "hooks/useAllDataService";
 
 const AllData = () => {
-  const { isLoading, error, data } = useQuery({ queryKey: ["allData"], queryFn: () => getSalonData("All") });
+  const { isLoading, error, data } = useAllDataService();
 
   return (
     <Container>

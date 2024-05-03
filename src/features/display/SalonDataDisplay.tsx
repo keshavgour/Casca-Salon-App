@@ -21,7 +21,6 @@ interface salonProps {
 }
 
 const SalonDataDisplay: React.FC<salonProps> = ({ dataTODisplay }) => {
-  // const navigate = useNavigate();
   return (
     <>
       {dataTODisplay.map((data) => (

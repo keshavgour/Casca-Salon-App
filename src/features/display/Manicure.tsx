@@ -4,17 +4,13 @@ import SalonDataDisplay from "./SalonDataDisplay";
 import { useNavigate } from "react-router-dom";
 import Search from "features/Search";
 import BackButtonComponent from "components/BackButtonComponent";
-import { useQuery } from "@tanstack/react-query";
 import Loading from "components/Loading";
-import { salonDataService } from "Services/salonDataService";
+import { useManicureDataService } from "hooks/useManicureDataService";
 
 export const Manicure = () => {
   const navigate = useNavigate();
 
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["manicureData"],
-    queryFn: () => salonDataService("Manicure"),
-  });
+  const { isLoading, error, data } = useManicureDataService();
 
   if (isLoading) {
     return <Loading />;

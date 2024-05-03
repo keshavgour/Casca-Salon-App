@@ -1,8 +1,10 @@
-export interface IRequestLogin {
+export interface ILogin {
   email: string;
   password: string;
 }
 
-export interface IError {
-  message: string;
+export interface IRegister {
+  email: string;
+  password: string;
+  passwordConfirm: string;
 }

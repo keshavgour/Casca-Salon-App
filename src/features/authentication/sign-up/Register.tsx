@@ -3,30 +3,17 @@ import { Button, Grid, IconButton, Link, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import TextFieldComponent from "components/TextFieldComponent";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
 import { Link as RouterLink } from "react-router-dom";
-import { registerService } from "Services/registerService";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import { useMutation } from "@tanstack/react-query";
-// import axiosInstance from "lib/axios";
+import { useRegisterService } from "hooks/useRegisterService";
 
 export const Register: React.FC = () => {
-  const navigate = useNavigate();
   const { setData } = useActions();
 
-  const mutation = useMutation({
-    mutationFn: registerService,
-    onSuccess: (data) => {
-      console.log(data);
-      navigate("/signup");
-    },
-    onError: (error) => {
-      console.log(error);
-    },
-  });
+  const mutation = useRegisterService();
 
   const formData = useSelector((state: RootState) => state.registration);
 
@@ -39,15 +26,11 @@ export const Register: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    mutation.mutate(formData);
-
-    //   try {
-    //     const data = await registerService(formData);
-    //     console.log(data);
-    //     navigate("/signup");
-    //   } catch (error) {
-    //     throw new Error("Failed to Signup");
-    //   }
+    try {
+      await mutation.mutateAsync(formData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //------ for google login --------
@@ -160,6 +143,14 @@ export const Register: React.FC = () => {
     </Container>
   );
 };
+
+//   try {
+//     const data = await registerService(formData);
+//     console.log(data);
+//     navigate("/signup");
+//   } catch (error) {
+//     throw new Error("Failed to Signup");
+//   }
 
 //   ---------------- Using UseState --------------------------
 

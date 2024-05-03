@@ -1,8 +1,8 @@
 import { urlConstants } from "constants/urlConstants";
-import { IRequestLogin } from "interfaces/interfaceLogin";
+import { ILogin } from "interfaces/interfaceLogin";
 import ApiService from "lib/ApiService";
 
-export const loginService = async (formData: IRequestLogin) => {
+export const loginService = async (formData: ILogin) => {
   const apiServiceInstance = new ApiService();
 
   const response = await apiServiceInstance.postData(urlConstants.LOGIN_URL, formData);

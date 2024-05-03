@@ -3,28 +3,16 @@ import { Button, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import BackButtonComponent from "components/BackButtonComponent";
 import TextFieldComponent from "components/TextFieldComponent";
-
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import { RootState } from "store/store";
 import { useActions } from "hooks/useActions";
-import { signupService } from "Services/signupService";
-import { useMutation } from "@tanstack/react-query";
+import { useSignupService } from "hooks/useSignupService";
 
 export const Signup = () => {
   const navigate = useNavigate();
 
-  const mutation = useMutation({
-    mutationFn: signupService,
-    onSuccess: (data) => {
-      console.log(data);
-      navigate("/login");
-    },
-    onError: (error) => {
-      console.log(error);
-    },
-  });
+  const mutation = useSignupService();
 
   const { setProfile } = useActions();
   const formData = useSelector((state: RootState) => state.signup);
@@ -42,8 +30,11 @@ export const Signup = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    mutation.mutate(formData);
+    try {
+      await mutation.mutateAsync(formData);
+    } catch (error) {
+      console.log(error);
+    }
 
     // try {
     //   const data = await signupService(formData);
