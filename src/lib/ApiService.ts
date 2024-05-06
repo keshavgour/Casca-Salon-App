@@ -82,7 +82,11 @@ class ApiService {
       return response;
     } catch (error) {
       console.log(error);
-      throw error;
+      if (axios.isAxiosError(error) && error.response && error.response.data && error.response.data.message) {
+        throw error.response.data.message;
+      } else {
+        throw new Error("No items found");
+      }
     }
   }
 }

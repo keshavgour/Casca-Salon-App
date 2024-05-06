@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import Search from "features/Search";
 import BackButtonComponent from "components/BackButtonComponent";
 import Loading from "components/Loading";
-import { useHaircutDataService } from "hooks/useHaircutDataService";
+import { useAllDataService } from "hooks/useAllDataService";
 
 export const Haircuts = () => {
   const navigate = useNavigate();
 
-  const { isLoading, error, data } = useHaircutDataService();
+  const { isLoading, error, data } = useAllDataService("Haircuts");
   if (isLoading) {
     return <Loading />;
   }

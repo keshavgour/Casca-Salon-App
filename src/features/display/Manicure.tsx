@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import Search from "features/Search";
 import BackButtonComponent from "components/BackButtonComponent";
 import Loading from "components/Loading";
-import { useManicureDataService } from "hooks/useManicureDataService";
+import { useAllDataService } from "hooks/useAllDataService";
 
 export const Manicure = () => {
   const navigate = useNavigate();
 
-  const { isLoading, error, data } = useManicureDataService();
+  const { isLoading, error, data } = useAllDataService("Manicure");
 
   if (isLoading) {
     return <Loading />;

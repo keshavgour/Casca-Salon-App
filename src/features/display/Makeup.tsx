@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import Search from "features/Search";
 import BackButtonComponent from "components/BackButtonComponent";
 import Loading from "components/Loading";
-import { useMakeupDataService } from "hooks/useMakeupDataService";
+import { useAllDataService } from "hooks/useAllDataService";
 
 export const Makeup = () => {
   const navigate = useNavigate();
 
-  const { isLoading, error, data } = useMakeupDataService();
+  const { isLoading, error, data } = useAllDataService("Makeup");
 
   if (isLoading) {
     return <Loading />;

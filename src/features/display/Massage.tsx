@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import Search from "features/Search";
 import BackButtonComponent from "components/BackButtonComponent";
 import Loading from "components/Loading";
-import { useMassageDataService } from "hooks/useMassageDataService";
+import { useAllDataService } from "hooks/useAllDataService";
 
 export const Massage = () => {
   const navigate = useNavigate();
 
-  const { isLoading, error, data } = useMassageDataService();
+  const { isLoading, error, data } = useAllDataService("Massage");
 
   if (isLoading) {
     return <Loading />;
