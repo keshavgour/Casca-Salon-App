@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import getSalonData from "Services/getSalonData";
+import { salonDataService } from "Services/salonDataService";
 
-export const useAllDataService = () => {
-  return useQuery({ queryKey: ["allData"], queryFn: () => getSalonData("All") });
+export const useAllDataService = (url: string) => {
+  return useQuery({ queryKey: ["allData"], queryFn: () => salonDataService(url) });
 };

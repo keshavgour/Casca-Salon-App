@@ -5,7 +5,7 @@ import Loading from "components/Loading";
 import { useAllDataService } from "hooks/useAllDataService";
 
 const AllData = () => {
-  const { isLoading, error, data } = useAllDataService();
+  const { isLoading, error, data } = useAllDataService("All");
 
   return (
     <Container>
