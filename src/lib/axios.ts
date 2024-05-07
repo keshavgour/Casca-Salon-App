@@ -4,7 +4,7 @@ import { validateToken } from "Services/validateToken";
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://ec2-13-232-11-3.ap-south-1.compute.amazonaws.com:3000/api/",
+  baseURL: "http://ec2-13-127-106-47.ap-south-1.compute.amazonaws.com:3000/api/",
 });
 
 const token = localStorage.getItem("access_token");
