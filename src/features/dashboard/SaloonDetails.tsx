@@ -15,6 +15,7 @@ import Review from "features/display/Review";
 import ChipTab from "components/ChipTab";
 import { flexRowEnd, flexRowStart } from "sx/FlexStyles";
 import { buttonStyle } from "sx/SmallButton";
+import { useLocation } from "react-router-dom";
 
 export default function SaloonDetails() {
   const [selectChip, setselectChip] = useState("About us");
@@ -22,13 +23,21 @@ export default function SaloonDetails() {
   const handleChipClick = (chipName: string) => {
     setselectChip(chipName);
   };
+
+  const location = useLocation();
+  const salonDetails = location.state?.salonDetails;
+
+  if (!salonDetails) {
+    return <div>No salon details found</div>;
+  }
+
   return (
     <Container>
       <Carousel />
       <Grid container alignItems="center" rowSpacing={1}>
         <Grid item xs={8}>
           <Typography variant="h2" component="span">
-            Galaxy Salon
+            {salonDetails.name}
           </Typography>
         </Grid>
         <Grid item xs={4} sx={flexRowEnd}>
@@ -39,13 +48,13 @@ export default function SaloonDetails() {
         <Grid item xs={12} sx={flexRowStart}>
           <LocationOnRoundedIcon color="primary" sx={{ marginRight: 1 }} />
           <Typography variant="h5" component="span" sx={{ color: "secondary.light" }}>
-            0992, Novik Parkway
+            {salonDetails.address[0].street}, {salonDetails.address[0].city}
           </Typography>
         </Grid>
         <Grid item xs={12} sx={flexRowStart}>
           <GradeIcon color="primary" sx={{ marginRight: 1 }} />
           <Typography variant="h5" component="span" sx={{ color: "secondary.light" }}>
-            4.9 (3,279 reviews)
+            {salonDetails.rating} (3,279 reviews)
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -53,7 +62,13 @@ export default function SaloonDetails() {
         </Grid>
       </Grid>
       <Divider sx={{ marginY: 2 }} />
-      <ChipTabHeader isPage={false} heading="Our Specialists" linktext="See All" forward="/allspecialists" backward="" />
+      <ChipTabHeader
+        isPage={false}
+        heading="Our Specialists"
+        linktext="See All"
+        forward="/allspecialists"
+        backward=""
+      />
       <Grid container wrap="nowrap" sx={{ overflow: "hidden" }}>
         {listSpecialist.map((card, index) => {
           return (
@@ -67,7 +82,12 @@ export default function SaloonDetails() {
         {chipLabels.map((chiplabel, index) => {
           return (
             <Grid item key={index}>
-              <ChipTab key={index} chipLabel={chiplabel} selectedChip={selectChip} clickFunction={() => handleChipClick(chiplabel)} />
+              <ChipTab
+                key={index}
+                chipLabel={chiplabel}
+                selectedChip={selectChip}
+                clickFunction={() => handleChipClick(chiplabel)}
+              />
             </Grid>
           );
         })}

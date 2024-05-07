@@ -30,6 +30,7 @@ import { ReviewPage } from "pages/ReviewPage";
 import { SpecialistsPage } from "pages/SpecialistsPage";
 import PackageDetails from "features/display/PackageDetails";
 import { BookAppointment } from "features/display/BookAppointment";
+import { BookmarkPage } from "pages/BookmarkPage";
 
 export const Routers = () => {
   return (
@@ -45,6 +46,7 @@ export const Routers = () => {
           <Route path="/inbox" element={<InboxPage />} />
           <Route path="/myBooking" element={<MyBookingPage />} />
           <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/bookmark" element={<BookmarkPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/forgotPassword" element={<ForgotPasswordPage />} />

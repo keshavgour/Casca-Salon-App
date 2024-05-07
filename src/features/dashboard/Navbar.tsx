@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import HomeIcon from "@mui/icons-material/Home";
 import RoomIcon from "@mui/icons-material/Room";
+import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
@@ -22,6 +23,7 @@ const navItems: NavItem[] = [
   { path: "myBooking", icon: ListAltIcon, label: "My Booking" },
   { path: "inbox", icon: ChatBubbleIcon, label: "Inbox" },
   { path: "notifications", icon: NotificationsIcon, label: "Notifications" },
+  { path: "bookmark", icon: BookmarksIcon, label: "Bookmarks" },
   { path: "profile", icon: PersonIcon, label: "Profile" },
 ];
 
@@ -55,7 +57,7 @@ export const Navbar: React.FC = () => {
         </Grid>
       </Grid>
       <Grid item lg={10} xs={5} pl={4} textAlign={"center"}>
-        <Grid container spacing={15}>
+        <Grid container spacing={10}>
           {navItems.map((item) => (
             <Grid item key={item.path}>
               <IconButton
